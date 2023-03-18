@@ -1,0 +1,72 @@
+.container-fluid{
+  font-family: Helvetica, sans-serif;
+}
+
+.contenedor-video{
+
+  background-color: #f7f7f7;
+}
+
+.texto-uno{
+  font-size: 70px;  
+  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+}
+
+.texto-dos{
+  font-size: 40px;
+  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+
+}
+
+.texto-tres{
+  
+  font-size: 20px;
+  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+}
+.imagen{
+  background-color: #ffffff;
+opacity: 0.8;
+background-image: radial-gradient( ellipse farthest-corner at 29px 29px , #f74545, #f74545 50%, #ffffff 50%);
+background-size: 29px 29px;
+}
+
+
+/* CSS */
+.button-24 {
+  background: #fd3b34;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.button-24:active {
+  opacity: .5;
+}
+
+
+
