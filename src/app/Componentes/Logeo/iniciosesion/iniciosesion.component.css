@@ -55,7 +55,7 @@ background: #fff url(../../../../assets/Iconos/aros2.png)  repeat;
 
 /* CSS */
 .button-39 {
-  background-color: #ff4747;
+  background-color: #2b2b2b;
   border: 1px solid rgb(209,213,219);
   border-radius: .5rem;
   box-sizing: border-box;
@@ -76,7 +76,7 @@ background: #fff url(../../../../assets/Iconos/aros2.png)  repeat;
 }
 
 .button-39:hover {
-  background-color: rgb(255, 98, 98);
+  background-color: rgb(100, 100, 100);
 }
 
 .button-39:focus {
