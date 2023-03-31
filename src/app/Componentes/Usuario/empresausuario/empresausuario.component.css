@@ -1,0 +1,13 @@
+.nav-link {
+  color: rgb(0, 0, 0);
+}
+
+.nav-item-spaced:hover {
+    background-color: #e2e2e2;
+    border-right: 2px solid red;
+
+  }
+  .nav-item-spaced:hover a {
+    color: #333;
+  }
+  

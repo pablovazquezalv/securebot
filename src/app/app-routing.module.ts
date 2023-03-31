@@ -4,12 +4,34 @@ import { IniciosesionComponent } from './Componentes/Logeo/iniciosesion/iniciose
 import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { RegistrarseComponent } from './Componentes/Logeo/registrarse/registrarse.component';
 import { CodigotelComponent } from './Componentes/Logeo/codigotel/codigotel.component';
+import { VerusuariosComponent } from './Componentes/Admin/administrar_usuarios/verusuarios/verusuarios.component';
+
+import { TiposcarrosComponent } from './Componentes/Usuario/Carro/tiposcarros/tiposcarros.component';
+import {CrearcarroComponent} from './Componentes/Usuario/Carro/crearcarro/crearcarro.component';
+import { PerfilusuarioComponent } from './Componentes/Usuario/perfilusuario/perfilusuario.component';
+import { EmpresausuarioComponent } from './Componentes/Usuario/empresausuario/empresausuario.component';
+import { CrearempresaComponent } from './Componentes/Usuario/Empresa/crearempresa/crearempresa.component';
+import { VercarroespecificoComponent } from './Componentes/Usuario/Carro/vercarroespecifico/vercarroespecifico.component';
+import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuariodatos/autosusuariodatos.component';
 const routes: Routes = [
-  { path: '',redirectTo:'/inicio',pathMatch:'full' },
+
+  
+  {path: '',redirectTo:'/inicio',pathMatch:'full' },
+  //LOGEO
   {path:'inicio',component:InicioComponent},
   {path:'inicio-sesion',component:IniciosesionComponent},
   {path:'registrarse',component:RegistrarseComponent},
-  {path:'codigo-telefono',component:CodigotelComponent}
+  {path:'codigo-telefono',component:CodigotelComponent},
+  //USUARIO
+  {path:'perfil-usuario',component:PerfilusuarioComponent},
+  {path:'ver-usuarios',component:VerusuariosComponent},
+  {path:'autos-usuario',component:AutosusuariodatosComponent},
+  {path:'tipos-carros',component:TiposcarrosComponent},
+  {path:'crear-carro',component:CrearcarroComponent},
+  {path:'ver-carro-especifico',component:VercarroespecificoComponent},
+  {path:'empresa-usuario',component:EmpresausuarioComponent},
+  {path:'crear-empresa',component:CrearempresaComponent}
+  
 ];
 
 @NgModule({

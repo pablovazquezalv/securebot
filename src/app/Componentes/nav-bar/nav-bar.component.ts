@@ -15,11 +15,35 @@ export class NavBarComponent {
   constructor(private router:Router,private authService: AuthService) 
   {
   }
-  ngOnInit() {
+  ngOnInit() 
+  {
     this.isLoggedIn$ = this.authService.isLoggedIn;
   }
 
-  IniciosesionComponent(){
+  InicioComponent()
+  {
+    this.router.navigate(['/inicio']);
+  }
+
+  VerUsuarios()
+  {
+    this.router.navigate(['/ver-usuarios']);
+  }
+
+  IniciosesionComponent()
+  {
     this.router.navigate(['/inicio-sesion']);
   }
+
+  TiposcarrosComponent()
+  {
+    this.router.navigate(['/tipos-carros']);
+  }
+  
+  perfilUsuario()
+  {
+    this.router.navigate(['/perfil-usuario']);
+  }
+
+ 
 }

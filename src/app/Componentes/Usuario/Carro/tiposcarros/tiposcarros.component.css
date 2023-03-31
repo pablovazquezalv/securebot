@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+    font-family: Open-sans, sans-serif;
+  }
+  h1, h2, h3 {
+    font-size: 48px;
+
+    font-family: Raleway, Helvetica, sans-serif;
+  }
+  svg {
+    margin-right: 10px;
+  }
+  h1{
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-top: 0; 
+  }
+  h2 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #272727;
+    margin-top: 0;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 20px;
+
+    background-color: #e9dede; 
+ }
+ 
+ .padded {
+    padding: 90px 0;
+  }
+  .wrapper-grey {
+    background: #e2e2e2e5;
+  }
+  
+  /* .banner {
+    color: white;
+    text-align: center;
+    height: 100vh;
+    background-size: cover !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .banner h1 {
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+  .banner p {
+    font-size: 25px;
+    font-weight: lighter;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 50px;
+  } */
+  
+  .card {
+    height: 250px;
+    background-size: cover !important;
+    color: white;
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .card-user {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  .card-category {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+  }
+  .card-description {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }
+  .card-description h2 {
+    font-size: 22px;
+  }
+  .card-description p {
+    font-size: 15px;
+  }
+  .card-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index:2;
+    background: black;
+    opacity: 0;
+  }
+  .card-link:hover{
+    opacity: 0.1;
+  }
+  .features img {
+    width: 100px;
+  }
+  .features h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .features p {
+    font-size: 15px;
+    font-weight: lighter;
+  }
+
+
+
+/* CSS */
+.button-39 {
+    background-color: #272727;
+    border: 1px solid rgb(209,213,219);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-39:hover {
+    background-color: rgb(83, 80, 80);
+  }
+  
+  .button-39:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  
+  .button-39:focus-visible {
+    box-shadow: none;
+  }
