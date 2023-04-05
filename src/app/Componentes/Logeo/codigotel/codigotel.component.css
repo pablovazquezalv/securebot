@@ -6,7 +6,7 @@
     
     backdrop-filter: blur(2px);
     border: 1.5px solid #fcfcfc;
-    height: 420px;
+    height: auto;
     position: relative;
   }
   

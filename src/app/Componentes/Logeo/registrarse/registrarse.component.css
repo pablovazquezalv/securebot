@@ -3,11 +3,11 @@
     padding: 10px;
     border-radius: 20px;
     
-  background: #ffffffe0;
+  background: #ffffff;
   
   backdrop-filter: blur(2px);
     border: 1px solid #fcfcfc;
-    height: 680px;
+    height: auto;
     position: relative;
   }
   

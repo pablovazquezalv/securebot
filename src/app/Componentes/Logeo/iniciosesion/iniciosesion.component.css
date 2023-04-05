@@ -6,7 +6,18 @@
   
   backdrop-filter: blur(2px);
   border: 1.5px solid #fcfcfc;
-  height: 400px;
+  height: auto;
+  position: relative;
+}
+.alert {
+  width: auto;
+  padding: 10px;
+  border-radius: 20px;
+  background: #ffffff;
+  
+  backdrop-filter: blur(2px);
+  border: 1.5px solid #fcfcfc;
+  height: auto;
   position: relative;
 }
 

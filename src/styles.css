@@ -75,3 +75,7 @@
     100% { transform: translateX(0); 
     }
   }
+
+.error-message{
+font-size: 15px;
+  }
