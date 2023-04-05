@@ -1,0 +1,77 @@
+/*boton*/
+.button-39 {
+    background-color: #2b2b2b;
+    border: 1px solid rgb(209,213,219);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-39:hover {
+    background-color: rgb(100, 100, 100);
+  }
+  
+  .button-39:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  
+  .button-39:focus-visible {
+    box-shadow: none;
+  }
+
+  /*inputs*/
+  .mobile-text {
+    color: #000000b8;
+    font-size: 15px;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    
+  }
+  
+  .form-control {
+    margin-right: 12px;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    
+  }
+  
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #000000;
+    outline: 0;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    box-shadow: none;
+  }
+  
+  .cursor {
+    cursor: pointer;
+  }
+
+  /*cuando falle un post*/
+  .button-failed {
+    animation-name: shake;
+    animation-duration: 0.5s;
+    animation-iteration-count: 3;
+}
+  
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); 
+    }
+  }

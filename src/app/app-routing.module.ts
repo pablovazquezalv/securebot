@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { IniciosesionComponent } from './Componentes/Logeo/iniciosesion/iniciosesion.component';
 import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { RegistrarseComponent } from './Componentes/Logeo/registrarse/registrarse.component';
+import { InstruccionesComponent } from './Componentes/Logeo/instrucciones/instrucciones.component';
+
 import { CodigotelComponent } from './Componentes/Logeo/codigotel/codigotel.component';
+
 import { VerusuariosComponent } from './Componentes/Admin/administrar_usuarios/verusuarios/verusuarios.component';
 
 import { TiposcarrosComponent } from './Componentes/Usuario/Carro/tiposcarros/tiposcarros.component';
@@ -13,14 +17,15 @@ import { EmpresausuarioComponent } from './Componentes/Usuario/empresausuario/em
 import { CrearempresaComponent } from './Componentes/Usuario/Empresa/crearempresa/crearempresa.component';
 import { VercarroespecificoComponent } from './Componentes/Usuario/Carro/vercarroespecifico/vercarroespecifico.component';
 import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuariodatos/autosusuariodatos.component';
-const routes: Routes = [
 
-  
+import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
+const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
   //LOGEO
   { path: 'inicio', component: InicioComponent, title: 'Inicio - SecureBot' },
   { path:'login', component:IniciosesionComponent, title: 'Iniciar sesión' },
-  { path: 'register', component:RegistrarseComponent, title: 'Registro' },
+  { path: 'registrarse', component:RegistrarseComponent, title: 'Registro' },
+  {path:'instrucciones',component:InstruccionesComponent,title:'Instrucciones'},
   { path:'code-verify', component:CodigotelComponent, title: 'Verificar código' },
   
   //USUARIO
@@ -31,7 +36,9 @@ const routes: Routes = [
   {path:'crear-carro',component:CrearcarroComponent},
   {path:'ver-carro-especifico',component:VercarroespecificoComponent},
   {path:'empresa-usuario',component:EmpresausuarioComponent},
-  {path:'crear-empresa',component:CrearempresaComponent}
+  {path:'crear-empresa',component:CrearempresaComponent},
+
+  {path:'**',component:WildcardComponent}
   
 ];
 

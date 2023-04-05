@@ -32,7 +32,7 @@ export class RegistrarseComponent {
       this.userService.register(values).subscribe((response: any)=> {
         if (response.status == 201) {
           this.userService.setSignedRoute(response.url);
-          this.router.navigate(['/code-verify']);
+          this.router.navigate(['/instrucciones']);
         }
       });
     }

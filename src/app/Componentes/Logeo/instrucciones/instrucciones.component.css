@@ -1,5 +1,5 @@
 .card {
-    width: 380px;
+    width: 480px;
     padding: 10px;
     border-radius: 20px;
     background: #ffffff;
@@ -15,7 +15,7 @@
   }
   
   .imagen {
-  background: #fff url(../../../../assets/Iconos/formas_3.png)  repeat;
+  background: #ffffffc9 url(../../../../assets/Iconos/formas_3.png)  repeat;
     background-size: 100%;
     position: absolute;
     top: 0;
@@ -23,3 +23,9 @@
     z-index: -1;
   }
   
+  .text_tittle{
+    font-size:  40px;
+    font-weight: bold;
+    color: #000000;
+
+  }

@@ -26,32 +26,3 @@
     margin-bottom: 0;
   }
   
-  .mobile-text {
-    color: #000000b8;
-    font-size: 15px;
-    
-    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    
-  }
-  
-  .form-control {
-    margin-right: 12px;
-    
-    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    
-  }
-  
-  .form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #ff8880;
-    outline: 0;
-    
-    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    box-shadow: none;
-  }
-  
-  .cursor {
-    cursor: pointer;
-  }
-  

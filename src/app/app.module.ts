@@ -21,6 +21,8 @@ import { PerfilusuarioComponent } from './Componentes/Usuario/perfilusuario/perf
 import { VercarroespecificoComponent } from './Componentes/Usuario/Carro/vercarroespecifico/vercarroespecifico.component';
 import { EmpresausuarioComponent } from './Componentes/Usuario/empresausuario/empresausuario.component';
 import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuariodatos/autosusuariodatos.component';
+import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
+import { InstruccionesComponent } from './Componentes/Logeo/instrucciones/instrucciones.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,9 @@ import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuarioda
     PerfilusuarioComponent,
     VercarroespecificoComponent,
     EmpresausuarioComponent,
-    AutosusuariodatosComponent
+    AutosusuariodatosComponent,
+    WildcardComponent,
+    InstruccionesComponent
   ],
   imports: [
     BrowserModule,

@@ -12,11 +12,11 @@
               <input type="text" formControlName="codigo4" class="form-control" maxlength="1" pattern="^[0-9]$" required>
             </div>
             <br>
-            <div *ngIf="(codeForm.get('codigo1')?.invalid && (codeForm.get('codigo1')?.touched || codeForm.get('codigo1')?.dirty)) || (codeForm.get('codigo2')?.invalid && (codeForm.get('codigo2')?.touched || codeForm.get('codigo2')?.dirty)) || (codeForm.get('codigo3')?.invalid && (codeForm.get('codigo3')?.touched || codeForm.get('codigo3')?.dirty)) || (codeForm.get('codigo4')?.invalid && (codeForm.get('codigo4')?.touched || codeForm.get('codigo4')?.dirty))">
-              <div *ngIf="codeForm.get('codigo1')?.errors?.['required'] || codeForm.get('codigo2')?.errors?.['required'] || codeForm.get('codigo3')?.errors?.['required'] || codeForm.get('codigo4')?.errors?.['required']" class="error-message">
+            <div *ngIf="(codeForm.get('codigo1')?.invalid && (codeForm.get('codigo1')?.touched || codeForm.get('codigo1')?.dirty)) || (codeForm.get('codigo2')?.invalid && (codeForm.get('codigo2')?.touched || codeForm.get('codigo2')?.dirty)) || (codeForm.get('codigo3')?.invalid && (codeForm.get('codigo3')?.touched || codeForm.get('codigo3')?.dirty)) || (codeForm.get('codigo4')?.invalid && (codeForm.get('codigo4')?.touched || codeForm.get('codigo4')?.dirty))" class="alert border text-danger border-bottom border-danger" role="alert">
+              <div *ngIf="codeForm.get('codigo1')?.errors?.['required'] || codeForm.get('codigo2')?.errors?.['required'] || codeForm.get('codigo3')?.errors?.['required'] || codeForm.get('codigo4')?.errors?.['required']" class="error-message" >
                 El código es obligatorio.
               </div>
-              <div *ngIf="codeForm.get('codigo1')?.errors?.['pattern'] || codeForm.get('codigo2')?.errors?.['pattern'] || codeForm.get('codigo3')?.errors?.['pattern'] || codeForm.get('codigo4')?.errors?.['pattern']" class="error-message">
+              <div *ngIf="codeForm.get('codigo1')?.errors?.['pattern'] || codeForm.get('codigo2')?.errors?.['pattern'] || codeForm.get('codigo3')?.errors?.['pattern'] || codeForm.get('codigo4')?.errors?.['pattern']" class="error-message" >
                 El código solo puede contener números.
               </div>
             </div>
@@ -24,7 +24,7 @@
               <button class="button-39" type="submit" [disabled]="!codeForm.valid">Verificar cuenta</button>
             </div>
           </form>
-          <div class="text-center mt-5"><span class="d-block mobile-text"> ¿No has recibido tu código?</span><span class="font-weight-bold text-danger cursor">Reenviar</span></div>
+          <div class="text-center mt-3"><span class="d-block mobile-text"> ¿No has recibido tu código?</span><span class="font-weight-bold text-danger cursor">Reenviar</span></div>
     </div>
   </div>
 </div>

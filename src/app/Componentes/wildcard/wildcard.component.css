@@ -1,0 +1,21 @@
+.text_404{
+    font-size: 100px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    
+}
+.text_page{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    
+}
+.text_sub{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    margin-top: 50px;
+}

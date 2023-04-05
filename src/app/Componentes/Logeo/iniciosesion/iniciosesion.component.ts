@@ -15,6 +15,10 @@ export class IniciosesionComponent {
   loginForm: FormGroup;
   user?: User;
 
+  //errors
+  showError: boolean = false;
+  public apiFailed: boolean = false;
+
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -23,19 +27,29 @@ export class IniciosesionComponent {
   }
 
   onSubmit(values: User) {
-    if(this.loginForm.valid) {
-      this.userService.login(values).subscribe((response: any) => {
+    if(this.loginForm.valid) 
+    {
+      this.userService.login(values).subscribe((response: any) => 
+      {
         localStorage.setItem('token', response.token);
         if(response.status === 200) {
-          if(this.userService.getUserLoggedIn()) {
+          if(this.userService.getUserLoggedIn())
+           {
             location.assign('/inicio');
           }
         }
-      })
+      }
+      );
     }
+  
+    
+
+  }
+  onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 
   registrarse() {
-  this.router.navigate(['/register']);
+  this.router.navigate(['/registrarse']);
   }
 }
