@@ -1,21 +1,31 @@
-
 <div class="vh-100 w-100 imagen">
-<div class="d-flex justify-content-center align-items-center container">
-  <div class="card py-5 px-3">
+  <div class="d-flex justify-content-center align-items-center container">
+    <div class="card py-5 px-3">
       <h5 class="m-0 text-center">Iniciar sesión</h5>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="mobile-text">Correo</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="mobile-text">Contraseña</label>
-        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="">
-      </div>
-      <button class="button-39" role="button">Iniciar sesión</button>
-
-      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <div class="mb-3">
+          <label for="email" class="mobile-text">Correo electrónico</label>
+            <input type="email" formControlName="email" class="form-control" placeholder="Ingresa tu correo electrónico" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
+            <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)">
+              <span class="error-message" *ngIf="loginForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.</span>
+              <span class="error-message" *ngIf="loginForm.get('email')?.errors?.['pattern']">El campo correo electrónico no es válido.</span>
+            </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="mobile-text">Contraseña</label>
+          <input type="password" formControlName="password" class="form-control" placeholder="Ingresa tu contraseña" minlength="8" maxlength="20" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&()-+])[A-Za-z\d!@#$%^&*()-+]{8,}$">
+          <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)">
+            <span class="error-message" *ngIf="loginForm.get('password')?.errors?.['required']">El campo contraseña es obligatorio.</span>
+            <span class="error-message" *ngIf="loginForm.get('password')?.errors?.['minlength']">El campo contraseña debe tener un mínimo de 8 caracteres.<br></span>
+            <span class="error-message" *ngIf="loginForm.get('password')?.errors?.['pattern']">El campo contraseña debe contener al menos una letra mayúscula, un número y un carácter especial (!@#$%^&*()-+).</span>
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <button class="button-39" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+        </div>
+      </form>
       <div class="text-center mt-5">
-        <span class="d-block mobile-text">¿No tienes cuenta?</span>
+        <span class="d-block mobile-text">¿No tienes una cuenta?</span>
         <a class="fw-bold text-danger cursor" (click)="registrarse()" >Crea una</a></div>
         <br>
   </div>

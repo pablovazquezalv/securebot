@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/Servicios/auth.service';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -32,7 +32,7 @@ export class NavBarComponent {
 
   IniciosesionComponent()
   {
-    this.router.navigate(['/inicio-sesion']);
+    this.router.navigate(['/login']);
   }
 
   TiposcarrosComponent()

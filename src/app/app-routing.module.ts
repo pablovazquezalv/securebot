@@ -16,12 +16,13 @@ import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuarioda
 const routes: Routes = [
 
   
-  {path: '',redirectTo:'/inicio',pathMatch:'full' },
+  { path: '', redirectTo:'/inicio', pathMatch:'full' },
   //LOGEO
-  {path:'inicio',component:InicioComponent},
-  {path:'inicio-sesion',component:IniciosesionComponent},
-  {path:'registrarse',component:RegistrarseComponent},
-  {path:'codigo-telefono',component:CodigotelComponent},
+  { path: 'inicio', component: InicioComponent, title: 'Inicio - SecureBot' },
+  { path:'login', component:IniciosesionComponent, title: 'Iniciar sesión' },
+  { path: 'register', component:RegistrarseComponent, title: 'Registro' },
+  { path:'code-verify', component:CodigotelComponent, title: 'Verificar código' },
+  
   //USUARIO
   {path:'perfil-usuario',component:PerfilusuarioComponent},
   {path:'ver-usuarios',component:VerusuariosComponent},
