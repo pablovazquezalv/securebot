@@ -1,73 +1,44 @@
 <br>
 <br>
-
-
 <div class="container">
-    <div class="row table-responsive">
-
-        <table class="table table-bordered   " >
-            <thead class="border">
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Rol</th> 
-                <th scope="col">Status</th>
-                <th scope="col">Acciones</th>       
-              </thead>
-              <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Pablo Vazquez Alvarado</td>
-                    <td>pabloalvaradovazquez10@gmail.com</td>
-                    <td>8781878188</td>
-                    <td>Administrador</td>
-                    <td>Activo</td>
-                    <td>
-                        <button type="button" class="btn btn-light text-dark border" 
-                        data-bs-toggle="modal" data-bs-target="#cambiarRol"  
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-                        --bs-btn-font-size: .75rem;margin-right: 10px;">
-                        Cambiar Rol
-                        </button>
-                        <button type="button" class="btn btn-dark " data-bs-toggle="modal" 
-                        data-bs-target="#cambiarStatus"  
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-                        --bs-btn-font-size: .75rem;margin-right: 10px;">
-                        Cambiar Status
-                        </button>
-                        <button type="button" class="btn btn-danger"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-                        --bs-btn-font-size: .75rem;margin-right: 10px;">
-                        Eliminar
-                        </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Andrea Alva Alvarado</td>
-                    <td>andy230@gmail.com</td>
-                    <td>8781878188</td>
-                    <td>Moderado</td>
-                    <td>Inactivo</td>
-                    <td>
-                        <button type="button" class="btn btn-light text-dark"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-                        --bs-btn-font-size: .75rem;margin-right: 10px;">
-                        Cambiar Rol
-                        </button>
-                        <button type="button" class="btn btn-dark "
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-                        --bs-btn-font-size: .75rem;margin-right: 10px;">
-                        Cambiar Status
-                        </button>
-                        <button type="button" class="btn btn-danger"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-                        --bs-btn-font-size: .75rem;margin-right: 10px;">
-                        Eliminar
-                        </button>
-                    </td>
-                  </tr>
+  <div class="row table-responsive">
+    <table class="table table-bordered">
+      <thead class="border text-center">
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Email</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Rol</th> 
+        <th scope="col">Estatus</th>
+        <th scope="col">Acciones</th>       
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let u of users">
+          <th scope="row">{{ u.id }}</th>
+          <td>{{ u.name }} {{ u.ap_paterno }} {{ u.ap_materno }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.phone_number }}</td>
+          <td>{{ u.rol }}</td>
+          <td>
+            <span *ngIf="u.active == 1">Activo</span>
+            <span *ngIf="u.active == 0">Inactivo</span>
+          </td>
+          <td>
+            <button type="button" class="btn btn-light text-dark border" 
+            data-bs-toggle="modal" data-bs-target="#cambiarRol"  
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+            --bs-btn-font-size: .75rem;margin-right: 10px;">
+            Cambiar rol
+            </button>
+            <button type="button" class="btn btn-dark" 
+            (click)="changeStatus(u.id)" 
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+            --bs-btn-font-size: .75rem;margin-right: 10px;">
+            Cambiar estatus
+            </button>
+         </td>
+        </tr>
+                  
               </tbody>            
           </table>
 

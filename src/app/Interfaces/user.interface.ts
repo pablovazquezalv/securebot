@@ -5,7 +5,7 @@ export interface User {
     ap_materno: string;
     email: string;
     password: string;
-    password_confirmation: string;
+    password_confirmation?: string;
     phone_number: string;
     active?: number;
     rol_id: number;

@@ -12,7 +12,7 @@ export class AutosusuariodatosComponent {
 
   perfilUsuario()
   {
-    this.router.navigate(['/perfil-usuario']);
+    this.router.navigate(['/profile']);
   }
 
   empresaUsuario()

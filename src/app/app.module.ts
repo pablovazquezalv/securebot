@@ -23,6 +23,8 @@ import { EmpresausuarioComponent } from './Componentes/Usuario/empresausuario/em
 import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuariodatos/autosusuariodatos.component';
 import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
 import { InstruccionesComponent } from './Componentes/Logeo/instrucciones/instrucciones.component';
+import { TokenInterceptor } from './Interceptors/token.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +54,7 @@ import { InstruccionesComponent } from './Componentes/Logeo/instrucciones/instru
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

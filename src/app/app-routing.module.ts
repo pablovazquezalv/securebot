@@ -5,11 +5,8 @@ import { IniciosesionComponent } from './Componentes/Logeo/iniciosesion/iniciose
 import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { RegistrarseComponent } from './Componentes/Logeo/registrarse/registrarse.component';
 import { InstruccionesComponent } from './Componentes/Logeo/instrucciones/instrucciones.component';
-
 import { CodigotelComponent } from './Componentes/Logeo/codigotel/codigotel.component';
-
 import { VerusuariosComponent } from './Componentes/Admin/administrar_usuarios/verusuarios/verusuarios.component';
-
 import { TiposcarrosComponent } from './Componentes/Usuario/Carro/tiposcarros/tiposcarros.component';
 import {CrearcarroComponent} from './Componentes/Usuario/Carro/crearcarro/crearcarro.component';
 import { PerfilusuarioComponent } from './Componentes/Usuario/perfilusuario/perfilusuario.component';
@@ -17,8 +14,8 @@ import { EmpresausuarioComponent } from './Componentes/Usuario/empresausuario/em
 import { CrearempresaComponent } from './Componentes/Usuario/Empresa/crearempresa/crearempresa.component';
 import { VercarroespecificoComponent } from './Componentes/Usuario/Carro/vercarroespecifico/vercarroespecifico.component';
 import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuariodatos/autosusuariodatos.component';
-
 import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
+
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
   //LOGEO
@@ -29,8 +26,8 @@ const routes: Routes = [
   { path:'code-verify', component:CodigotelComponent, title: 'Verificar código' },
   
   //USUARIO
-  {path:'perfil-usuario',component:PerfilusuarioComponent},
-  {path:'ver-usuarios',component:VerusuariosComponent},
+  { path: 'profile', component:PerfilusuarioComponent, title: 'Mi perfil' },
+  { path:'users', component:VerusuariosComponent, title: 'Usuarios'},
   {path:'autos-usuario',component:AutosusuariodatosComponent},
   {path:'tipos-carros',component:TiposcarrosComponent},
   {path:'crear-carro',component:CrearcarroComponent},
@@ -38,7 +35,7 @@ const routes: Routes = [
   {path:'empresa-usuario',component:EmpresausuarioComponent},
   {path:'crear-empresa',component:CrearempresaComponent},
 
-  {path:'**',component:WildcardComponent}
+  { path:'**', component: WildcardComponent, title: 'Página no encontrada' },
   
 ];
 

@@ -14,7 +14,7 @@ export class VercarroespecificoComponent {
 
   perfilUsuario()
   {
-    this.router.navigate(['/perfil-usuario']);
+    this.router.navigate(['/profile']);
   }
 
   empresaUsuario()

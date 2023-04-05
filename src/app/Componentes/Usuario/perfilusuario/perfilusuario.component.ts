@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/Services/user.service';
+import { User } from 'src/app/Interfaces/user.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,28 +8,42 @@ import { Router } from '@angular/router';
   templateUrl: './perfilusuario.component.html',
   styleUrls: ['./perfilusuario.component.css']
 })
-export class PerfilusuarioComponent {
 
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
+export class PerfilusuarioComponent implements OnInit {
+  user: User = {
+    id: 0,
+    name: '',
+    ap_paterno: '',
+    ap_materno: '',
+    email: '',
+    password: '',
+    phone_number: '',
+    rol_id: 0,
   }
-  perfilUsuario()
-  {
-    this.router.navigate(['/perfil-usuario']);
+  constructor(private router: Router, private userService: UserService) { }
+
+  ngOnInit() {
+    this.getUser();
   }
 
-  empresaUsuario()
-  {
+  getUser() {
+    this.userService.getToken().subscribe((data: any) => {
+      this.user = data.data;
+    })
+  }
+  perfilUsuario() {
+    this.router.navigate(['/profile']);
+  }
+
+  empresaUsuario() {
     this.router.navigate(['/empresa-usuario']);
-    }
+  }
 
-    crearEmpresa()
-  {
+  crearEmpresa() {
     this.router.navigate(['/crear-empresa']);
   }
-  carrosUsuario()
-  {
+  
+  carrosUsuario() {
     this.router.navigate(['/autos-usuario']);
   }
 }

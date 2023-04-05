@@ -27,7 +27,7 @@ export class NavBarComponent {
 
   VerUsuarios()
   {
-    this.router.navigate(['/ver-usuarios']);
+    this.router.navigate(['/users']);
   }
 
   IniciosesionComponent()
@@ -42,7 +42,7 @@ export class NavBarComponent {
   
   perfilUsuario()
   {
-    this.router.navigate(['/perfil-usuario']);
+    this.router.navigate(['/profile']);
   }
 
  
