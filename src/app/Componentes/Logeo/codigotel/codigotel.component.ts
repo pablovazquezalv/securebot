@@ -36,4 +36,8 @@ export class CodigotelComponent {
       })
     }
   }
+  telEquivocado()
+  {
+    this.router.navigate(['/telefono-equivocado']);
+  }
 }

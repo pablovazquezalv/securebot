@@ -36,6 +36,8 @@ import { ModalActualizarCorreoComponent } from './Componentes/Usuario/Usuario/mo
 import { ModalActualizarTelefonoComponent } from './Componentes/Usuario/Usuario/modal-actualizar-telefono/modal-actualizar-telefono.component';
 import { ModalActualizarContrasenaComponent } from './Componentes/Usuario/Usuario/modal-actualizar-contrasena/modal-actualizar-contrasena.component';
 import { ModalConfirmacionStatusComponent } from './Componentes/Admin/modal-confirmacion-status/modal-confirmacion-status.component';
+import { CorreoEquivocadoComponent } from './Componentes/Logeo/correo-equivocado/correo-equivocado.component';
+import { TelefonoEquivocadoComponent } from './Componentes/Logeo/telefono-equivocado/telefono-equivocado.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { ModalConfirmacionStatusComponent } from './Componentes/Admin/modal-conf
     ModalActualizarCorreoComponent,
     ModalActualizarTelefonoComponent,
     ModalActualizarContrasenaComponent,
-    ModalConfirmacionStatusComponent,  ],
+    ModalConfirmacionStatusComponent,
+    CorreoEquivocadoComponent,
+    TelefonoEquivocadoComponent,  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

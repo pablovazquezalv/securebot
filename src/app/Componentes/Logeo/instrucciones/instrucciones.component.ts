@@ -10,7 +10,13 @@ export class InstruccionesComponent {
 
   constructor(private router: Router) { }
 
-  irCodigoTel(){
+  irCodigoTel()
+  {
     this.router.navigate(['code-verify']);
+  }
+  
+  correoEquivocado()
+  {
+    this.router.navigate(['correo-equivocado']);
   }
 }

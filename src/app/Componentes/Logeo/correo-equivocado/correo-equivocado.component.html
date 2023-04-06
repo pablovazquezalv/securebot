@@ -1,0 +1,29 @@
+<div class="vh-100 w-100 imagen">
+    <div class="d-flex justify-content-center align-items-center container">
+      <div class="card py-5 px-3 border">
+        <h4 class="m-0 text-center">Cambiar correo</h4>
+        <span class="mobile-text text-center mt-3">Si te equivocaste de correo al crear tu cuenta, aun estas a tiempo, puedes escribir el nuevo correo.</span>
+
+        <form >
+          <div class="mb-3 mt-4">
+
+            <label for="email" class="mobile-text">Correo electrónico</label>
+              <input type="email" formControlName="email" class="form-control" placeholder="Ingresa tu correo electrónico" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
+            <!--
+              <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)" class="alert border text-danger border-bottom border-danger " role="alert">
+                <span class="error-message " *ngIf="loginForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.
+                </span>
+                <span class="error-message " *ngIf="loginForm.get('email')?.errors?.['pattern']">El campo correo electrónico no es válido.</span>
+              </div>-->
+          </div>
+          
+         
+          <div class="text-center mt-3">
+            <button class="button-39"  type="submit" [disabled]="">Corregir</button>
+          </div>
+        </form>
+        
+          <br>
+    </div>
+  </div></div>
+  
