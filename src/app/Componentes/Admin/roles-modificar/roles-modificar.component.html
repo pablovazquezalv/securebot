@@ -1,7 +1,9 @@
-<div class="card" style="width: 28rem;" align="center">
-    <div class="card-header">
-        <h4>Cambiar rol</h4>
-    </div>
+<div class="card rounded rounded-2"  align="center"  >
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="text-start">Cambiar rol</h4>  
+        <button type="button" class="btn-close shadow-none" (click)="close()"></button>
+      </div>
+    
     <div class="card-body">
         <div class="form-group text-start">
             <form [formGroup]="roleForm" (ngSubmit)="onSubmit(roleForm.value)">
@@ -10,7 +12,7 @@
                     <option value="" selected disabled>Selecciona el rol que deseas asignar</option>
                     <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.name }}</option>
                 </select>
-                <div *ngIf="roleForm.get('rol')?.invalid && (roleForm.get('rol')?.touched || roleForm.get('rol')?.dirty)" class="alert border text-danger border-bottom border-danger fs-5" role="alert">
+                <div *ngIf="roleForm.get('rol')?.invalid && (roleForm.get('rol')?.touched || roleForm.get('rol')?.dirty)" >
                     <span class="error-message" *ngIf="roleForm.get('rol')?.errors?.['required']">El campo rol es obligatorio.</span>
                 </div>
             </form>

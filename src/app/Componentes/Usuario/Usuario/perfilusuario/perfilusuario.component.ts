@@ -60,7 +60,7 @@ export class PerfilusuarioComponent implements OnInit {
   openNameModal(name: String, ap_paterno: String, ap_materno: String) {
     const dialogRef = this.dialog.open(ModalActualizarNombreComponent, {
       width: '448px',
-      height: '450px',
+      height: 'auto',
       data: { name: name, ap_paterno: ap_paterno, ap_materno: ap_materno }
     });
   }
@@ -68,7 +68,7 @@ export class PerfilusuarioComponent implements OnInit {
   openPasswordModal() {
     const dialogRef = this.dialog.open(ModalActualizarContrasenaComponent, {
       width: '448px',
-      height: '243px',
+      height: 'auto',
       data: { id: this.user.id }
     });
   }
@@ -76,7 +76,7 @@ export class PerfilusuarioComponent implements OnInit {
   openEmailModal() {
     const dialogRef = this.dialog.open(ModalActualizarCorreoComponent, {
       width: '448px',
-      height: '243px',
+      height: 'auto',
       data: { id: this.user.id }
     });
   }
@@ -84,7 +84,7 @@ export class PerfilusuarioComponent implements OnInit {
   openPhoneModal() {
     const dialogRef = this.dialog.open(ModalActualizarTelefonoComponent, {
       width: '448px',
-      height: '243px',
+      height: 'auto',
       data: { id: this.user.id }
     });
   }

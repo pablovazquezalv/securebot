@@ -27,14 +27,14 @@ export class VerusuariosComponent implements OnInit {
   openStatusModal(id: number) {
     const dialogRef = this.dialog.open(ModalConfirmacionStatusComponent, {
       width: '448px',
-      height: '238px',
+      height: 'auto',
       data: { id: id }
     });
   }
   openRoleModal(id: number) {
     const dialogRef = this.dialog.open(RolesModificarComponent, {
       width: '448px',
-      height: '243px',
+      height: 'auto',
       data: { id: id }
     });
   }
