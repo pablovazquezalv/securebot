@@ -1,10 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from 'src/app/Services/user.service';
+import { User } from 'src/app/Interfaces/user.interface';
 
 @Component({
   selector: 'app-modal-actualizar-nombre',
   templateUrl: './modal-actualizar-nombre.component.html',
   styleUrls: ['./modal-actualizar-nombre.component.css']
 })
-export class ModalActualizarNombreComponent {
 
+@Injectable()
+export class ModalActualizarNombreComponent implements OnInit {
+  nameForm: FormGroup;
+  user?: User;
+
+  constructor(public dialog: MatDialog,  @Inject(MAT_DIALOG_DATA) public data: {name: String, ap_paterno: String, ap_materno: String}, private userService: UserService, private formBuilder: FormBuilder) {
+    this.nameForm = this.formBuilder.group({
+      name: ['', Validators.required], 
+      ap_paterno: ['', Validators.required],
+      ap_materno: ['', Validators.required],
+    });
+  }
+
+  ngOnInit() {
+    this.nameForm.patchValue({
+      name: this.data.name,
+      ap_paterno: this.data.ap_paterno,
+      ap_materno: this.data.ap_materno
+    });
+  }
+
+  close() {
+    this.dialog.closeAll();
+  }
+
+  onSubmit(user: User) {
+    if(this.nameForm.valid) {
+      this.userService.updateNames(user).subscribe(() => location.reload());
+      this.close();
+    }
+  }
 }

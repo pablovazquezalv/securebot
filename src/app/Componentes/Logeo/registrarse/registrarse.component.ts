@@ -33,7 +33,7 @@ export class RegistrarseComponent {
         if (response.status == 201) {
           this.userService.setSignedRoute(response.url);
           this.router.navigate(['/instrucciones']);
-        }
+        } 
       });
     }
   }

@@ -18,6 +18,7 @@ export class UserService {
   private changeRoleUrl = environment.API_URL + '/change/role';
   private getRoleUrl = environment.API_URL + '/user/role';
   private isAdminUrl = environment.API_URL + '/user/admin';
+  private updateNamesUrl = environment.API_URL + '/user/names';
 
   private userLoggedIn = new Subject<boolean>();
   private signedRoute?: string;
@@ -118,6 +119,13 @@ export class UserService {
     return this.http.get<User>(this.logoutUrl)
       .pipe(
         retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  updateNames(user: User) {
+    return this.http.put(this.updateNamesUrl, user)
+      .pipe(
         catchError(this.handleError)
       );
   }
