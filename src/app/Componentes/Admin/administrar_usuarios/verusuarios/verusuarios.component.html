@@ -25,7 +25,7 @@
           </td>
           <td>
             <button type="button" class="btn btn-light text-dark border" 
-            data-bs-toggle="modal" data-bs-target="#cambiarRol"  
+            (click)="openModal(u.id)" 
             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
             --bs-btn-font-size: .75rem;margin-right: 10px;">
             Cambiar rol
@@ -38,77 +38,7 @@
             </button>
          </td>
         </tr>
-                  
-              </tbody>            
-          </table>
-
-        </div>
-
-      </div>
-  <!-- Cambiar Rol-->
-  <div class="modal fade" id="cambiarRol" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Cambiar Rol:</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p>Nombre del Usuario:</p>
-            <p>Pablo Vazquez Alvarado</p>
-            <p>Roles:</p>
-            <select class="form-select" aria-label="Default select example">
-                <option value="1">Administrador</option>
-                <option value="2">Moderador</option>
-                <option value="3">Invitado</option>
-              </select>
-        </div>
-        <div class="modal-footer">
-          <button type="button" data-bs-dismiss="modal" class="btn btn-light 
-          text-dark border "
-            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-            --bs-btn-font-size: .75rem;margin-right: 10px;">
-            Salir
-            </button>
-          <button type="button" class="btn btn-dark "style="--bs-btn-padding-y: .25rem;
-           --bs-btn-padding-x: .5rem;--bs-btn-font-size: .75rem;margin-right: 10px;">
-                        Cambiar Rol
-          </button>
-        </div>
-      </div>
-    </div>
+      </tbody>            
+    </table>
   </div>
-
-  <!-- Cambiar Status-->
-  <div class="modal fade" id="cambiarStatus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Cambiar Status:</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p>Nombre del Usuario:</p>
-            <p>Pablo Vazquez Alvarado</p>
-            <p>Status:</p>
-            <select class="form-select" aria-label="Default select example">
-                <option value="1">Activo</option>
-                <option value="2">Inactivo</option>
-              </select>
-        </div>
-        <div class="modal-footer">
-          <button type="button" data-bs-dismiss="modal" class="btn btn-light 
-          text-dark border "
-            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-            --bs-btn-font-size: .75rem;margin-right: 10px;">
-            Salir
-            </button>
-          <button type="button" class="btn btn-dark "style="--bs-btn-padding-y: .25rem;
-           --bs-btn-padding-x: .5rem;--bs-btn-font-size: .75rem;margin-right: 10px;">
-                        Cambiar Status
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-    
+</div>

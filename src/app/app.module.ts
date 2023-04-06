@@ -1,11 +1,15 @@
+//Modulos
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog'
 
-import { AppRoutingModule } from './app-routing.module';
+//Componentes
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './Componentes/nav-bar/nav-bar.component';
 import { IniciosesionComponent } from './Componentes/Logeo/iniciosesion/iniciosesion.component';
 import { InicioComponent } from './Componentes/inicio/inicio.component';
@@ -23,6 +27,8 @@ import { EmpresausuarioComponent } from './Componentes/Usuario/empresausuario/em
 import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuariodatos/autosusuariodatos.component';
 import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
 import { InstruccionesComponent } from './Componentes/Logeo/instrucciones/instrucciones.component';
+
+//Interceptors
 import { TokenInterceptor } from './Interceptors/token.interceptor';
 
 @NgModule({
@@ -52,7 +58,9 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
     NgbModule, 
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule, 
+    MatDialogModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
