@@ -21,15 +21,21 @@ import { TiposcarrosComponent } from './Componentes/Usuario/Carro/tiposcarros/ti
 import { CrearcarroComponent } from './Componentes/Usuario/Carro/crearcarro/crearcarro.component';
 import { EditarcarroComponent } from './Componentes/Usuario/Carro/editarcarro/editarcarro.component';
 import { CrearempresaComponent } from './Componentes/Usuario/Empresa/crearempresa/crearempresa.component';
-import { PerfilusuarioComponent } from './Componentes/Usuario/perfilusuario/perfilusuario.component';
+import { PerfilusuarioComponent } from './Componentes/Usuario/Usuario/perfilusuario/perfilusuario.component';
 import { VercarroespecificoComponent } from './Componentes/Usuario/Carro/vercarroespecifico/vercarroespecifico.component';
-import { EmpresausuarioComponent } from './Componentes/Usuario/empresausuario/empresausuario.component';
-import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuariodatos/autosusuariodatos.component';
+import { EmpresausuarioComponent } from './Componentes/Usuario/Usuario/empresausuario/empresausuario.component';
+import { AutosusuariodatosComponent } from './Componentes/Usuario/Usuario/autosusuariodatos/autosusuariodatos.component';
 import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
 import { InstruccionesComponent } from './Componentes/Logeo/instrucciones/instrucciones.component';
 
 //Interceptors
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+import { RolesModificarComponent } from './Componentes/Admin/roles-modificar/roles-modificar.component';
+import { ModalActualizarNombreComponent } from './Componentes/Usuario/Usuario/modal-actualizar-nombre/modal-actualizar-nombre.component';
+import { ModalActualizarCorreoComponent } from './Componentes/Usuario/Usuario/modal-actualizar-correo/modal-actualizar-correo.component';
+import { ModalActualizarTelefonoComponent } from './Componentes/Usuario/Usuario/modal-actualizar-telefono/modal-actualizar-telefono.component';
+import { ModalActualizarContrasenaComponent } from './Componentes/Usuario/Usuario/modal-actualizar-contrasena/modal-actualizar-contrasena.component';
+import { ModalConfirmacionStatusComponent } from './Componentes/Admin/modal-confirmacion-status/modal-confirmacion-status.component';
 
 @NgModule({
   declarations: [
@@ -50,8 +56,13 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
     EmpresausuarioComponent,
     AutosusuariodatosComponent,
     WildcardComponent,
-    InstruccionesComponent
-  ],
+    InstruccionesComponent,
+    RolesModificarComponent,
+    ModalActualizarNombreComponent,
+    ModalActualizarCorreoComponent,
+    ModalActualizarTelefonoComponent,
+    ModalActualizarContrasenaComponent,
+    ModalConfirmacionStatusComponent,  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

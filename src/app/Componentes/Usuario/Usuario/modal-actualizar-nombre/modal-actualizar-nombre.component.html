@@ -1,0 +1,32 @@
+<div class="card " style="width: 28rem;" align="center">
+    <div class="card-header">
+    <h4>Cambiar Nombre
+    </h4>
+    </div>
+    <div class="card-body">
+        <div class="mb-3 text-start">
+            <label for="Nombre" class="mobile-text">Nombre</label>
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Ingresa el nuevo nombre" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
+          </div>
+          <div class="mb-3 text-start">
+            <label for="ApellidoMaterno" class="mobile-text">Apellido Materno</label>
+              <input type="text" formControlName="ApellidoMaterno" class="form-control" placeholder="Ingresa el nuevo apellido" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
+          </div>
+          <div class="mb-3 text-start">
+            <label for="ApellidoPaterno" class="mobile-text">Apellido Paterno</label>
+              <input type="text" formControlName="ApellidoPaterno" class="form-control" placeholder="Ingresa el nuevo apellido" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
+          </div>
+    </div>
+    <div class="card-footer text-end text-body-secondary">
+        <button type="button" class="btn btn-danger"  
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+            --bs-btn-font-size: .75rem;margin-right: 10px;">
+            Guardar
+            </button>
+            <button type="button" class="btn btn-dark"  
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+            --bs-btn-font-size: .75rem;margin-right: 10px;">
+            Cancelar
+            </button>
+    </div>
+  </div>

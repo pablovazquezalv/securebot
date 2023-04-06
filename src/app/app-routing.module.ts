@@ -9,12 +9,13 @@ import { CodigotelComponent } from './Componentes/Logeo/codigotel/codigotel.comp
 import { VerusuariosComponent } from './Componentes/Admin/administrar_usuarios/verusuarios/verusuarios.component';
 import { TiposcarrosComponent } from './Componentes/Usuario/Carro/tiposcarros/tiposcarros.component';
 import {CrearcarroComponent} from './Componentes/Usuario/Carro/crearcarro/crearcarro.component';
-import { PerfilusuarioComponent } from './Componentes/Usuario/perfilusuario/perfilusuario.component';
-import { EmpresausuarioComponent } from './Componentes/Usuario/empresausuario/empresausuario.component';
+import { PerfilusuarioComponent } from './Componentes/Usuario/Usuario/perfilusuario/perfilusuario.component';
+import { EmpresausuarioComponent } from './Componentes/Usuario/Usuario/empresausuario/empresausuario.component';
 import { CrearempresaComponent } from './Componentes/Usuario/Empresa/crearempresa/crearempresa.component';
 import { VercarroespecificoComponent } from './Componentes/Usuario/Carro/vercarroespecifico/vercarroespecifico.component';
-import { AutosusuariodatosComponent } from './Componentes/Usuario/autosusuariodatos/autosusuariodatos.component';
+import { AutosusuariodatosComponent } from './Componentes/Usuario/Usuario/autosusuariodatos/autosusuariodatos.component';
 import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },

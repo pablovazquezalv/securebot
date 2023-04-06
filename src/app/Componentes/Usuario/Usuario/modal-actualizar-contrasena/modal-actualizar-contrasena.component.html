@@ -1,0 +1,37 @@
+<div class="card " style="width: 28rem;" align="center">
+    <form>
+    <div class="card-header">
+    <h4>Cambiar Contraseña
+    </h4>
+    </div>
+    <div class="card-body">
+        
+        <div class="mb-3 text-start">
+            <label for="password" class="mobile-text">Escribe tu antigua contraseña</label>
+              <input type="password" formControlName="password" class="form-control" placeholder="Ingresa tu antigua contraseña" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
+          </div>
+          <div class="mb-3 text-start">
+            <label for="password_new" class="mobile-text">Escribe tu nueva contraseña</label>
+              <input type="password" formControlName="password_new" class="form-control" placeholder="Ingresa la nueva contraseña" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
+          </div>
+          <div class="mb-3 text-start">
+            <label for="password_confirm" class="mobile-text">Escribe tu nueva contraseña para confirmar</label>
+              <input type="password" formControlName="ApellidoMaterno" class="form-control" placeholder="Ingresa la contraseña" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
+          </div>
+         
+    </div>
+    <div class="card-footer text-end text-body-secondary">
+        <button type="button" class="btn btn-danger"  
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+            --bs-btn-font-size: .75rem;margin-right: 10px;">
+            Actualizar
+            </button>
+            <button type="button" class="btn btn-dark"  
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+            --bs-btn-font-size: .75rem;margin-right: 10px;">
+            Cancelar
+            </button>
+            
+    </div>
+</form>
+  </div>
