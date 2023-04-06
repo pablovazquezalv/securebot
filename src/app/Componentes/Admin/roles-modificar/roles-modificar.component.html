@@ -12,8 +12,8 @@
                     <option value="" selected disabled>Selecciona el rol que deseas asignar</option>
                     <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.name }}</option>
                 </select>
-                <div *ngIf="roleForm.get('rol')?.invalid && (roleForm.get('rol')?.touched || roleForm.get('rol')?.dirty)" >
-                    <span class="error-message" *ngIf="roleForm.get('rol')?.errors?.['required']">El campo rol es obligatorio.</span>
+                <div *ngIf="roleForm.get('rol')?.invalid && (roleForm.get('rol')?.touched || roleForm.get('rol')?.dirty)" class="alert border text-danger border-bottom border-danger" role="alert">
+                    <span class="error-message text-danger" *ngIf="roleForm.get('rol')?.errors?.['required']">El campo rol es obligatorio.</span>
                 </div>
             </form>
         </div>
