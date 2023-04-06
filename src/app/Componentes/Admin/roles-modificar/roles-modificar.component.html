@@ -1,33 +1,33 @@
-<div class="card " style="width: 28rem;" align="center">
+<div class="card" style="width: 28rem;" align="center">
     <div class="card-header">
-    <h4>Cambiar Rol
-    </h4>
+        <h4>Cambiar rol</h4>
     </div>
     <div class="card-body">
-        
-            <div class="form-group text-start">
-                <label class="">Roles</label>
-                <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
-                    <option value="" selected disabled>Selecciona el rol</option>
-                    <option >Administrador </option>
-                    <option >Moderador </option>
-                    <option >Owner </option>
-                    <option >Other</option>
+        <div class="form-group text-start">
+            <form [formGroup]="roleForm" (ngSubmit)="onSubmit(roleForm.value)">
+                <label for="rol">Roles</label>
+                <select formControlName="rol" class="form-control">
+                    <option value="" selected disabled>Selecciona el rol que deseas asignar</option>
+                    <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.name }}</option>
                 </select>
-                
-            
+                <div *ngIf="roleForm.get('rol')?.invalid && (roleForm.get('rol')?.touched || roleForm.get('rol')?.dirty)" class="alert border text-danger border-bottom border-danger fs-5" role="alert">
+                    <span class="error-message" *ngIf="roleForm.get('rol')?.errors?.['required']">El campo rol es obligatorio.</span>
+                </div>
+            </form>
         </div>
     </div>
     <div class="card-footer text-end text-body-secondary">
-        <button type="button" class="btn btn-danger"  
+        <button type="submit" class="btn btn-danger"  
+            (click)="onSubmit(roleForm.value)" [disabled]="!roleForm.valid"
             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
             --bs-btn-font-size: .75rem;margin-right: 10px;">
-            Cambiar Rol
-            </button>
-            <button type="button" class="btn btn-dark"  
+            Cambiar rol
+        </button>
+        <button type="button" class="btn btn-dark"  
+            (click)="close()"
             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
             --bs-btn-font-size: .75rem;margin-right: 10px;">
             Cancelar
-            </button>
+        </button>
     </div>
-  </div>
+</div>

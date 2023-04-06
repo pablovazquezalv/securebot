@@ -1,10 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from 'src/app/Services/user.service';
+import { RoleService } from 'src/app/Services/role.service';
+import { User } from 'src/app/Interfaces/user.interface';
+import { Role } from 'src/app/Interfaces/role.interface';
 
 @Component({
   selector: 'app-roles-modificar',
   templateUrl: './roles-modificar.component.html',
   styleUrls: ['./roles-modificar.component.css']
 })
-export class RolesModificarComponent {
 
+@Injectable()
+export class RolesModificarComponent {
+  roleForm: FormGroup;
+  user?: User;
+  roles?: Role[];
+
+  constructor(public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: { id: number }, private userService: UserService, private roleService: RoleService, private formBuilder: FormBuilder) {
+    this.roleForm = this.formBuilder.group({
+      rol: ['', Validators.required]
+    });
+
+    this.roleService.getRoles().subscribe(
+      roles => this.roles = roles
+    );
+  }
+
+  close() {
+    this.dialog.closeAll();
+  }
+
+  onSubmit(user: User) {
+    if(this.roleForm.valid) {
+      this.userService.changeRole(user, this.data.id).subscribe(() => location.reload());
+      this.close();
+    }
+  }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
 import { User } from 'src/app/Interfaces/user.interface';
 import { MatDialog } from '@angular/material/dialog';
+import { ModalConfirmacionStatusComponent } from '../../modal-confirmacion-status/modal-confirmacion-status.component';
+import { RolesModificarComponent } from '../../roles-modificar/roles-modificar.component';
 
 @Component({
   selector: 'app-verusuarios',
@@ -22,11 +24,18 @@ export class VerusuariosComponent implements OnInit {
     );
   }
 
-  changeStatus(id: number) {
-    this.userService.changeStatus(id).subscribe(() => location.reload());
+  openStatusModal(id: number) {
+    const dialogRef = this.dialog.open(ModalConfirmacionStatusComponent, {
+      width: '448px',
+      height: '238px',
+      data: { id: id }
+    });
   }
-
-  openModal(id: number) {
-    
+  openRoleModal(id: number) {
+    const dialogRef = this.dialog.open(RolesModificarComponent, {
+      width: '448px',
+      height: '243px',
+      data: { id: id }
+    });
   }
 }
