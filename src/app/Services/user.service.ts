@@ -21,6 +21,7 @@ export class UserService {
   private updateNamesUrl = environment.API_URL + '/user/names';
   private updatePasswordUrl = environment.API_URL + '/user/password';
   private updatePhoneUrl = environment.API_URL + '/user/phone';
+  private updateEmailUrl = environment.API_URL + '/user/email';
   private updateDataUrl = environment.API_URL + '/user/data';
   private resendCodeUrl = environment.API_URL + '/user/code';
 
@@ -143,6 +144,13 @@ export class UserService {
 
   updatePhone(data: JSON) {
     return this.http.put(this.updatePhoneUrl, data)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateEmail(data: JSON) {
+    return this.http.put(this.updateEmailUrl, data)
       .pipe(
         catchError(this.handleError)
       );

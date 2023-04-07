@@ -23,10 +23,11 @@ export class ModalActualizarTelefonoComponent {
       if(response.status == 200) {
         this.userService.setSignedRoute(response.url);
         this.close();
-        this.userService.logout().subscribe(() => location.assign('/code-verify'));
+        this.userService.logout().subscribe();
         localStorage.removeItem('token');
         localStorage.removeItem('iAdmin');
         localStorage.removeItem('userLoggedIn');
+        location.assign('/code-verify')
       } 
     });
   }

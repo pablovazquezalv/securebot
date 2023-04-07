@@ -94,9 +94,8 @@ export class PerfilusuarioComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalActualizarCorreoComponent, {
       width: '448px',
       height: 'auto',
+      data: { email: this.emailValue }
     });
-
-    console.log(this.phoneNumberValue, this.user, this.phoneNumberDefault)
   }
 
   openPhoneModal() {
