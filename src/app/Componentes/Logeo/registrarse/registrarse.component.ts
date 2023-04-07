@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/user.service';
 import { User } from 'src/app/Interfaces/user.interface';
@@ -11,9 +11,11 @@ import { Router } from '@angular/router';
 })
 
 @Injectable()
-export class RegistrarseComponent {
+export class RegistrarseComponent implements OnInit {
   registerForm: FormGroup;
   user?: User;
+  hasId: boolean = false;
+  id: number = 0;
 
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
     this.registerForm = this.fb.group({
@@ -27,14 +29,43 @@ export class RegistrarseComponent {
     });
    }
 
+  ngOnInit() {
+    if(localStorage.getItem('id')) {
+      this.hasId = true;
+      this.id = parseInt(localStorage.getItem('id') || '0');
+
+      this.userService.getUser(this.id).subscribe((response: any) => {
+        this.registerForm.patchValue({
+          name: response.name,
+          ap_paterno: response.ap_paterno,
+          ap_materno: response.ap_materno,
+          email: response.email,
+          phone_number: response.phone_number,
+          password: '',
+          password_confirmation: ''
+        })
+      });
+    } 
+  }
+
   onSubmit(values: User) {
-    if(this.registerForm.valid && values.password === values.password_confirmation) {
+    if(this.registerForm.valid && values.password === values.password_confirmation && !localStorage.getItem('id')) {
       this.userService.register(values).subscribe((response: any)=> {
         if (response.status == 201) {
           this.userService.setSignedRoute(response.url);
+          localStorage.setItem('id', response.data.id);
           this.router.navigate(['/instrucciones']);
         } 
       });
+    } else {
+      if (this.registerForm.valid && values.password === values.password_confirmation && localStorage.getItem('id')) {
+        this.userService.incorrectDataUser(values, this.id).subscribe((response: any) => {
+          if (response.status == 200) {
+            this.userService.setSignedRoute(response.url);
+            this.router.navigate(['/instrucciones']);
+          }
+        });
+      }
     }
   }
 

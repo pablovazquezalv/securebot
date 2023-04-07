@@ -16,18 +16,15 @@ import { VercarroespecificoComponent } from './Componentes/Usuario/Carro/vercarr
 import { AutosusuariodatosComponent } from './Componentes/Usuario/Usuario/autosusuariodatos/autosusuariodatos.component';
 import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
 
-import { CorreoEquivocadoComponent } from './Componentes/Logeo/correo-equivocado/correo-equivocado.component';
-import { TelefonoEquivocadoComponent } from './Componentes/Logeo/telefono-equivocado/telefono-equivocado.component';
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
   //LOGEO
   { path: 'inicio', component: InicioComponent, title: 'Inicio - SecureBot' },
   { path:'login', component:IniciosesionComponent, title: 'Iniciar sesión' },
   { path: 'registrarse', component:RegistrarseComponent, title: 'Registro' },
-  {path:'instrucciones',component:InstruccionesComponent,title:'Instrucciones'},
+  { path:'instrucciones', component:InstruccionesComponent, title:'Instrucciones' },
   { path:'code-verify', component:CodigotelComponent, title: 'Verificar código' },
-  {path:'correo-equivocado',component:CorreoEquivocadoComponent,title:'Correo equivocado'},
-  {path:'telefono-equivocado',component:TelefonoEquivocadoComponent,title:'Teléfono equivocado'},
+
   //USUARIO
   { path: 'profile', component:PerfilusuarioComponent, title: 'Mi perfil' },
   { path:'users', component:VerusuariosComponent, title: 'Usuarios'},

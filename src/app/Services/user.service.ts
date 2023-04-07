@@ -21,6 +21,8 @@ export class UserService {
   private updateNamesUrl = environment.API_URL + '/user/names';
   private updatePasswordUrl = environment.API_URL + '/user/password';
   private updatePhoneUrl = environment.API_URL + '/user/phone';
+  private updateDataUrl = environment.API_URL + '/user/data';
+  private resendCodeUrl = environment.API_URL + '/user/code';
 
   private userLoggedIn = new Subject<boolean>();
   private signedRoute?: string;
@@ -142,6 +144,21 @@ export class UserService {
   updatePhone(data: JSON) {
     return this.http.put(this.updatePhoneUrl, data)
       .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  incorrectDataUser(user: User, id: number) {
+    return this.http.put(this.updateDataUrl + '/' + id, user)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  resendCode(id: number) {
+    return this.http.get(this.resendCodeUrl + '/' + id)
+      .pipe(
+        retry(3),
         catchError(this.handleError)
       );
   }

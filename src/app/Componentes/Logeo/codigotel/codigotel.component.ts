@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/user.service';
 import { Router } from '@angular/router';
@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 })
 
 @Injectable()
-export class CodigotelComponent {
+export class CodigotelComponent implements OnInit {
   codeForm: FormGroup;
+  id: number = 0;
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.codeForm = this.fb.group({
@@ -20,6 +21,12 @@ export class CodigotelComponent {
       codigo3: ['', Validators.required],
       codigo4: ['', Validators.required],
     });
+  }
+
+  ngOnInit() {
+    if(localStorage.getItem('id')) {
+      this.id = parseInt(localStorage.getItem('id') || '0');
+    }
   }
 
   onSubmit(values: any) {
@@ -32,12 +39,21 @@ export class CodigotelComponent {
         if(response.status == 200) {
           this.router.navigate(['/login']);
           localStorage.removeItem('signedRoute');
+          localStorage.removeItem('id');
         }
       })
     }
   }
-  telEquivocado()
-  {
-    this.router.navigate(['/telefono-equivocado']);
+
+  telEquivocado() {
+    this.router.navigate(['/registrarse']);
+  }
+
+  reenviarCodigo() {
+    this.userService.resendCode(this.id).subscribe((response: any) => {
+      if(response.status == 200) {
+        localStorage.setItem('signedRoute', response.url);
+      }
+    })
   }
 }

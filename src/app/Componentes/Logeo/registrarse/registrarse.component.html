@@ -66,12 +66,13 @@
             </div>
           </div>
           <div class="text-center mt-3">
-            <button class="button-39" type="submit" [disabled]="!registerForm.valid || registerForm.get('password')?.value !== registerForm.get('password_confirmation')?.value">Registrarme</button>
+            <button class="button-39" *ngIf="hasId == false" type="submit" [disabled]="!registerForm.valid || registerForm.get('password')?.value !== registerForm.get('password_confirmation')?.value">Registrarme</button>
+            <button class="button-39" *ngIf="hasId" type="submit" [disabled]="!registerForm.valid || registerForm.get('password')?.value !== registerForm.get('password_confirmation')?.value">Actualizar</button>
           </div>
         </form>
         <div class="text-center mt-3">
             <span class="d-block mobile-text">¿Ya tienes una cuenta?</span>
-            <a class="text-danger cursor" (click)="login()">Inicia sesión</a>
+            <a class="fw-bold text-danger cursor" (click)="login()">Inicia sesión</a>
         </div>  
     </div>
   </div>
