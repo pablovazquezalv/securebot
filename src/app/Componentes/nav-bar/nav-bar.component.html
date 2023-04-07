@@ -15,11 +15,28 @@
           <a class="nav-link" *ngIf="userLoggedIn" (click)="TiposcarrosComponent()" >Carros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="userLoggedIn" (click)="perfilUsuario()">Perfil</a>
+          <a class="nav-link" *ngIf="userLoggedIn" (click)="empresaOpciones()" >Mi empresa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="iAdmin" (click)="VerUsuarios()">Usuarios</a>
+          <a class="nav-link" *ngIf="userLoggedIn" (click)="perfilUsuario()">Perfil</a>
         </li>
+
+        <div *ngIf="iAdmin" class="row">
+          <div class="col">
+            <div ngbDropdown class="d-inline-block">
+              <a  class="nav-link" id="dropdownBasic1" ngbDropdownToggle>
+                Administrador
+              </a>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <a ngbDropdownItem class="nav-link" *ngIf="iAdmin" (click)="VerUsuarios()">Usuarios</a>
+                <a ngbDropdownItem class="nav-link" *ngIf="iAdmin" (click)="solicitudesEmpresa()">Solicitudes</a>
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+       
       </ul>
       <span class="navbar-text">
         <button class="button-39" *ngIf="!userLoggedIn" (click)="IniciosesionComponent()" role="button">Iniciar sesion</button>

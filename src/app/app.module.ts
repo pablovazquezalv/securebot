@@ -36,6 +36,10 @@ import { ModalActualizarCorreoComponent } from './Componentes/Usuario/Usuario/mo
 import { ModalActualizarTelefonoComponent } from './Componentes/Usuario/Usuario/modal-actualizar-telefono/modal-actualizar-telefono.component';
 import { ModalActualizarContrasenaComponent } from './Componentes/Usuario/Usuario/modal-actualizar-contrasena/modal-actualizar-contrasena.component';
 import { ModalConfirmacionStatusComponent } from './Componentes/Admin/modal-confirmacion-status/modal-confirmacion-status.component';
+import { EmpresaOpcionesComponent } from './Componentes/Usuario/Empresa/empresa-opciones/empresa-opciones.component';
+import { AfilarEmpresaComponent } from './Componentes/Usuario/Empresa/afilar-empresa/afilar-empresa.component';
+import { SolicitudesEmpresasComponent } from './Componentes/Admin/solicitudes-empresas/solicitudes-empresas.component';
+import { ModalRecuperarContrasenaComponent } from './Componentes/Usuario/Usuario/modal-recuperar-contrasena/modal-recuperar-contrasena.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,11 @@ import { ModalConfirmacionStatusComponent } from './Componentes/Admin/modal-conf
     ModalActualizarCorreoComponent,
     ModalActualizarTelefonoComponent,
     ModalActualizarContrasenaComponent,
-    ModalConfirmacionStatusComponent, 
+    ModalConfirmacionStatusComponent,
+    EmpresaOpcionesComponent,
+    AfilarEmpresaComponent,
+    SolicitudesEmpresasComponent,
+    ModalRecuperarContrasenaComponent, 
   ],
   imports: [
     BrowserModule,

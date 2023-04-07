@@ -15,6 +15,9 @@ import { CrearempresaComponent } from './Componentes/Usuario/Empresa/crearempres
 import { VercarroespecificoComponent } from './Componentes/Usuario/Carro/vercarroespecifico/vercarroespecifico.component';
 import { AutosusuariodatosComponent } from './Componentes/Usuario/Usuario/autosusuariodatos/autosusuariodatos.component';
 import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
+import { EmpresaOpcionesComponent } from './Componentes/Usuario/Empresa/empresa-opciones/empresa-opciones.component';
+import { AfilarEmpresaComponent } from './Componentes/Usuario/Empresa/afilar-empresa/afilar-empresa.component';
+import { SolicitudesEmpresasComponent } from './Componentes/Admin/solicitudes-empresas/solicitudes-empresas.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
@@ -34,7 +37,10 @@ const routes: Routes = [
   {path:'ver-carro-especifico',component:VercarroespecificoComponent},
   {path:'empresa-usuario',component:EmpresausuarioComponent},
   {path:'crear-empresa',component:CrearempresaComponent},
-
+  {path:'empresa-opciones',component:EmpresaOpcionesComponent},
+  {path:'afiliar-empresa',component:AfilarEmpresaComponent},
+  {path:'solicitudes-empresa',component:SolicitudesEmpresasComponent},
+  
   { path:'**', component: WildcardComponent, title: 'Página no encontrada' },
   
 ];

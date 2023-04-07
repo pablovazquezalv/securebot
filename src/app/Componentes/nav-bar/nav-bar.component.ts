@@ -56,6 +56,16 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/profile']);
   }
 
+  empresaOpciones() 
+  {
+  this.router.navigate(['/empresa-opciones']);
+  }
+
+  solicitudesEmpresa()
+{
+  this.router.navigate(['/solicitudes-empresa']);
+}   
+
   isAdmin() {
     this.userService.isAdmin().pipe(
       map(isAdmin => {
