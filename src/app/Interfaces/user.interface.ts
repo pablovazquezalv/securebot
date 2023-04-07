@@ -6,6 +6,7 @@ export interface User {
     email: string;
     password: string;
     password_confirmation?: string;
+    new_password?: string;
     phone_number: string;
     active?: number;
     rol_id: number;

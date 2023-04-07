@@ -17,11 +17,11 @@ export class RegistrarseComponent {
 
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
     this.registerForm = this.fb.group({
-      name: ['', Validators.required],
-      ap_paterno: ['', Validators.required],
-      ap_materno: ['', Validators.required],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      phone_number: ['', Validators.required],
+      name: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      ap_paterno: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+$")])],
+      ap_materno: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern("^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+$")])],
+      email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$')])],
+      phone_number: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern('^[0-9]+$')])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       password_confirmation: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
     });

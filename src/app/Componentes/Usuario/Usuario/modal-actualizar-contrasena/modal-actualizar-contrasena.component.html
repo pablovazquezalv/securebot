@@ -1,37 +1,49 @@
 <div class="card " style="width: 28rem;" align="center">
-    <form>
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h4 class="text-start">Cambiar Contraseña</h4>  
-        <button type="button" class="btn-close shadow-none" ></button>
-      </div>
-    <div class="card-body">
-        
-        <div class="mb-3 text-start">
-            <label for="password" class="mobile-text">Escribe tu antigua contraseña</label>
-              <input type="password" formControlName="password" class="form-control" placeholder="Ingresa tu antigua contraseña" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
-          </div>
-          <div class="mb-3 text-start">
-            <label for="password_new" class="mobile-text">Escribe tu nueva contraseña</label>
-              <input type="password" formControlName="password_new" class="form-control" placeholder="Ingresa la nueva contraseña" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
-          </div>
-          <div class="mb-3 text-start">
-            <label for="password_confirm" class="mobile-text">Escribe tu nueva contraseña para confirmar</label>
-              <input type="password" formControlName="ApellidoMaterno" class="form-control" placeholder="Ingresa la contraseña" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
-          </div>
-         
-    </div>
-    <div class="card-footer text-end text-body-secondary">
-        <button type="button" class="btn btn-danger"  
-            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-            --bs-btn-font-size: .75rem;margin-right: 10px;">
-            Actualizar
-            </button>
-            <button type="button" class="btn btn-dark"  
-            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-            --bs-btn-font-size: .75rem;margin-right: 10px;">
-            Cancelar
-            </button>
-            
-    </div>
-</form>
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h4 class="text-start">Cambiar contraseña</h4>  
+    <button type="button" class="btn-close shadow-none" (click)="close()"></button>
   </div>
+  <div class="card-body"> 
+    <form [formGroup]="passwordForm" (ngSubmit)="onSubmit(passwordForm.value)">
+      <div class="mb-3 text-start">
+        <label for="password" class="mobile-text">Contraseña actual</label>
+        <input type="password" formControlName="password" class="form-control" placeholder="Ingresa tu contraseña actual" maxlength="20">
+        <div *ngIf="passwordForm.get('password')?.invalid && (passwordForm.get('password')?.touched || passwordForm.get('password')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1 fs-5" role="alert">
+          <span class="error-message" *ngIf="passwordForm.get('password')?.errors?.['required']">El campo contraseña actual es obligatorio.</span>
+          <span class="error-message" *ngIf="passwordForm.get('password')?.errors?.['minlength']">El campo contraseña actual debe tener un mínimo de 8 caracteres.<br></span>
+        </div>
+      </div>
+      <div class="mb-3 text-start">
+        <label for="new_password" class="mobile-text">Nueva contraseña</label>
+        <input type="password" formControlName="new_password" class="form-control" placeholder="Ingresa tu nueva contraseña" maxlength="20" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&()-+])[A-Za-z\d!@#$%^&*()-+]{8,}$">
+        <div *ngIf="passwordForm.get('new_password')?.invalid && (passwordForm.get('new_password')?.touched || passwordForm.get('new_password')?.dirty)" class="alert border text-danger mt-1 border-bottom border-danger" role="alert">
+          <span class="error-message" *ngIf="passwordForm.get('new_password')?.errors?.['required']">El campo nueva contraseña es obligatorio.</span>
+          <span class="error-message" *ngIf="passwordForm.get('new_password')?.errors?.['minlength']">El campo contraseña actual debe tener un mínimo de 8 caracteres.<br></span>
+          <span class="error-message" *ngIf="passwordForm.get('new_password')?.errors?.['pattern']">El campo contraseña debe contener al menos una letra mayúscula, un número y un carácter especial (!@#$%^&*()-+).</span>
+        </div>
+      </div>
+      <div class="mb-3 text-start">
+        <label for="password_confirmation" class="mobile-text">Confirmar contraseña</label>
+        <input type="password" formControlName="password_confirmation" class="form-control" placeholder="Reingresa tu nueva contraseña" maxlength="20">
+        <div *ngIf="passwordForm.get('password_confirmation')?.invalid && (passwordForm.get('password_confirmation')?.touched || passwordForm.get('password_confirmation')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+          <span class="error-message" *ngIf="passwordForm.get('password_confirmation')?.errors?.['required']">El campo confirmar contraseña es obligatorio.<br></span>
+          <span class="error-message" *ngIf="passwordForm.get('new_password')?.value !== passwordForm.get('password_confirmation')?.value">Las contraseñas no coinciden.</span>
+        </div>
+      </div>
+    </form>  
+  </div>
+  <div class="card-footer text-end text-body-secondary">
+    <button type="button" class="btn btn-danger"  
+      (click)="onSubmit(passwordForm.value)" [disabled]="!passwordForm.valid || passwordForm.get('password')?.value === passwordForm.get('password_confirmation')?.value"
+      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+      --bs-btn-font-size: .75rem;margin-right: 10px;">
+      Actualizar
+    </button>
+    <button type="button" class="btn btn-dark" 
+      (click)="close()" 
+      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+      --bs-btn-font-size: .75rem;margin-right: 10px;">
+      Cancelar
+    </button>       
+  </div>
+</div>

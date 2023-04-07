@@ -19,6 +19,8 @@ export class UserService {
   private getRoleUrl = environment.API_URL + '/user/role';
   private isAdminUrl = environment.API_URL + '/user/admin';
   private updateNamesUrl = environment.API_URL + '/user/names';
+  private updatePasswordUrl = environment.API_URL + '/user/password';
+  private updatePhoneUrl = environment.API_URL + '/user/phone';
 
   private userLoggedIn = new Subject<boolean>();
   private signedRoute?: string;
@@ -125,6 +127,20 @@ export class UserService {
 
   updateNames(user: User) {
     return this.http.put(this.updateNamesUrl, user)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updatePassword(user: User) {
+    return this.http.put(this.updatePasswordUrl, user)
+      .pipe(
+        catchError(this.handleError)
+      );     
+  }
+
+  updatePhone(data: JSON) {
+    return this.http.put(this.updatePhoneUrl, data)
       .pipe(
         catchError(this.handleError)
       );

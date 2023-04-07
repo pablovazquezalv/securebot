@@ -5,19 +5,16 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
         <div class="mb-3">
           <label for="email" class="mobile-text">Correo electrónico</label>
-            <input type="email" formControlName="email" class="form-control" placeholder="Ingresa tu correo electrónico" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
-          
-            <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)" class="alert border text-danger border-bottom border-danger " role="alert">
-              <span class="error-message " *ngIf="loginForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.
-              </span>
+            <input type="email" formControlName="email" class="form-control" placeholder="Ingresa tu correo electrónico">
+            <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+              <span class="error-message " *ngIf="loginForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.</span>
               <span class="error-message " *ngIf="loginForm.get('email')?.errors?.['pattern']">El campo correo electrónico no es válido.</span>
             </div>
         </div>
-        
         <div class="mb-3">
           <label for="password" class="mobile-text">Contraseña</label>
-          <input type="password" formControlName="password" class="form-control" placeholder="Ingresa tu contraseña" minlength="8" maxlength="20">
-          <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)" class="alert border text-danger border-bottom border-danger fs-5" role="alert">
+          <input type="password" formControlName="password" class="form-control" placeholder="Ingresa tu contraseña" maxlength="20">
+          <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1 fs-5" role="alert">
             <span class="error-message" *ngIf="loginForm.get('password')?.errors?.['required']">El campo contraseña es obligatorio.</span>
             <span class="error-message" *ngIf="loginForm.get('password')?.errors?.['minlength']">El campo contraseña debe tener un mínimo de 8 caracteres.<br></span>
           </div>
@@ -28,7 +25,7 @@
       </form>
       <div class="text-center mt-5">
         <span class="d-block mobile-text">¿No tienes una cuenta?</span>
-        <a class="fw-bold text-danger cursor" (click)="registrarse()" >Crea una</a></div>
+        <a class="fw-bold text-danger cursor" (click)="registrarse()">Crea una</a></div>
         <br>
   </div>
 </div></div>

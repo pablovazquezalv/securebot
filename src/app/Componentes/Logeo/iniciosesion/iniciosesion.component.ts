@@ -21,7 +21,7 @@ export class IniciosesionComponent {
 
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
     this.loginForm = this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
+      email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$")])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(8)])]
     });
   }

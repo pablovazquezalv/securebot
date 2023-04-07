@@ -6,8 +6,8 @@
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
           <div class="mb-3">
             <label for="name" class="mobile-text">Nombre</label>
-            <input type="text" formControlName="name" class="form-control" placeholder="Ingresa tu nombre" required minlength="2" maxlength="40" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$">
-            <div *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)" class="alert border text-danger border-bottom border-danger" role="alert">
+            <input type="text" formControlName="name" class="form-control" placeholder="Ingresa tu nombre" maxlength="40" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$">
+            <div *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
               <span class="error-message" *ngIf="registerForm.get('name')?.errors?.['required']">El campo nombre es obligatorio.</span>
               <span class="error-message" *ngIf="registerForm.get('name')?.errors?.['minlength']">El campo nombre debe tener un mínimo de 2 caracteres.<br></span>
               <span class="error-message" *ngIf="registerForm.get('name')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
@@ -15,8 +15,8 @@
           </div>
           <div class="mb-3">
             <label for="ap_paterno" class="mobile-text">Apellido paterno</label>
-            <input type="text" formControlName="ap_paterno" class="form-control" placeholder="Ingresa tu apellido paterno" required minlength="2" maxlength="20" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+$">
-            <div *ngIf="registerForm.get('ap_paterno')?.invalid && (registerForm.get('ap_paterno')?.touched || registerForm.get('ap_paterno')?.dirty)" class="alert border text-danger border-bottom border-danger" role="alert">
+            <input type="text" formControlName="ap_paterno" class="form-control" placeholder="Ingresa tu apellido paterno" maxlength="20">
+            <div *ngIf="registerForm.get('ap_paterno')?.invalid && (registerForm.get('ap_paterno')?.touched || registerForm.get('ap_paterno')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
               <span class="error-message" *ngIf="registerForm.get('ap_paterno')?.errors?.['required']">El campo apellido paterno es obligatorio.</span>
               <span class="error-message" *ngIf="registerForm.get('ap_paterno')?.errors?.['minlength']">El campo apellido paterno debe tener un mínimo de 2 caracteres.<br></span>
               <span class="error-message" *ngIf="registerForm.get('ap_paterno')?.errors?.['pattern']">El campo apellido paterno no acepta números ni caracteres especiales.</span>
@@ -24,8 +24,8 @@
           </div>
           <div class="mb-3">
             <label for="ap_materno" class="mobile-text">Apellido materno</label>
-            <input type="text" formControlName="ap_materno" class="form-control" placeholder="Ingresa tu apellido materno" required minlength="2" maxlength="20" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+$">
-            <div *ngIf="registerForm.get('ap_materno')?.invalid && (registerForm.get('ap_materno')?.touched || registerForm.get('ap_materno')?.dirty)" class="alert border text-danger border-bottom border-danger" role="alert">
+            <input type="text" formControlName="ap_materno" class="form-control" placeholder="Ingresa tu apellido materno" maxlength="20">
+            <div *ngIf="registerForm.get('ap_materno')?.invalid && (registerForm.get('ap_materno')?.touched || registerForm.get('ap_materno')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
               <span class="error-message" *ngIf="registerForm.get('ap_materno')?.errors?.['required']">El campo apellido materno es obligatorio.</span>
               <span class="error-message" *ngIf="registerForm.get('ap_materno')?.errors?.['minlength']">El campo apellido materno debe tener un mínimo de 2 caracteres.<br></span>
               <span class="error-message" *ngIf="registerForm.get('ap_materno')?.errors?.['pattern']">El campo apellido materno no acepta números ni caracteres especiales.</span>
@@ -33,8 +33,8 @@
           </div>
           <div class="mb-3">
             <label for="phone_number" class="mobile-text">Teléfono celular</label>
-            <input type="text" formControlName="phone_number" class="form-control" placeholder="Ingresa tu número de teléfono" required minlength="10" maxlength="10" pattern="^[0-9]+$">
-            <div *ngIf="registerForm.get('phone_number')?.invalid && (registerForm.get('phone_number')?.touched || registerForm.get('phone_number')?.dirty)" class="alert border text-danger border-bottom border-danger" role="alert">
+            <input type="text" formControlName="phone_number" class="form-control" placeholder="Ingresa tu número de teléfono" maxlength="10">
+            <div *ngIf="registerForm.get('phone_number')?.invalid && (registerForm.get('phone_number')?.touched || registerForm.get('phone_number')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
               <span class="error-message" *ngIf="registerForm.get('phone_number')?.errors?.['required']">El campo teléfono celular es obligatorio.</span>
               <span class="error-message" *ngIf="registerForm.get('phone_number')?.errors?.['minlength']">El campo teléfono celular debe tener un mínimo de 10 caracteres.<br></span>
               <span class="error-message" *ngIf="registerForm.get('phone_number')?.errors?.['pattern']">El campo teléfono celular solo acepta números.</span>
@@ -42,16 +42,16 @@
           </div>
           <div class="mb-3">
             <label for="email" class="mobile-text">Correo electrónico</label>
-            <input type="email" formControlName="email" class="form-control" placeholder="Ingresa tu correo electrónico" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
-            <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)" class="alert border text-danger border-bottom border-danger" role="alert">
+            <input type="email" formControlName="email" class="form-control" placeholder="Ingresa tu correo electrónico">
+            <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
               <span class="error-message" *ngIf="registerForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.</span>
               <span class="error-message" *ngIf="registerForm.get('email')?.errors?.['pattern']">El campo correo electrónico no es válido.</span>
             </div>
           </div>
           <div class="mb-3">
             <label for="password" class="mobile-text">Contraseña</label>
-            <input type="password" formControlName="password" class="form-control" placeholder="Ingresa tu contraseña" minlength="8" maxlength="20" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&()-+])[A-Za-z\d!@#$%^&*()-+]{8,}$">
-            <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)" class="alert border text-danger border-bottom border-danger" role="alert">
+            <input type="password" formControlName="password" class="form-control" placeholder="Ingresa tu contraseña" maxlength="20" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&()-+])[A-Za-z\d!@#$%^&*()-+]{8,}$">
+            <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)" class="alert border text-danger border-bottom border-dange mt-1" role="alert">
               <span class="error-message" *ngIf="registerForm.get('password')?.errors?.['required']">El campo contraseña es obligatorio.</span>
               <span class="error-message" *ngIf="registerForm.get('password')?.errors?.['minlength']">El campo contraseña debe tener un mínimo de 8 caracteres.<br></span>
               <span class="error-message" *ngIf="registerForm.get('password')?.errors?.['pattern']">El campo contraseña debe contener al menos una letra mayúscula, un número y un carácter especial (!@#$%^&*()-+).</span>
@@ -59,16 +59,14 @@
           </div>
           <div class="mb-3">
             <label for="password_confirmation" class="mobile-text">Confirmar contraseña</label>
-            <input type="password" formControlName="password_confirmation" class="form-control" placeholder="Reingresa tu contraseña" minlength="8" maxlength="20">
-            <div *ngIf="registerForm.get('password_confirmation')?.invalid && (registerForm.get('password_confirmation')?.touched || registerForm.get('password_confirmation')?.dirty)" >
-              <span class="error-message "  *ngIf="registerForm.get('password_confirmation')?.errors?.['required']">El campo confirmar contraseña es obligatorio.</span>
-            </div>
-            <div *ngIf="registerForm.get('password')?.value !== registerForm.get('password_confirmation')?.value" class="alert border text-danger border-bottom border-danger" role="alert">
-              <span class="error-message">Las contraseñas no coinciden.</span>
+            <input type="password" formControlName="password_confirmation" class="form-control" placeholder="Reingresa tu contraseña" maxlength="20">
+            <div *ngIf="registerForm.get('password_confirmation')?.invalid && (registerForm.get('password_confirmation')?.touched || registerForm.get('password_confirmation')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+              <span class="error-message" *ngIf="registerForm.get('password_confirmation')?.errors?.['required']">El campo confirmar contraseña es obligatorio.<br></span>
+              <span class="error-message" *ngIf="registerForm.get('password')?.value !== registerForm.get('password_confirmation')?.value">Las contraseñas no coinciden.</span>
             </div>
           </div>
           <div class="text-center mt-3">
-            <button class="button-39" type="submit" [disabled]="!registerForm.valid">Registrarme</button>
+            <button class="button-39" type="submit" [disabled]="!registerForm.valid || registerForm.get('password')?.value !== registerForm.get('password_confirmation')?.value">Registrarme</button>
           </div>
         </form>
         <div class="text-center mt-3">

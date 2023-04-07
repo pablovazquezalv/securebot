@@ -15,11 +15,11 @@ export class ModalActualizarNombreComponent implements OnInit {
   nameForm: FormGroup;
   user?: User;
 
-  constructor(public dialog: MatDialog,  @Inject(MAT_DIALOG_DATA) public data: {name: String, ap_paterno: String, ap_materno: String}, private userService: UserService, private formBuilder: FormBuilder) {
+  constructor(public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: {name: String, ap_paterno: String, ap_materno: String}, private userService: UserService, private formBuilder: FormBuilder) {
     this.nameForm = this.formBuilder.group({
-      name: ['', Validators.required], 
-      ap_paterno: ['', Validators.required],
-      ap_materno: ['', Validators.required],
+      name: ['', Validators.compose([Validators.required, Validators.minLength(2)])], 
+      ap_paterno: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+$')])],
+      ap_materno: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+$')])]
     });
   }
 
