@@ -28,7 +28,7 @@ export class VerusuariosComponent implements OnInit {
 
   getUsers() {
     this.userService.getUsers().subscribe( users => {
-      this.users = users
+      this.users = users.data
       // this.total = users.total
       // this.perPage = users.perPage
       // this.currentPage = users.page
