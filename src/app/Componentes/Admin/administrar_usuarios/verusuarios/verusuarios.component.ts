@@ -4,6 +4,7 @@ import { User } from 'src/app/Interfaces/user.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfirmacionStatusComponent } from '../../modal-confirmacion-status/modal-confirmacion-status.component';
 import { RolesModificarComponent } from '../../roles-modificar/roles-modificar.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-verusuarios',
@@ -11,7 +12,10 @@ import { RolesModificarComponent } from '../../roles-modificar/roles-modificar.c
   styleUrls: ['./verusuarios.component.css']
 })
 export class VerusuariosComponent implements OnInit {
-  users?: User[];
+  users: User[] = [];
+  pageSize = 5;
+  desde:number = 0;
+  hasta:number = 5;
   constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -20,7 +24,7 @@ export class VerusuariosComponent implements OnInit {
 
   getUsers() {
     this.userService.getUsers().subscribe(
-      users => this.users = users
+      users => this.users = users.data
     );
   }
 
@@ -37,5 +41,12 @@ export class VerusuariosComponent implements OnInit {
       height: 'auto',
       data: { id: id }
     });
+  }
+
+  cambiarPagina(e:PageEvent)
+  {
+    console.log(e)
+    this.desde = e.pageIndex * e.pageSize;
+    this.hasta = this.desde + e.pageSize
   }
 }
