@@ -15,4 +15,6 @@ select:focus {
     border-color: rgb(77, 77, 78);
   }
 
-  
+  option:nth-child(1):hover {
+    color: rgb(77, 77, 78);
+  }
