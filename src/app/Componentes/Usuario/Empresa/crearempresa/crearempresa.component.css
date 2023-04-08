@@ -15,11 +15,4 @@ select:focus {
     border-color: rgb(77, 77, 78);
   }
 
-  select:hover option:hover {
-    background-color: #f00; /* Cambia a rojo el color del resaltado */
-  }
-  
-  select option:hover {
-    background-color: #f00; /* Cambia a rojo el color del resaltado */
-  }
   
