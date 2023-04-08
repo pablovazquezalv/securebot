@@ -1,24 +1,22 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-empresa-opciones',
-  templateUrl: './empresa-opciones.component.html',
-  styleUrls: ['./empresa-opciones.component.css']
-})
-export class EmpresaOpcionesComponent {
+  selector: 'app-empresa-ver-empleados',
+  templateUrl: './empresa-ver-empleados.component.html',
+  	standalone: true,
 
-  mostrarCrearEmpresa: boolean = false;
+  imports: [NgbToastModule, NgIf],
+
+  styleUrls: ['./empresa-ver-empleados.component.css']
+})
+export class EmpresaVerEmpleadosComponent {
+  show = true;
+	
   constructor(private router:Router) { }
 
-  crearEmpresa()
-  {
-    this.router.navigate(['/crear-empresa']);
-  }
-  afiliarEmpresa()
-  {
-    this.router.navigate(['/afiliar-empresa']);
-  }
   
   solicitudesDeEmpleados()
   {

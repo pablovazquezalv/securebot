@@ -14,7 +14,7 @@ export class AppComponent {
     router.events.subscribe((val) => {
       if(val instanceof NavigationEnd)
       {
-        if(val.url=="/login" || val.url=="/registrarse" || val.url=="/instrucciones" || val.url=="/code-verify" || val.url=="/crear-empresa" || val.url=="/afiliar-empresa" ||  val.url=="/correo-equivocado" || val.url=="/telefono-equivocado"  )
+        if(val.url=="/login" || val.url=="/registrarse" || val.url=="/instrucciones" || val.url=="/code-verify" ||  val.url=="/correo-equivocado" || val.url=="/telefono-equivocado"  )
         {
           this.showHeader=false;
         }

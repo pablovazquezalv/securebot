@@ -40,6 +40,10 @@ import { EmpresaOpcionesComponent } from './Componentes/Usuario/Empresa/empresa-
 import { AfilarEmpresaComponent } from './Componentes/Usuario/Empresa/afilar-empresa/afilar-empresa.component';
 import { SolicitudesEmpresasComponent } from './Componentes/Admin/solicitudes-empresas/solicitudes-empresas.component';
 import { ModalRecuperarContrasenaComponent } from './Componentes/Usuario/Usuario/modal-recuperar-contrasena/modal-recuperar-contrasena.component';
+import { EmpresaAceptarEmpleadosComponent } from './Componentes/Usuario/Empresa/empresa-aceptar-empleados/empresa-aceptar-empleados.component';
+import { EmpresaVerEmpleadosComponent } from './Componentes/Usuario/Empresa/empresa-ver-empleados/empresa-ver-empleados.component';
+import { VerEmpresasComponent } from './Componentes/Admin/ver-empresas/ver-empresas.component';
+import { VerEmpleadosEmpresaComponent } from './Componentes/Admin/ver-empleados-empresa/ver-empleados-empresa.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { ModalRecuperarContrasenaComponent } from './Componentes/Usuario/Usuario
     EmpresaOpcionesComponent,
     AfilarEmpresaComponent,
     SolicitudesEmpresasComponent,
-    ModalRecuperarContrasenaComponent, 
+    ModalRecuperarContrasenaComponent,
+    EmpresaAceptarEmpleadosComponent,
+    VerEmpresasComponent,
+    VerEmpleadosEmpresaComponent,
+   // EmpresaVerEmpleadosComponent, 
   ],
   imports: [
     BrowserModule,

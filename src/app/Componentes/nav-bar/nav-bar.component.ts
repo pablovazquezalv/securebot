@@ -44,6 +44,10 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/users']);
   }
 
+  verEmpresas() {
+    this.router.navigate(['/empresas']);
+  }
+
   IniciosesionComponent() {
     this.router.navigate(['/login']);
   }

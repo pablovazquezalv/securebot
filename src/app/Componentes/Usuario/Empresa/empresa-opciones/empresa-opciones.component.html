@@ -1,4 +1,7 @@
-<div class="container mt-4" >
+
+<div class="vh-100 w-100">
+<!--SI NO TIENE EMPRESA MOSTRAMOS ESTO-->
+<div class="container mt-4" *ngIf="mostrarCrearEmpresa">
     <div class="row">
         <div class="col-sm-6 mb-3 mb-sm-0">
           <div class="card">
@@ -7,7 +10,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-diagram-3-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1z"/>
               </svg>
-              <p class="card-text">
+              <p class="card-text mt-3 fs-4">
                 Consiste en llenar una solicitud que despues sera evaluada por el administrador para ver si cumple con los requisitos para ser dada de alta.</p>
               <button type="button" (click)="crearEmpresa()" class="btn btn-danger">Quiero crearla!</button>
             </div>
@@ -21,7 +24,7 @@
                 <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
                 <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"/>
               </svg>
-              <p class="card-text">Si no tienes la necesidad de crear una empresa, entonces afiliate una,donde tendras que esperar que se te acepte para pertenecer a ella.</p>
+              <p class="card-text mt-3 fs-4">Si no tienes la necesidad de crear una empresa, entonces afiliate una,donde tendras que esperar que se te acepte para pertenecer a ella.</p>
               <button type="button" (click)="afiliarEmpresa()" class="btn btn-danger">Quiero afiliarme a una!</button>
             </div>
           </div>
@@ -30,67 +33,73 @@
 </div>
 
 
-<!--ESTO SERIA SI ES EMPLEADO DE LA EMPRESA SOLO SE LE MUESTRA LA EMPRESA-->
-<div class="container text-center" *ngIf="mostrarCrearEmpresa">
-  <div class="row">
-    <div class="col-2">
 
+
+<!--SI TIENE EMPRESA Y ES EL CEO-->
+<div class="container-fluid " >
+  <div class="row">
+    <div class=" col-12 col-sm-12 col-md-12 col-lg-4 col-xs-12">
+      <ul class="nav flex-column">
+        <li class="nav-item border-end border-bottom p-3 nav-item-spaced">
+          <a class="nav-link btn" (click)="solicitudesDeEmpleados()" >Solicitud de Empleados</a>
+        </li>
+        <li class="nav-item border-end  border-bottom p-3 nav-item-spaced">
+          <a class="nav-link btn" (click)="verEmpleados()" >Empleados</a>
+        </li>
+        <li class="nav-item border-end  border-bottom p-3 nav-item-spaced">
+          <a class="nav-link btn" (click)="  empresaOpciones()">Empresa</a>
+        </li>
+       
+      </ul>
     </div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xs-12 mt-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAA8FBMVEX///8Am32KLUD8/v4Al3eFHTMAmn3GoaiFFS6cz8KCw7EAlHQAlXb6/v0AmHYAmnraxsvJ5Nzm9PAAAADYwsSJKT3X7OkAknOQO06DFTEAlHDu9/bD49wAm3geoYU7qI+Mybqu2c5Wsp3o6Oe+3dQAkWktpotnt6R/w7ByvqyYzr+x2tBLs5rS7OVetKT1+/6fXWyRP02+maHLqrLRuL67jpmqbnzt5OXj1dayeoOYTV2LKTuygIqIJD+CByfo3N57ABmZSlzQ0M+goKCwsK/i4uEmJiOHh4VCQkB0dHMyMi9UVFJkZGKlpaSVlZQTExOMR746AAAIZElEQVR4nO2ba1/TWBDGU056aE3a0EJamlCgVEGsCILc1C2uIuq6st//22y4aE5O5imTZokvdv6/fbHS3KaTM8/MnKnjCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIg/L9Rv+0urYru3VrrkDyNOWerlo2aSUsZR7Ue27bbJ3SazzwT/xbPizY4J29HySntWQQYr/n49iW0hlrXCKIe4+SJR53KRK9X85ZuuvTtdxi3b9XIL4eJt1aBeY7T9enb+90HT01ecHAyi2CrAvOSh9yhveA/Z5wdl3Ch5i2D8vQi+inbnEC6WcKF2t19dONu2fJJA/0XjHNjr8wqdONKtKITkQ+pa4wog15wHhUphbMBVuGEcW4v0sG89gWJUlTCU1rOAtbtX85tX0JUjVI49N111GFo4Vopsa9EKRwkZzyhAi84j4qUIg7oMBPtMU6e9EsYmChFNfka6ULtslxYwr7kFnElBsYRffskX3v4/qXyNbfpVKKFu/RD+k8Y5+7T9QiT9Wrqwh6dzWjNytfaJSz0nj66dbdskXKmXU6+1i2Tr2lGaf1f0GnTt69xmie7dE3JM9CrRikY+ZpyFN1zcfb67fteB35ZdeDSeDvVGDjy6Zc0zddUstiGwyHRXvE34+498a4LbAxeNWlesBpc5Vmnw0zfSBe7Lkg8t9NjYpC6BXq4X40hiBFozmwYi/A5kDzzW9hBC7JdUXGE2Afrp/8rCKib4oj+FoyUp4eyb71N3bYyFJIz3wwCW8DN7W56nS0UaPoddPOD1dXFJcTKHbk//vxgZfX1Aivf6/pkc0ZHRhDo9Km0Rdf8zfSYNSSLiZ/Bg6xMw7DemMFgMOOjejg45BiIVk+Sr6XPtQHCTGBkXKiA0u0esFCthgtlCHku3OvTStE2wt8EqIk7Sp8dNrz958iFR4NSBi403nAMTPI18rv30nxNOeu0C80IomjFSWijzFr9Uc7A8DWrrgSrR9eMY5rAPf098xhQYHgj9BzH9ZIuXGJZuA2ey+ivKdrLNdeIIC0khQFUitOS72h4wDAPrp7AzPhBM1tHxmbGE7qNoWsRVIqTd+nDJiH1J/ngU08/Mz9snDLsU2r9wedSMV131NzN9EIxKvJRE0Q5Z79cOBisHpwfHy4uHiX/Hb22Tawv3nN4fP62/utrqZ8zDOT110D1r/V+ugpQyj2jOHp7Z0k4WD0ynXHWsA08Ns86PfnpxwHHhU4LyJxnvH9dEGb8ZroKe3STZ1YTZOnOkvqCFfFzLhxY0eReQ+s8sQfpdGYjCORigZmW0x2CGx/CHszq7es2eK+y8TAnkfUjK2Ae3kdgXr5Gvltau0a+tgfc4xkRpIOqJrThopyjWxcOjrN/VjmJTDTP4s7CwRHHQNR+MEMIysVMpUCKg7fmlXP3mO/tPuJ7WyKnS/a5BzdvabjKMhBVRGmyqZw14EJTKUYoX+vDDZcbsQ+nJ7b9F3aYeXdgf0fqHW04gXJegrJwZBwDcjGzpkDH1FzYg7n4MG1MF+wVdu+fTJjJBUz1IdHFRs5wkg7I18wkZAQqosBYqSin0x4cbzi9uDi7yP95aWBZmFWKO86OE+kkTiagV482kxA1BM9uRJAYxVG/4IaLcnLF1B/EBfjXnAAhN8W+SYeizJ4pHFAIinafFu1VSAXMAl8amA0xk5C4TfvHVAqUENxsuBRjbEvhu7cFr5ClSW5UaG2KPUgIMm7exUpRkPOcUpyVMXAf5WtGCOmCDTdTKWC+hmsKwFnOhbzUGgFWj2++WiBfywxI0T04rYsPcb3NK0WZjdOYFvtMCOk9oy0cmjkdUoro4UG4LCu5hJSXWiNAf80z9+zpfE1nBqS2wRCNyxmEy2DZx83LED26Ig9eGsd0wCpcV+nLAyZwshkBi0M7zAx4fTTEFliFm8YxIBeLnhrZMsrXvFHulrM5ndou5DVhED2Qiw1fpcegBk7qZuU00YZh4XHf89CKMw1eXoaA3Wl3a3TDzb7eOp0RmMM9cUA3EDWuKQBLudbF+1IGzhjHTrdqwXdgJgRP0EGFleJPWyka+2WUwiH7azzM6j9Gw4iMkeksb2ylYFbwCFTtPIzOVP+7oFGsi477KtuD+dZFIVB/jWGgrrXSlwdNTGf2o1jkuvusCh4D2p8MgsgUAdRfK1xTnNphpqRSzO/C7BbEHmjy1LaLKkWudTFl9Xohe3PPSerMJC9SnMLjvku22FOtiyKAH8VwLDRFYAI2M4rXFHbrIgxVKaVwduZ+S83qv0Urjp7RfQLkmtyZjd2Pn5zxp/jy04/P/CvCBvxD+KYIjDz6Mm3OsKbJvm1gmGldXC+PfyyPr758Web6Vc1tYcY7LZSvsX5cY/JAk/v66+W3v8ZXsbM8Zl8SpVoPGeiaoxloMReuKXJN7vAk8/n1ly/f/x5/vVr+wb/mnL8RzOzWxHRNUfiHIa2cUoRWk/v6x9W37+Or8ffLAlcdzjXuavSAFdrR0YWVItchtWuK68uvn76O/xl/Xi7w+k+QVM9Aa1PHux6dcxeuKfLzNHbK/fHzx/GlulTOZYFg6uwWn8rWZvcJzbjV3ALjvup05fA1MYxRPzxTRZOiPDtFl6Jumx0q1CJ1+UqxdBIOBunQQcbEBnMEYSYjlx7WA/Z5G4ZQKJSvZf08k6PprHm20N65n4f4xbrn0YPXtxPbP//ndhJ7Y+SYP5Wf9OkTI3ZNcfGhPotpuUbpL7qTySglN37dfHHH5sheXJvPn9Cwb/1mcSaHlU9Mqxn/ehQq+Q2NIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiC8Pv5F4pKrxXPQKISAAAAAElFTkSuQmCC" alt="" class="img-fluid" width="150" height="150">
-                                    </div>
-                                    <div class="col-8">
-                                      <p class="fw-bold fs-4">Universidad Tecnologica de Torreon</p>
-                                      <p>Escuela Universitaria</p>
-                                    </div>
-                                    
-                                        <div class="col-4">
-                                            <label for="exampleFormControlInput1" class="mobile-text">Nombre</label>
-                                            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Universidad Tecnologica de Torreon">                                      </div>
-                                      <div class="col-2"></div>
-                                      
-                                      <div class="col-5">
-                                        <label for="exampleFormControlInput1" class="mobile-text">Correo</label>
-                                        <input type="text" class="form-control col 3 disabled" id="exampleFormControlInput1" placeholder="uttwifi@utt.edu.mx">
-                                    </div>
-                                    <br>
-                                    <div class="col-4">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Dirreccion</label>
-                                        <input type="text" class="form-control col-4 disabled" id="exampleFormControlInput1" placeholder="Boulevard Torreon">
-                                      </div>
-                                      <div class="col-2"></div>
-                                      
-                                      <div class="col-5">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Telefono</label>
-                                        <input type="text" class="form-control col 3 disabled" id="exampleFormControlInput1" placeholder="871718299">
-                                    </div>
-                                    <div class="col-4">
-                                        </div>
-                                      <div class="col-4">
-                                        <button type="button" class="btn btn-dark border  col-12 col-sm-12 col-md-12 col-lg-5 col-xs-12 m-1">Guardar</button>
-                                      </div>
-                                      
-                                      <div class="col-4">
-                                       </div>
-                                </div>
-                            </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xs-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="data:image/png;base64,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" alt="" class="img-fluid" width="150" height="150">
                         </div>
+                        <div class="col-8">
+                          <p class="fw-bold fs-4">Universidad Tecnologica de Torreon</p>
+                          <p>Escuela Universitaria</p>
+                        </div>
+                        
+                            <div class="col-4">
+                                <label for="exampleFormControlInput1" class="mobile-text">Nombre</label>
+                                <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Universidad Tecnologica de Torreon">                                      </div>
+                          <div class="col-2"></div>
+                          
+                          <div class="col-5">
+                            <label for="exampleFormControlInput1" class="mobile-text">Correo</label>
+                            <input type="text" class="form-control col 3 disabled" id="exampleFormControlInput1" placeholder="uttwifi@utt.edu.mx">
+                        </div>
+                        <br>
+                        <div class="col-4">
+                            <label for="exampleFormControlTextarea1" class="form-label">Dirreccion</label>
+                            <input type="text" class="form-control col-4 disabled" id="exampleFormControlInput1" placeholder="Boulevard Torreon">
+                          </div>
+                          <div class="col-2"></div>
+                          
+                          <div class="col-5">
+                            <label for="exampleFormControlTextarea1" class="form-label">Telefono</label>
+                            <input type="text" class="form-control col 3 disabled" id="exampleFormControlInput1" placeholder="871718299">
+                        </div>
+                        <div class="col-4">
+                            </div>
+                          <div class="col-4">
+                            <button type="button" class="btn btn-dark border  col-12 col-sm-12 col-md-12 col-lg-5 col-xs-12 m-1">Guardar</button>
+                          </div>
+                          
+                          <div class="col-4">
+                           </div>
                     </div>
                 </div>
-               
-                                   
-        </div>
+            </div>
+        </div>                          
+      </div>
     </div>
-    <div class="col-2">
-
-    </div>
-  </div>
-  </div>
-  <br>
+</div>
+</div>
