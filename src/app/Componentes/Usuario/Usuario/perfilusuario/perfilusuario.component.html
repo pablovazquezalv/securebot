@@ -33,7 +33,7 @@
                     <p *ngIf="user.rol_id == 3">Empleado</p>
                   </div>   
                   
-                  <div>               
+                                 
                     
                   <div class="col-4">
                     <label for="name" class="mobile-text d-block">Nombre</label>
@@ -48,14 +48,14 @@
                     </button>
                   </div>
                   </div>
-                  
-                  
+                    
                   <div class="col-2">
                   </div>    
 
                   <div class="col-5">
                     <form [formGroup]="emailForm">
                       <label for="email" class="mobile-text">Correo</label>
+                      <div class="d-flex">
                       <input type="text" formControlName="email" class="form-control col 3 disabled" [value]="user.email" [(ngModel)]="emailValue" (ngModelChange)="emailButtonEnable()">
                       <button type="button" class="btn btn-dark mt-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="openEmailModal()" [disabled]="!emailChanges || !emailForm.valid">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -63,6 +63,8 @@
                           <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                         </svg>
                       </button>
+                     
+                      </div>
                       <div *ngIf="emailForm.get('email')?.invalid && (emailForm.get('email')?.touched || emailForm.get('email')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
                         <span class="error-message" *ngIf="emailForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.</span>
                         <span class="error-message" *ngIf="emailForm.get('email')?.errors?.['pattern']">El campo correo electrónico no es válido.</span>
@@ -70,14 +72,18 @@
                     </form>
                   </div>
                   <br>
+
                   <div class="col-4 mt-2">
                     <label for="empresa" class="form-label">Empresa</label>
                     <input type="text" class="form-control col-4 disabled" placeholder="UTT" disabled>
                   </div>
-                  <div class="col-2"></div>
+
+                  <div class="col-2">
+                  </div>
                   <div class="col-5 mt-2">
                     <form [formGroup]="phoneForm">
                       <label for="phone_number" class="form-label">Teléfono celular</label>
+                      <div class="d-flex">
                       <input type="text" formControlName="phone_number" class="form-control col 3 disabled" [value]="user.phone_number" [(ngModel)]="phoneNumberValue" (ngModelChange)="phoneButtonEnable()" maxlength="10">
                       <button type="button" class="btn btn-dark mt-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="openPhoneModal()" [disabled]="!phoneChanges || !phoneForm.valid">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -85,6 +91,8 @@
                           <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                         </svg>
                       </button>
+                    
+                      </div>
                       <div *ngIf="phoneForm.get('phone_number')?.invalid && (phoneForm.get('phone_number')?.touched || phoneForm.get('phone_number')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
                         <span class="error-message" *ngIf="phoneForm.get('phone_number')?.errors?.['required']">El campo teléfono celular es obligatorio.</span>
                         <span class="error-message" *ngIf="phoneForm.get('phone_number')?.errors?.['minlength']">El campo teléfono celular debe tener un mínimo de 10 caracteres.<br></span>
@@ -105,7 +113,7 @@
                   </div> 
                 </div>
               </div>
-            </div>
+            
           </div>
         </div>                            
       </div>
