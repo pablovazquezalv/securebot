@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/user.service';
 import { User } from 'src/app/Interfaces/user.interface';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalRecuperarContrasenaComponent } from '../../Usuario/Usuario/modal-recuperar-contrasena/modal-recuperar-contrasena.component';
 
 @Component({
   selector: 'app-iniciosesion',
@@ -19,7 +21,7 @@ export class IniciosesionComponent {
   showError: boolean = false;
   public apiFailed: boolean = false;
 
-  constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
+  constructor(private router: Router, private fb: FormBuilder, private userService: UserService, public dialog: MatDialog) {
     this.loginForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$")])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(8)])]
@@ -27,29 +29,30 @@ export class IniciosesionComponent {
   }
 
   onSubmit(values: User) {
-    if(this.loginForm.valid) 
-    {
-      this.userService.login(values).subscribe((response: any) => 
-      {
+    if(this.loginForm.valid) {
+      this.userService.login(values).subscribe((response: any) => {
         localStorage.setItem('token', response.token);
         if(response.status === 200) {
-          if(this.userService.getUserLoggedIn())
-           {
+          if(this.userService.getUserLoggedIn()) {
             location.assign('/inicio');
           }
         }
-      }
-      );
+      });
     }
-  
-    
-
   }
+
   onAnimationEnd(): void {
     this.apiFailed = false;
   }
 
   registrarse() {
-  this.router.navigate(['/registrarse']);
+    this.router.navigate(['/registrarse']);
+  }
+
+  openModal() {
+    const dialogRef = this.dialog.open(ModalRecuperarContrasenaComponent, {
+      width: '448px',
+      height: 'auto',
+    });
   }
 }

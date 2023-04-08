@@ -1,37 +1,30 @@
 <div class="card " style="width: 28rem;" align="center">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h4 class="text-start">Recuperar Contraseña</h4>  
-      <button type="button" class="btn-close shadow-none" ></button>
-    </div>
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h4 class="text-start">Recuperar contraseña</h4>  
+    <button type="button" class="btn-close shadow-none" (click)="close()"></button>
+  </div>
     <div class="card-body"> 
-      <form >
+      <form [formGroup]="recoverPasswordForm" (ngSubmit)="onSubmit(recoverPasswordForm.value)">
         <div class="mb-3 text-start">
-          <label for="Correo" class="mobile-text">Correo</label>
-          <input type="text" formControlName="Correo" class="form-control" placeholder="Ingresa tu correo electrónico" maxlength="40">
-        
-       
-        </div>
-        
-        <div class="mb-3 text-start">
-            <label for="password" class="mobile-text">Escribe tu contraseña</label>
-            <input type="password" formControlName="password" class="form-control" placeholder="Ingresa tu password" maxlength="40">
-          
-          <!--<div *ngIf="passwordForm.get('password')?.invalid && (passwordForm.get('password')?.touched || passwordForm.get('password')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1 fs-5" role="alert">
-              <span class="error-message" *ngIf="passwordForm.get('password')?.errors?.['required']">El campo contraseña actual es obligatorio.</span>
-              <span class="error-message" *ngIf="passwordForm.get('password')?.errors?.['minlength']">El campo contraseña actual debe tener un mínimo de 8 caracteres.<br></span>
-            </div>-->  
+          <span class="mobile-text mt-2 text-center">Para recuperar tu contraseña por favor introduce tu correo electrónico en el formulario. En este recibirás tu nueva contraseña.</span><br><br>
+          <label for="email" class="mobile-text">Correo electrónico</label>
+          <input type="text" formControlName="email" class="form-control" placeholder="Ingresa tu correo electrónico" maxlength="40">
+          <div *ngIf="recoverPasswordForm.get('email')?.invalid && (recoverPasswordForm.get('email')?.touched || recoverPasswordForm.get('email')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+            <span class="error-message" *ngIf="recoverPasswordForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.</span>
+            <span class="error-message" *ngIf="recoverPasswordForm.get('email')?.errors?.['pattern']">El campo correo electrónico no es válido.</span>
           </div>
-        
+        </div>
       </form>  
     </div>
     <div class="card-footer text-end text-body-secondary">
-      <button type="button" class="btn btn-danger"  
-                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+      <button type="button" class="btn btn-danger"
+        (click)="onSubmit(recoverPasswordForm.value)" [disabled]="!recoverPasswordForm.valid"  
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
         --bs-btn-font-size: .75rem;margin-right: 10px;">
         Recuperar
       </button>
       <button type="button" class="btn btn-dark" 
-        
+        (click)="close()"
         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
         --bs-btn-font-size: .75rem;margin-right: 10px;">
         Cancelar

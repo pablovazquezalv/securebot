@@ -23,11 +23,11 @@
           <button class="button-39"  type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
         </div>
       </form>
-      <div class="text-center mt-5">
-        <span class="d-block mobile-text">¿No tienes una cuenta?</span>
+      <div class="text-center mt-4">
+        <span class="d-block fw-bold mobile-text text-center text-danger cursor" (click)="openModal()">¿Olvidaste tu contraseña?</span>
+        <span class="d-block mobile-text mt-4">¿No tienes una cuenta?</span>
         <a class="fw-bold text-danger cursor" (click)="registrarse()">Crea una</a></div>
         <br>
-        <span class="d-block mobile-text text-center cursor">Olvide mi contraseña</span>
-
-  </div>
-</div></div>
+      </div>
+    </div>
+</div>
