@@ -26,7 +26,7 @@ export class EmpresaVerEmpleadosComponent {
 
   empresaOpciones()
   {
-    this.router.navigate(['/empresa-opciones']);
+    this.router.navigate(['/mi-empresa']);
   }
   verEmpleados()
   {

@@ -53,16 +53,15 @@ export class NavBarComponent implements OnInit {
   }
 
   TiposcarrosComponent() {
-    this.router.navigate(['/tipos-carros']);
+    this.router.navigate(['/conocenos']);
   }
   
   perfilUsuario() {
     this.router.navigate(['/profile']);
   }
 
-  empresaOpciones() 
-  {
-  this.router.navigate(['/empresa-opciones']);
+  empresaOpciones() {
+    this.router.navigate(['/mi-empresa']);
   }
 
   solicitudesEmpresa()

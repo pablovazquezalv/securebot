@@ -25,6 +25,7 @@ export class UserService {
   private updateDataUrl = environment.API_URL + '/user/data';
   private resendCodeUrl = environment.API_URL + '/user/code';
   private recoverPasswordUrl = environment.API_URL + '/recover/password';
+  private userComapnyUrl = environment.API_URL + '/user/company';
 
   private userLoggedIn = new Subject<boolean>();
   private signedRoute?: string;
@@ -175,6 +176,14 @@ export class UserService {
   recoverPassword(data: JSON) {
     return this.http.post(this.recoverPasswordUrl, data)
       .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  hasEnterprise() {
+    return this.http.get(this.userComapnyUrl)
+      .pipe(
+        retry(3),
         catchError(this.handleError)
       );
   }
