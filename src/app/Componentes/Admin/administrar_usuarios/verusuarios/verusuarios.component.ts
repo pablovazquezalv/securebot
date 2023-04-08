@@ -12,20 +12,27 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./verusuarios.component.css']
 })
 export class VerusuariosComponent implements OnInit {
-  users:User[] = [];
+  users: User[] = [];
   pageSize = 5;
-  hasta = 0;
-  desde = 5;
+  desde:number = 0;
+  hasta:number = 5;
   constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getUsers();
+    // console.log(this.users)
+    // console.log(this.total)
+    // console.log(this.perPage)
+    // console.log(this.currentPage)
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe(
-      users => this.users = users
-    );
+    this.userService.getUsers().subscribe( users => {
+      this.users = users
+      // this.total = users.total
+      // this.perPage = users.perPage
+      // this.currentPage = users.page
+    });
   }
 
   openStatusModal(id: number) {
@@ -45,8 +52,8 @@ export class VerusuariosComponent implements OnInit {
 
   cambiarPagina(e:PageEvent)
   {
-    console.log(e)
-    this.desde = e.pageIndex * e.pageSize;
+    this.desde = e.pageIndex * e.pageSize
     this.hasta = this.desde + e.pageSize
   }
+  
 }
