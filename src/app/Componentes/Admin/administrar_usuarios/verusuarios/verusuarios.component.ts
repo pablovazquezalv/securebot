@@ -12,10 +12,10 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./verusuarios.component.css']
 })
 export class VerusuariosComponent implements OnInit {
-  users: User[] = [];
+  users:User[] = [];
   pageSize = 5;
-  desde:number = 0;
-  hasta:number = 5;
+  hasta = 0;
+  desde = 5;
   constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class VerusuariosComponent implements OnInit {
 
   getUsers() {
     this.userService.getUsers().subscribe(
-      users => this.users = users.data
+      users => this.users = users
     );
   }
 
