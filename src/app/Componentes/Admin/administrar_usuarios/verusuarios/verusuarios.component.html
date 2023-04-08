@@ -14,7 +14,7 @@
         <th scope="col">Acciones</th>       
       </thead>
       <tbody class="text-center">
-        <tr *ngFor="let u of users">
+        <tr *ngFor="let u of users | slice:desde:hasta">
           <th scope="row">{{ u.id }}</th>
           <td>{{ u.name }} {{ u.ap_paterno }} {{ u.ap_materno }}</td>
           <td>{{ u.email }}</td>
@@ -39,7 +39,13 @@
             </button>
          </td>
         </tr>
-      </tbody>            
+      </tbody>  
+      <mat-paginator [length]="users.length"
+        [pageSize]="pageSize"
+        (page)="cambiarPagina($event)"
+        [hidePageSize]="true"
+        >
+      </mat-paginator>               
     </table>
   </div>
 </div>

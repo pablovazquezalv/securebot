@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog'
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -88,7 +89,8 @@ import { VerEmpleadosEmpresaComponent } from './Componentes/Admin/ver-empleados-
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule, 
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
