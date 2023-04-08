@@ -20,12 +20,19 @@ export class VerusuariosComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    // console.log(this.users)
+    // console.log(this.total)
+    // console.log(this.perPage)
+    // console.log(this.currentPage)
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe(
-      users => this.users = users.data
-    );
+    this.userService.getUsers().subscribe( users => {
+      this.users = users
+      // this.total = users.total
+      // this.perPage = users.perPage
+      // this.currentPage = users.page
+    });
   }
 
   openStatusModal(id: number) {
@@ -45,8 +52,7 @@ export class VerusuariosComponent implements OnInit {
 
   cambiarPagina(e:PageEvent)
   {
-    console.log(e)
-    this.desde = e.pageIndex * e.pageSize;
+    this.desde = e.pageIndex * e.pageSize
     this.hasta = this.desde + e.pageSize
   }
 }
