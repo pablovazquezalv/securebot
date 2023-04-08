@@ -32,4 +32,9 @@ export class EmpresaVerEmpleadosComponent {
   {
     this.router.navigate(['/ver-empleados']);
   }
+
+  carrosEmpresa()
+  {
+    this.router.navigate(['/autos-usuario']);
+  }
 }

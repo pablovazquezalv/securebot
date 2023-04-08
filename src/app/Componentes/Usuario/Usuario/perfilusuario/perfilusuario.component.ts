@@ -71,9 +71,7 @@ export class PerfilusuarioComponent implements OnInit {
     this.router.navigate(['/crear-empresa']);
   }
   
-  carrosUsuario() {
-    this.router.navigate(['/autos-usuario']);
-  }
+  
 
   openNameModal(name: String, ap_paterno: String, ap_materno: String) {
     const dialogRef = this.dialog.open(ModalActualizarNombreComponent, {

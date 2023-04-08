@@ -19,57 +19,83 @@
       <div class="controls ">
 
           <div class="row">
-              <div class="col-md-6">
+              <div class="col-12">
                   <div class="form-group">
                       <label for="form_name">Nombre de la empresa</label>
-                      <input id="form_name" type="text" name="name" class="form-control" placeholder="" required="required" data-error="Firstname is required.">
+                      <input id="form_name" type="text" name="name" class="form-control" placeholder="Escribe el nombre de la empresa" required="required" data-error="Firstname is required.">
                       
                   </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-12">
                   <div class="form-group">
-                      <label for="form_lastname">Dirreccion</label>
-                      <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" required="required" data-error="Lastname is required.">
+                      <label for="Email">Email</label>
+                      <input id="Email" type="email" name="Email" class="form-control" placeholder="Escribe el correo electronico" required="required" >
                                                       </div>
               </div>
           </div>
-          <div class="row">
-              <div class="col-md-6">
+          <div class="row mt-2">
+              <div class="col-12">
                   <div class="form-group">
-                      <label for="form_email">Telefono</label>
-                      <input id="form_email" type="email" name="email" class="form-control" placeholder="" required="required" data-error="Valid email is required.">
-                      
+                      <label for="Calle">Calle</label>
+                      <input id="Calle" type="text" name="Calle" class="form-control" placeholder="Escribe el nombre de la calle" required="required" data-error="Valid email is required.">   
                   </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-12">
               <div class="form-group">
-                <label for="form_email">Correo</label>
-                <input id="form_email" type="email" name="email" class="form-control" placeholder="" required="required" data-error="Valid email is required.">
+                <label for="numero">Numero de residencia</label>
+                <input id="numero" type="number" name="numero" class="form-control" placeholder="Escribe el numero de residencia" required="required" >
               </div>
             </div>
         </div>
-            
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                  <label for="form_need">Selecciona tu ubicacion</label>
-                  <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
-                      <option value="" selected disabled>Selecciona tu ciudad</option>
-                      <option >Torreon,Coahuila</option>
-                      <option >Matamoros,Coahuila</option>
-                      <option >Lerdo,Durango</option>
-                      <option >Other</option>
-                  </select>
-                  
-              </div>
-          </div>
 
-              <div class="col-md-12 mt-2 text-center">
-                  
-                  <input type="submit" class="btn btn-dark  pt-2 btn-block
-                      " value="Crear Empresa" > 
-              
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="colonia">Colonia</label>
+                    <input id="colonia" type="text" name="colonia" class="form-control" placeholder="Escribe el nombre de la colonia" required="required" >   
+                </div>
+            </div>
+            <div class="col-12">
+            <div class="form-group">
+              <label for="cp">CP</label>
+              <input id="cp" type="number" name="cp" class="form-control" placeholder="Escribe el codigo postal" required="required" >
+            </div>
+          </div>
+      </div>
+          
+      <div class="row mt-2">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="Ciudad">Ciudad</label>
+                <input id="Ciudad" type="text" name="Ciudad" class="form-control" placeholder="Escribe el nombre de la ciudad" required="required" >   
+            </div>
+        </div>
+        <div class="col-12">
+        <div class="form-group">
+          <label for="Estado">Estado</label>
+          <input id="Estado" type="text" name="Estado" class="form-control" placeholder="Escribe el nombre del estado" required="required" >
+        </div>
+      </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-12">
+        <div class="form-group">
+            <label for="Telefono">Telefono</label>
+            <input id="Telefono" type="text" name="Telefono" class="form-control" placeholder="Escribe el telefono" required="required" >   
+        </div>
+    </div>
+    <div class="col-12">
+    <div class="form-group">
+      <label for="Giro">Giro</label>
+      <input id="Giro" type="text" name="Giro" class="form-control" placeholder="Escribe el giro de la empresa" required="required" >
+    </div>
+  </div>
+</div>
+      
+          </div>
+          <div class="row mt-2">    
+          <div class="col-md-12 mt-2 text-center">    
+            <input type="submit" class="btn btn-dark  pt-2 btn-block " value="Crear Empresa" > 
           </div>
     
           </div>

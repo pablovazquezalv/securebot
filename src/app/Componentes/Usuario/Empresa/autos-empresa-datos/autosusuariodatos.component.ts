@@ -10,20 +10,23 @@ export class AutosusuariodatosComponent {
   constructor(private router:Router) { }
 
 
-  perfilUsuario()
-  {
-    this.router.navigate(['/profile']);
-  }
 
-  empresaUsuario()
+  solicitudesDeEmpleados()
   {
-    this.router.navigate(['/empresa-usuario']);
-  }
-
-  crearEmpresa()
-  {
-    this.router.navigate(['/crear-empresa']);
+    this.router.navigate(['/aceptar-empleados']);
   }
 
 
+  empresaOpciones() {
+    this.router.navigate(['/mi-empresa']);
+  }
+  verEmpleados()
+  {
+    this.router.navigate(['/ver-empleados']);
+  }
+
+  carrosEmpresa()
+  {
+    this.router.navigate(['/autos-usuario']);
+  }
 }

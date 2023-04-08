@@ -1,3 +1,6 @@
+body{
+  font-family: Open-sans, sans-serif;
+}
 .imagen {
 
     background: #fff url(../../../../../assets/Iconos/lineal3.png)  repeat;

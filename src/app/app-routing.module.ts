@@ -13,7 +13,7 @@ import { PerfilusuarioComponent } from './Componentes/Usuario/Usuario/perfilusua
 import { EmpresausuarioComponent } from './Componentes/Usuario/Usuario/empresausuario/empresausuario.component';
 import { CrearempresaComponent } from './Componentes/Usuario/Empresa/crearempresa/crearempresa.component';
 import { VercarroespecificoComponent } from './Componentes/Usuario/Carro/vercarroespecifico/vercarroespecifico.component';
-import { AutosusuariodatosComponent } from './Componentes/Usuario/Usuario/autosusuariodatos/autosusuariodatos.component';
+import { AutosusuariodatosComponent } from './Componentes/Usuario/Empresa/autos-empresa-datos/autosusuariodatos.component';
 import { WildcardComponent } from './Componentes/wildcard/wildcard.component';
 import { EmpresaOpcionesComponent } from './Componentes/Usuario/Empresa/empresa-opciones/empresa-opciones.component';
 import { AfilarEmpresaComponent } from './Componentes/Usuario/Empresa/afilar-empresa/afilar-empresa.component';

@@ -45,4 +45,7 @@ export class EmpresaOpcionesComponent implements OnInit {
   verEmpleados() {
     this.router.navigate(['/ver-empleados']);
   }
+  carrosEmpresa() {
+    this.router.navigate(['/autos-usuario']);
+  }
 }

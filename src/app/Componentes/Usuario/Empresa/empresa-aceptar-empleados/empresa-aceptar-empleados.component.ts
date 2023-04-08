@@ -23,4 +23,9 @@ export class EmpresaAceptarEmpleadosComponent {
   {
     this.router.navigate(['/ver-empleados']);
   }
+
+  carrosEmpresa()
+  {
+    this.router.navigate(['/autos-usuario']);
+  }
 }

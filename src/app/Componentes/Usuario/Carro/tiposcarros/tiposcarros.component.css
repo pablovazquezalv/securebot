@@ -20,13 +20,10 @@ body {
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 30px;
-    color: #272727;
     margin-top: 0;
     display: inline-block;
-    padding: 10px;
     border-radius: 20px;
 
-    background-color: #e9dede; 
  }
  
  .padded {
@@ -85,7 +82,7 @@ body {
     font-size: 22px;
   }
   .card-description p {
-    font-size: 15px;
+    font-size: 18px;
   }
   .card-link {
     position: absolute;
@@ -107,7 +104,7 @@ body {
     margin-bottom: 10px;
   }
   .features p {
-    font-size: 15px;
+    font-size: 45px;
     font-weight: lighter;
   }
 

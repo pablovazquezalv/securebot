@@ -56,5 +56,32 @@
     font-size: 15px;
     font-weight: lighter;
   }
-
+  .nav-item-spaced:hover {
+    background-color: #e2e2e2;
+    border-right: 2px solid red;
+  
+  }
+  .nav-link {
+    color: rgb(0, 0, 0);
+  }
+  .nav-item.active {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  
+  .nav-item-spaced:hover a {
+    color: #333;
+  }
+  
+  .nav-item-spaced {
+      margin-bottom: 10px; /* ajusta el valor según el espacio deseado */
+    }
+    
+    /* La última lista no debe tener margen inferior */
+    .nav-item-spaced:last-child {
+      margin-bottom: 0;
+    }
+    
 
