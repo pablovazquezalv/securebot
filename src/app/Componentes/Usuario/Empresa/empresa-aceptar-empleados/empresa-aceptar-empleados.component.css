@@ -35,4 +35,10 @@
     .nav-item-spaced:last-child {
       margin-bottom: 0;
     }
+    ngb-toast {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
     

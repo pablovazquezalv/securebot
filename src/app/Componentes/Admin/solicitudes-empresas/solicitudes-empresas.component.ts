@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { EnterpriseService } from 'src/app/Services/enterprise.service';
 import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgFor, NgIf, SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-solicitudes-empresas',
   templateUrl: './solicitudes-empresas.component.html',
+  standalone: true,
+
+  imports: [NgbToastModule, NgIf,NgFor,MatPaginatorModule,SlicePipe],
   styleUrls: ['./solicitudes-empresas.component.css']
 })
 export class SolicitudesEmpresasComponent implements OnInit {
   enterprises: Enterprise[] = [];
+  show = true;
   pageSize = 5;
   desde:number = 0;
   hasta:number = 5;

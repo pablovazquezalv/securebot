@@ -14,11 +14,11 @@
       </thead>
       <tbody class="text-center">
         <tr *ngFor="let e of enterprises | slice:desde:hasta">
-          <th>{{ e.id }}</th>
-          <td>{{ e.name }} </td>
-          <td>{{ e.calle }} {{ e.numero }}, {{ e.colonia }}, {{ e.ciudad }}, {{ e.estado }}</td>
-          <td>{{ e.phone }}</td>
-          <td>{{ e.email }}</td>
+          <th class="text-minimo">{{ e.id }}</th>
+          <td >{{ e.name }} </td>
+          <td class="text-min">{{ e.calle }} {{ e.numero }}, {{ e.colonia }}, {{ e.ciudad }}, {{ e.estado }}</td>
+          <td class="text-min">{{ e.phone }}</td>
+          <td class="text-min">{{ e.email }}</td>
           <td>
             <button type="button" (click)="empleadosEmpresa()" class="btn btn-light text-dark border rounded-pill" 
               style="--bs-btn-padding-y: .28rem; --bs-btn-padding-x: .5rem; 
