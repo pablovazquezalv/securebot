@@ -12,11 +12,15 @@ export class AfilarEmpresaComponent implements OnInit{
   status = 0
   enterpriseForm: FormGroup;
   companies: any[] = [];
+  formCompany: FormGroup;
 
 
   constructor(public companyService:EnterpriseService, private fb: FormBuilder){
     this.enterpriseForm = this.fb.group({
       company: ['', Validators.compose([Validators.required])],
+    })
+    this.formCompany = this.fb.group({
+      company: [0, Validators.compose([Validators.required])],
     })
   }
 
@@ -37,5 +41,11 @@ export class AfilarEmpresaComponent implements OnInit{
       this.companies = res
       this.status = 1
     })
+  }
+
+  afiliar(comp:Number){
+    console.log(comp)
+    console.log(localStorage.getItem('token'))
+    this.companyService.addEnterprise(comp).subscribe(()=> location.assign('/mi-empresa'))
   }
 }

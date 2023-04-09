@@ -14,7 +14,7 @@
                 <label for="company">Escribe la Empresa</label>
                 <form class="d-flex" role="search" [formGroup]="enterpriseForm" (ngSubmit)="onSubmit(enterpriseForm.value)" >
                     <input class="form-control me-2" type="text" name="company" formControlName="company" class="form-control" placeholder="" aria-label="company">
-                    <button class="btn btn-dark" type="submit" routerLink="a">Buscar</button>
+                    <button class="btn btn-dark" type="submit">Buscar</button>
                 </form>        
                 <div class="container" *ngIf="status == 1">
                   <div class="row table-responsive">
@@ -27,13 +27,12 @@
                         <tr *ngFor="let e of companies">
                           <th>{{ e.id }}</th>
                           <td>{{ e.name }} </td>
-                          <td><button class="btn btn-dark mt-2">Afiliarme</button></td>
+                          <td><button (click)="afiliar(e.id)" class="btn btn-dark mt-2">Afiliarme</button></td>
                         </tr>
                       </tbody>            
                     </table>
                   </div>
-                </div>  
-                <!-- <button class="btn btn-dark mt-2">Afiliarme</button> -->
+                </div>
             </div>
           </div>
         </div>

@@ -22,7 +22,6 @@ import { EmpresaAceptarEmpleadosComponent } from './Componentes/Usuario/Empresa/
 import { EmpresaVerEmpleadosComponent } from './Componentes/Usuario/Empresa/empresa-ver-empleados/empresa-ver-empleados.component';
 import { VerEmpresasComponent } from './Componentes/Admin/ver-empresas/ver-empresas.component';
 import { VerEmpleadosEmpresaComponent } from './Componentes/Admin/ver-empleados-empresa/ver-empleados-empresa.component';
-import { BuscadorEmpresasComponent } from './Componentes/Usuario/Empresa/buscador-empresas/buscador-empresas.component';
 import { ModalRechazarSolicitudEmpresaComponent } from './Componentes/Admin/modal-rechazar-solicitud-empresa/modal-rechazar-solicitud-empresa.component';
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
@@ -49,10 +48,7 @@ const routes: Routes = [
   { path:'empresa-usuario', component:EmpresausuarioComponent, title: 'Mi empresa'},
   { path:'mi-empresa', component:EmpresaOpcionesComponent, title: 'Mi empresa'},
   { path:'crear-empresa',component:CrearempresaComponent, title: 'Crear empresa' }, 
-  { path:'afiliar-empresa',component:AfilarEmpresaComponent, title: 'Afiliar empresa', 
-  children:[
-    {path:'a',component:BuscadorEmpresasComponent}
-  ]},
+  { path:'afiliar-empresa',component:AfilarEmpresaComponent, title: 'Afiliar empresa'},
 
   {path:'autos-usuario',component:AutosusuariodatosComponent},
   {path:'crear-carro',component:CrearcarroComponent},

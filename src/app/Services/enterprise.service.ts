@@ -40,10 +40,17 @@ export class EnterpriseService {
 
   getSearchingEnterprises(company: String): Observable<any> {
     console.log(company)
-    return this.http.post<String>("http://127.0.0.1:3333/company/search",company)
+    return this.http.post<String>(environment.API_URL + "/company/search",company)
       .pipe(
         catchError(this.handleError)
       )
+  }
+
+  addEnterprise(company: Number) {
+    return this.http.post(environment.API_URL + '/user/company/' + company, "")
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: HttpErrorResponse) {
