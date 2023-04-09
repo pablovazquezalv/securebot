@@ -38,6 +38,14 @@ export class EnterpriseService {
       )
   }
 
+  getSearchingEnterprises(company: String): Observable<any> {
+    console.log(company)
+    return this.http.post<String>("http://127.0.0.1:3333/company/search",company)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
   private handleError(error: HttpErrorResponse) {
     if(error.status === 0) {
       console.error('Un error inesperado ha ocurrido:', error.error);

@@ -13,7 +13,7 @@
         <th scope="col">Acciones</th>       
       </thead>
       <tbody class="text-center">
-        <tr *ngFor="let e of enterprises">
+        <tr *ngFor="let e of enterprises | slice:desde:hasta">
           <th>{{ e.id }}</th>
           <td>{{ e.name }} </td>
           <td>{{ e.calle }} {{ e.numero }}, {{ e.colonia }}, {{ e.ciudad }}, {{ e.estado }}</td>
@@ -32,6 +32,12 @@
             </button>
         </tr>
       </tbody>            
+      <mat-paginator [length]="enterprises.length" *ngIf="enterprises.length > 0"
+      [pageSize]="pageSize"
+      (page)="cambiarPagina($event)"
+      [hidePageSize]="true"
+      >
+    </mat-paginator>  
     </table>
   </div>
 </div>

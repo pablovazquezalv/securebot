@@ -11,12 +11,29 @@
           </div>
           <div class="card-body bg-light">
             <div class="container">
-                <label for="form_email">Escribe la Empresa</label>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
-                    <button class="btn btn-dark" type="submit">Buscar</button>
-                  </form>
-                  <button class="btn btn-dark mt-2">Afiliarme</button>
+                <label for="company">Escribe la Empresa</label>
+                <form class="d-flex" role="search" [formGroup]="enterpriseForm" (ngSubmit)="onSubmit(enterpriseForm.value)" >
+                    <input class="form-control me-2" type="text" name="company" formControlName="company" class="form-control" placeholder="" aria-label="company">
+                    <button class="btn btn-dark" type="submit" routerLink="a">Buscar</button>
+                </form>        
+                <div class="container" *ngIf="status == 1">
+                  <div class="row table-responsive">
+                    <table class="table table-bordered">
+                      <thead class="border text-center">
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th> 
+                      </thead>
+                      <tbody class="text-center">
+                        <tr *ngFor="let e of companies">
+                          <th>{{ e.id }}</th>
+                          <td>{{ e.name }} </td>
+                          <td><button class="btn btn-dark mt-2">Afiliarme</button></td>
+                        </tr>
+                      </tbody>            
+                    </table>
+                  </div>
+                </div>  
+                <!-- <button class="btn btn-dark mt-2">Afiliarme</button> -->
             </div>
           </div>
         </div>

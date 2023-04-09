@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EnterpriseService } from 'src/app/Services/enterprise.service';
 import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
 import { Router } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-ver-empresas',
@@ -10,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class VerEmpresasComponent implements OnInit {
   enterprises: Enterprise[] = [];
+  pageSize = 5;
+  desde:number = 0;
+  hasta:number = 5;
   constructor(private enterpriseService: EnterpriseService, private router: Router) { }
 
   ngOnInit() {
@@ -24,5 +28,11 @@ export class VerEmpresasComponent implements OnInit {
     this.enterpriseService.getActiveEnterprises().subscribe(enterprises => {
       this.enterprises = enterprises;
     });
+  }
+
+  cambiarPagina(e:PageEvent)
+  {
+    this.desde = e.pageIndex * e.pageSize
+    this.hasta = this.desde + e.pageSize
   }
 }

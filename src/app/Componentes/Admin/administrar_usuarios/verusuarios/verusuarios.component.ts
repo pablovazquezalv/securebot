@@ -49,3 +49,4 @@ export class VerusuariosComponent implements OnInit {
     this.hasta = this.desde + e.pageSize
   }
 }
+ 

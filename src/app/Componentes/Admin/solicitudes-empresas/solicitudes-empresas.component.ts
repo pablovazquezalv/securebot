@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EnterpriseService } from 'src/app/Services/enterprise.service';
 import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-solicitudes-empresas',
@@ -9,6 +10,9 @@ import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
 })
 export class SolicitudesEmpresasComponent implements OnInit {
   enterprises: Enterprise[] = [];
+  pageSize = 5;
+  desde:number = 0;
+  hasta:number = 5;
   constructor(private enterpriseService: EnterpriseService) { }
 
   ngOnInit() {
@@ -20,4 +24,11 @@ export class SolicitudesEmpresasComponent implements OnInit {
       this.enterprises = enterprises;
     });
   }
+
+  cambiarPagina(e:PageEvent)
+  {
+    this.desde = e.pageIndex * e.pageSize
+    this.hasta = this.desde + e.pageSize
+  }
 }
+ 
