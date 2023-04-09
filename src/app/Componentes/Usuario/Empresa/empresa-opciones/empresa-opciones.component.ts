@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -11,11 +12,27 @@ import { map } from 'rxjs/operators';
 export class EmpresaOpcionesComponent implements OnInit {
   hasEnterprise: boolean = false;
   isInProcess: boolean = false;
+
+  enterprise: Enterprise = {
+    id: 0,
+    name: '',
+    email: '',
+    phone: '',
+    calle: '',
+    numero: '',
+    colonia: '',
+    cp: '',
+    ciudad: '',
+    estado: '',
+    activity: '',
+  };
+
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     this.hasCompany();
     this.isCompanyInProcess();
+    this.getEnterprise();
   }
 
   hasCompany() {
@@ -38,6 +55,14 @@ export class EmpresaOpcionesComponent implements OnInit {
           this.isInProcess = false;
         }
       })).subscribe();
+  }
+
+  getEnterprise() {
+    this.userService.companyWithUser().subscribe((response: any) => {
+      if(response.status == 200) {
+        this.enterprise = response.data;
+      }
+    })
   }
 
   crearEmpresa() {

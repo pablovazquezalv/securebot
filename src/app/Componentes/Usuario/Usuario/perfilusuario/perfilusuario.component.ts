@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
+import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
 import { User } from 'src/app/Interfaces/user.interface';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -26,6 +27,21 @@ export class PerfilusuarioComponent implements OnInit {
     phone_number: '',
     rol_id: 0,
   }
+
+  enterprise: Enterprise = {
+    id: 0,
+    name: '',
+    email: '',
+    phone: '',
+    calle: '',
+    numero: '',
+    colonia: '',
+    cp: '',
+    ciudad: '',
+    estado: '',
+    activity: '',
+  };
+
   emailForm: FormGroup;
   phoneForm: FormGroup;
 
@@ -35,6 +51,7 @@ export class PerfilusuarioComponent implements OnInit {
   emailValue: string = '';
   phoneChanges: boolean = false;
   emailChanges: boolean = false;
+  hasEnterprise: boolean = false;
 
   constructor(private router: Router, private userService: UserService, public dialog: MatDialog) {
     this.emailForm = new FormBuilder().group({
@@ -47,6 +64,7 @@ export class PerfilusuarioComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.getEnterprise();
   }
   
   getUser() {
@@ -56,6 +74,17 @@ export class PerfilusuarioComponent implements OnInit {
       this.emailDefault = this.user.email;
       this.emailChanges = false;
       this.phoneChanges = false;
+    })
+  }
+
+  getEnterprise() {
+    this.userService.companyWithUser().subscribe((response: any) => {
+      if(response.status == 200) {
+        this.hasEnterprise = true;
+        this.enterprise = response.data;
+      } else {
+        this.hasEnterprise = false;
+      }
     })
   }
 
@@ -71,8 +100,6 @@ export class PerfilusuarioComponent implements OnInit {
     this.router.navigate(['/crear-empresa']);
   }
   
-  
-
   openNameModal(name: String, ap_paterno: String, ap_materno: String) {
     const dialogRef = this.dialog.open(ModalActualizarNombreComponent, {
       width: '448px',

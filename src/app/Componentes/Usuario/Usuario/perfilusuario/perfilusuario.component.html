@@ -52,7 +52,7 @@
 
                   <div class="col-5">
                     <form [formGroup]="emailForm">
-                      <label for="email" class="mobile-text">Correo</label>
+                      <label for="email" class="mobile-text">Correo electrónico</label>
                       <div class="d-flex">
                       <input type="text" formControlName="email" class="form-control col 3 disabled" [value]="user.email" [(ngModel)]="emailValue" (ngModelChange)="emailButtonEnable()">
                       <button type="button" class="btn btn-dark mt-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="openEmailModal()" [disabled]="!emailChanges || !emailForm.valid">
@@ -73,7 +73,8 @@
 
                   <div class="col-4 mt-2">
                     <label for="empresa" class="form-label">Empresa</label>
-                    <input type="text" class="form-control col-4 disabled" placeholder="UTT" disabled>
+                    <input type="text" *ngIf="!hasEnterprise" class="form-control col-4 disabled" value="Sin empresa" disabled>
+                    <input type="text" *ngIf="hasEnterprise" class="form-control col-4 disabled" [value]="enterprise.name" disabled>
                   </div>
 
                   <div class="col-2">

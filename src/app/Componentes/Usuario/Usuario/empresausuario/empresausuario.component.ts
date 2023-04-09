@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/Services/user.service';
+import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,28 +8,44 @@ import { Router } from '@angular/router';
   templateUrl: './empresausuario.component.html',
   styleUrls: ['./empresausuario.component.css']
 })
-export class EmpresausuarioComponent {
-  constructor(private router: Router) { }
+export class EmpresausuarioComponent implements OnInit {
+  enterprise: Enterprise = {
+    id: 0,
+    name: '',
+    email: '',
+    phone: '',
+    calle: '',
+    numero: '',
+    colonia: '',
+    cp: '',
+    ciudad: '',
+    estado: '',
+    activity: '',
+  };
+  hasEnterprise: boolean = false;
 
-  ngOnInit(): void {
+  constructor(private router: Router, private userService: UserService) { }
+
+  ngOnInit() {
+    this.getEnterprise();
   }
-  perfilUsuario()
-  {
+
+  perfilUsuario() {
     this.router.navigate(['/profile']);
   }
 
-  empresaUsuario()
-  {
+  empresaUsuario() {
     this.router.navigate(['/empresa-usuario']);
   }
 
-  crearEmpresa()
-  {
-    this.router.navigate(['/crear-empresa']);
-  }
-
-  carrosUsuario()
-  {
-    this.router.navigate(['/autos-usuario']);
+  getEnterprise() {
+    this.userService.companyWithUser().subscribe((response: any) => {
+      if(response.status == 200) {
+        this.hasEnterprise = true;
+        this.enterprise = response.data;
+      } else {
+        this.hasEnterprise = false;
+      }
+    })
   }
 }

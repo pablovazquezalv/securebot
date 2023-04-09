@@ -27,6 +27,7 @@ export class UserService {
   private recoverPasswordUrl = environment.API_URL + '/recover/password';
   private userComapnyUrl = environment.API_URL + '/user/company';
   private userRequestUrl = environment.API_URL + '/user/request';
+  private companyUserUrl = environment.API_URL + '/company/user';
 
   private userLoggedIn = new Subject<boolean>();
   private signedRoute?: string;
@@ -197,6 +198,14 @@ export class UserService {
       );
   }
 
+  companyWithUser() {
+    return this.http.get(this.companyUserUrl)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
   getUserLoggedIn() {
     return this.userLoggedIn.asObservable();
   }
@@ -205,7 +214,7 @@ export class UserService {
     if(error.status === 0) {
       console.error('Un error inesperado ha ocurrido:', error.error);
     } else if (error.status === 400) {
-      alert('Error: ' + error.error.mensaje);
+      //alert('Error: ' + error.error.message);
       console.error(
         `Error en el servidor: ${error.status}, \nRespuesta:`, error.error
       )

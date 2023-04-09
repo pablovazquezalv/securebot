@@ -50,7 +50,7 @@ export class EnterpriseService {
     if(error.status === 0) {
       console.error('Un error inesperado ha ocurrido:', error.error);
     } else if (error.status === 400) {
-      alert('Error: ' + error.error.mensaje);
+      alert('Error: ' + error.error.message);
       console.error(
         `Error en el servidor: ${error.status}, \nRespuesta:`, error.error
       )

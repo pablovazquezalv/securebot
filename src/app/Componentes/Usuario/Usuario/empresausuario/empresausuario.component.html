@@ -3,66 +3,67 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xs-12">
             <ul class="nav flex-column">
                 <li class="nav-item border-end border-bottom p-3 nav-item-spaced">
-                    <a class="nav-link btn" aria-current="page" (click)="perfilUsuario()" >Perfil</a>
-                  </li>
-                  
-                  <li class="nav-item border-end  border-bottom p-3 nav-item-spaced">
+                    <a class="nav-link btn" aria-current="page" (click)="perfilUsuario()">Perfil</a>
+                </li>  
+                <li class="nav-item border-end  border-bottom p-3 nav-item-spaced">
                     <a  class="nav-link btn" (click)="empresaUsuario()">Empresa</a>
-                  </li>
-               
-            
-          </ul></div>
+                </li>   
+            </ul>
+        </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xs-12">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="row">
+                                <div class="row" *ngIf="!hasEnterprise">
+                                    <div class="col-12">
+                                        <h3 class="text-center">Parece ser que aún no tienes una empresa asignada. Visita la sección Mis empresas para crear o afiliarte a una. <br>Si ya lo hiciste, espera a que tu solicitud sea revisada.</h3>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="hasEnterprise">
                                     <div class="col-3">
                                         <img src="data:image/png;base64,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" alt="" class="img-fluid" width="150" height="150">
                                     </div>
                                     <div class="col-8">
-                                      <p class="fw-bold fs-4">Universidad Tecnologica de Torreon</p>
-                                      <p>Escuela Universitaria</p>
+                                      <p class="fw-bold fs-4"> {{ enterprise.name }} </p>
+                                      <p> {{enterprise.activity }}</p>
                                     </div>
-                                    
-                                        <div class="col-4">
-                                            <label for="exampleFormControlInput1" class="mobile-text">Nombre</label>
-                                            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Universidad Tecnologica de Torreon">                                      </div>
-                                      <div class="col-2"></div>
-                                      
-                                      <div class="col-5">
-                                        <label for="exampleFormControlInput1" class="mobile-text">Correo</label>
-                                        <input type="text" class="form-control col 3 disabled" id="exampleFormControlInput1" placeholder="uttwifi@utt.edu.mx">
+                                    <div class="col-4">
+                                        <label for="name" class="mobile-text">Nombre</label>
+                                        <input type="text" class="form-control" [value]="enterprise.name" disabled>                                      
+                                    </div>
+                                    <div class="col-2"></div> 
+                                    <div class="col-5">
+                                        <label for="email" class="mobile-text">Correo electrónico</label>
+                                        <input type="text" class="form-control col 3 disabled" [value]="enterprise.email" disabled>
                                     </div>
                                     <br>
-                                    <div class="col-4">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Dirreccion</label>
-                                        <input type="text" class="form-control col-4 disabled" id="exampleFormControlInput1" placeholder="Boulevard Torreon">
-                                      </div>
-                                      <div class="col-2"></div>
-                                      
-                                      <div class="col-5">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Telefono</label>
-                                        <input type="text" class="form-control col 3 disabled" id="exampleFormControlInput1" placeholder="871718299">
+                                    <div class="col-4 mt-3">
+                                        <label for="phone" class="form-label">Teléfono</label>
+                                        <input type="text" class="form-control col 3 disabled" [value]="enterprise.phone" disabled>
                                     </div>
-                                    <div class="col-4">
-                                        </div>
-                                      <div class="col-4">
-                                        <button type="button" class="btn btn-dark border  col-12 col-sm-12 col-md-12 col-lg-5 col-xs-12 m-1">Guardar</button>
-                                      </div>
-                                      
-                                      <div class="col-4">
-                                       </div>
+                                    <div class="col-2"></div>
+                                    <div class="col-5 mt-3">
+                                        <label for="address" class="form-label">Dirrección</label>
+                                        <input type="text" class="form-control col-4 disabled" [value]="enterprise.calle + ' ' + enterprise.numero + ', ' + enterprise.colonia + ' ' + enterprise.cp" disabled>
+                                    </div>
+                                    <div class="col-4 mt-3">
+                                        <label for="ciudad" class="form-label">Ciudad</label>
+                                        <input type="text" class="form-control col-4 disabled" [value]="enterprise.ciudad" disabled>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    <div class="col-5 mt-3">
+                                        <label for="estado" class="form-label">Estado</label>
+                                        <input type="text" class="form-control col 3 disabled" [value]="enterprise.estado" disabled>
+                                    </div>
+                                    <div class="col-4"></div>
+                                    <div class="col-4"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-               
-                                   
+                </div>             
+            </div>
         </div>
-    </div>
-
 </div>
