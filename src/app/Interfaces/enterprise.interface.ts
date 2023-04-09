@@ -10,5 +10,5 @@ export interface Enterprise {
     ciudad: string;
     estado: string;
     activity: string;
-    acepted?: number;
+    accepted?: number;
 }

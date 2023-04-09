@@ -44,7 +44,7 @@
                 <div class="col-5 mt-2">
                   <div class="form-group">
                     <label for="phone">Teléfono</label>
-                    <input type="text" formControlName="phone" class="form-control" placeholder="Ingresa el teléfono de la empresa" required="required"  maxlength="10">   
+                    <input type="text" formControlName="phone" class="form-control" placeholder="Ingresa el teléfono de la empresa" maxlength="10">   
                     <div *ngIf="enterpriseForm.get('phone')?.invalid && (enterpriseForm.get('phone')?.touched || enterpriseForm.get('phone')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
                       <span class="error-message" *ngIf="enterpriseForm.get('phone')?.errors?.['required']">El campo teléfono es obligatorio.</span>
                       <span class="error-message" *ngIf="enterpriseForm.get('phone')?.errors?.['minlength']">El campo teléfono debe tener un mínimo de 10 caracteres.<br></span>

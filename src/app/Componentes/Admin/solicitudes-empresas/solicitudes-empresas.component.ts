@@ -26,8 +26,8 @@ export class SolicitudesEmpresasComponent implements OnInit {
   }
 
   getEnterprises() {
-    this.enterpriseService.getInProcessEnterprises().subscribe(enterprises => {
-      this.enterprises = enterprises;
+    this.enterpriseService.getInProcessEnterprises().subscribe((enterprises: any) => {
+      this.enterprises = enterprises.data;
     });
   }
 

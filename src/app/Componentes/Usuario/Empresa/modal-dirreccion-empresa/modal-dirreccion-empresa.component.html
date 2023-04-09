@@ -1,134 +1,73 @@
-<div class="card " style="width: 28rem;" align="center">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h4 class="text-start">Cambiar dirreccion</h4>  
-      <button type="button" class="btn-close shadow-none" ></button>
-    </div>
-      <div class="card-body"> 
-        <form  >
-         <div class="row">
-            <span class="mobile-text mt-2 text-center">Para cambiar la dirreccion, llena los siguientes campos.</span><br><br>
-          
+<div class="card" style="width: 28rem;" align="center">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h4 class="text-start">Cambiar dirección</h4>  
+    <button type="button" class="btn-close shadow-none" (click)="close()"></button>
+  </div>
+  <div class="card-body"> 
+    <form [formGroup]="addressEnterpriseForm" (ngSubmit)="addressEnterpriseForm.value">
+      <div class="row">
+        <span class="mobile-text mt-2 text-center">Para cambiar la dirrección, llena los siguientes campos.</span><br><br>
           <div class="col-7 mt-2">
             <div class="form-group">
               <label for="calle">Calle</label>
               <input type="text" formControlName="calle" class="form-control" placeholder="Ingresa el nombre de la calle" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" maxlength="40">  
-            <!--
-              <div *ngIf="enterpriseForm.get('calle')?.invalid && (enterpriseForm.get('calle')?.touched || enterpriseForm.get('calle')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
-                <span class="error-message" *ngIf="enterpriseForm.get('calle')?.errors?.['required']">El campo calle es obligatorio.</span>
-                <span class="error-message" *ngIf="enterpriseForm.get('calle')?.errors?.['minlength']">El campo calle debe tener un mínimo de 3 caracteres.<br></span>
-                <span class="error-message" *ngIf="enterpriseForm.get('calle')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
-              </div> -->
+              <div *ngIf="addressEnterpriseForm.get('calle')?.invalid && (addressEnterpriseForm.get('calle')?.touched || addressEnterpriseForm.get('calle')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('calle')?.errors?.['required']">El campo calle es obligatorio.</span>
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('calle')?.errors?.['minlength']">El campo calle debe tener un mínimo de 3 caracteres.<br></span>
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('calle')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
+              </div>
             </div>
           </div>
           <div class="col-5 mt-2">
             <div class="form-group">
               <label for="numero">Número</label>
               <input type="text" formControlName="numero" class="form-control" placeholder="Ingresa el número" maxlength="5">
-             <!--
-              <div *ngIf="enterpriseForm.get('numero')?.invalid && (enterpriseForm.get('numero')?.touched || enterpriseForm.get('numero')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
-                <span class="error-message" *ngIf="enterpriseForm.get('numero')?.errors?.['required']">El campo número es obligatorio.<br></span>
-                <span class="error-message" *ngIf="enterpriseForm.get('numero')?.errors?.['pattern']">El campo número solo acepta números.</span>
-              </div>-->
+              <div *ngIf="addressEnterpriseForm.get('numero')?.invalid && (addressEnterpriseForm.get('numero')?.touched || addressEnterpriseForm.get('numero')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('numero')?.errors?.['required']">El campo número es obligatorio.<br></span>
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('numero')?.errors?.['pattern']">El campo número solo acepta números.</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="row mt-2">
           <div class="col-7">
-            <div class="form-group">
-              <label for="colonia">Colonia</label>
-              <input type="text" formControlName="colonia" class="form-control" placeholder="Ingresa el nombre de la colonia" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" maxlength="40">   
-           
-           <!--   <div *ngIf="enterpriseForm.get('colonia')?.invalid && (enterpriseForm.get('colonia')?.touched || enterpriseForm.get('colonia')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
-                <span class="error-message" *ngIf="enterpriseForm.get('colonia')?.errors?.['required']">El campo calle es obligatorio.</span>
-                <span class="error-message" *ngIf="enterpriseForm.get('colonia')?.errors?.['minlength']">El campo calle debe tener un mínimo de 3 caracteres.<br></span>
-                <span class="error-message" *ngIf="enterpriseForm.get('colonia')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
-              </div> -->
+          |<div class="form-group">
+            <label for="colonia">Colonia</label>
+            <input type="text" formControlName="colonia" class="form-control" placeholder="Ingresa el nombre de la colonia" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" maxlength="40">   
+            <div *ngIf="addressEnterpriseForm.get('colonia')?.invalid && (addressEnterpriseForm.get('colonia')?.touched || addressEnterpriseForm.get('colonia')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+              <span class="error-message" *ngIf="addressEnterpriseForm.get('colonia')?.errors?.['required']">El campo calle es obligatorio.</span>
+              <span class="error-message" *ngIf="addressEnterpriseForm.get('colonia')?.errors?.['minlength']">El campo calle debe tener un mínimo de 3 caracteres.<br></span>
+              <span class="error-message" *ngIf="addressEnterpriseForm.get('colonia')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
+            </div>
             </div>
           </div>
           <div class="col-5">
             <div class="form-group">
               <label for="cp">Código postal</label>
-              <input type="text" formControlName="cp" class="form-control" placeholder="Ingresa el código postal" maxlength="5">
-              
-           <!--   <div *ngIf="enterpriseForm.get('cp')?.invalid && (enterpriseForm.get('cp')?.touched || enterpriseForm.get('cp')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
-                <span class="error-message" *ngIf="enterpriseForm.get('cp')?.errors?.['required']">El campo número es obligatorio.<br></span>
-                <span class="error-message" *ngIf="enterpriseForm.get('cp')?.errors?.['minlength']">El campo calle debe tener un mínimo de 5 caracteres.<br></span>
-                <span class="error-message" *ngIf="enterpriseForm.get('cp')?.errors?.['pattern']">El campo número solo acepta números.</span>
-              </div>-->
-
+              <input type="text" formControlName="cp" class="form-control" placeholder="Ingresa el código postal" maxlength="5">   
+              <div *ngIf="addressEnterpriseForm.get('cp')?.invalid && (addressEnterpriseForm.get('cp')?.touched || addressEnterpriseForm.get('cp')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('cp')?.errors?.['required']">El campo número es obligatorio.<br></span>
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('cp')?.errors?.['minlength']">El campo calle debe tener un mínimo de 5 caracteres.<br></span>
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('cp')?.errors?.['pattern']">El campo número solo acepta números.</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row mt-2">
-          <div class="col-7">
-            <div class="form-group">
-              <label for="ciudad">Ciudad</label>
-              <input type="text" formControlName="ciudad" class="form-control" placeholder="Ingresa el nombre de la ciudad" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" maxlength="40">   
-            <!--
-              <div *ngIf="enterpriseForm.get('ciudad')?.invalid && (enterpriseForm.get('ciudad')?.touched || enterpriseForm.get('ciudad')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
-                <span class="error-message" *ngIf="enterpriseForm.get('ciudad')?.errors?.['required']">El campo calle es obligatorio.</span>
-                <span class="error-message" *ngIf="enterpriseForm.get('ciudad')?.errors?.['minlength']">El campo calle debe tener un mínimo de 3 caracteres.<br></span>
-                <span class="error-message" *ngIf="enterpriseForm.get('ciudad')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
-              </div> -->
-            </div>
-          </div>
-          <div class="col-5">
-            <div class="form-group">
-              <label for="estado">Estado</label>
-              <select formControlName="estado" class="form-select shadow-none">
-                <option value="" selected disabled>Selecciona el estado</option>
-                <option value="Aguascalientes">Aguascalientes</option>
-                <option value="Baja California">Baja California</option>
-                <option value="Baja California Sur">Baja California Sur</option>
-                <option value="Campeche">Campeche</option>
-                <option value="Coahuila">Coahuila</option>
-                <option value="Colima">Colima</option>
-                <option value="Chiapas">Chiapas</option>
-                <option value="Chihuahua">Chihuahua</option>
-                <option value="Ciudad de México">Ciudad de México</option>
-                <option value="Durango">Durango</option>
-                <option value="México">Estado de México</option>
-                <option value="Guanajuato">Guanajuato</option>
-                <option value="Guerrero">Guerrero</option>
-                <option value="Hidalgo">Hidalgo</option>
-                <option value="Jalisco">Jalisco</option>
-                <option value="Michoacán">Michoacán</option>
-                <option value="Morelos">Morelos</option>
-                <option value="Nayarit">Nayarit</option>
-                <option value="Nuevo León">Nuevo León</option>
-                <option value="Oaxaca">Oaxaca</option>
-                <option value="Puebla">Puebla</option>
-                <option value="Querétaro">Querétaro</option>
-                <option value="Quintana Roo">Quintana Roo</option>
-                <option value="San Luis Potosí">San Luis Potosí</option>
-                <option value="Sinaloa">Sinaloa</option>
-                <option value="Sonora">Sonora</option>
-                <option value="Tabasco">Tabasco</option>
-                <option value="Tamaulipas">Tamaulipas</option>
-                <option value="Tlaxcala">Tlaxcala</option>
-                <option value="Veracruz">Veracruz</option>
-                <option value="Yucatán">Yucatán</option>
-                <option value="Zacatecas">Zacatecas</option>
-              </select>
-            </div>
-          </div>
-        </div>
-         
-        </form>  
-      </div>
-      <div class="card-footer text-end text-body-secondary">
-        <button type="button" class="btn btn-danger"
- 
-          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-          --bs-btn-font-size: .75rem;margin-right: 10px;">
-          Cambiar
-        </button>
-        <button type="button" class="btn btn-dark" 
-          
-          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-          --bs-btn-font-size: .75rem;margin-right: 10px;">
-          Cancelar
-        </button>       
-      </div>
+      </form>  
     </div>
+    <div class="card-footer text-end text-body-secondary">
+      <button type="button" class="btn btn-danger"
+        (click)="onSubmit(addressEnterpriseForm.value)"
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+        --bs-btn-font-size: .75rem;margin-right: 10px;">
+        Cambiar
+      </button>
+      <button type="button" class="btn btn-dark" 
+         (click)="close()" 
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+        --bs-btn-font-size: .75rem;margin-right: 10px;">
+        Cancelar
+      </button>       
+    </div>
+  </div>
     

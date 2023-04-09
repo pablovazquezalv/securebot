@@ -12,6 +12,8 @@ export class EnterpriseService {
   private createEnterpriseUrl = environment.API_URL + '/company';
   private getActiveEnterprisesUrl = environment.API_URL + '/companies';
   private getInProcessEnterprisesUrl = environment.API_URL + '/process/companies';
+  private updateCompanyUrl = environment.API_URL + '/update/company';
+  private addressCompanyUrl = environment.API_URL + '/address/company';
 
   constructor(private http: HttpClient) { }
 
@@ -36,6 +38,20 @@ export class EnterpriseService {
         retry(3),
         catchError(this.handleError)
       )
+  }
+
+  updateCompany(enterprise: Enterprise, id: number) {
+    return this.http.put(this.updateCompanyUrl + '/' + id, enterprise)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateAddressCompany(enterprise: Enterprise, id: number) {
+    return this.http.put(this.addressCompanyUrl + '/' + id, enterprise)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   getSearchingEnterprises(company: String): Observable<any> {
