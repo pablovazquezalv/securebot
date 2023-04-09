@@ -20,18 +20,11 @@ export class VerusuariosComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
-    // console.log(this.users)
-    // console.log(this.total)
-    // console.log(this.perPage)
-    // console.log(this.currentPage)
   }
 
   getUsers() {
     this.userService.getUsers().subscribe( users => {
       this.users = users.data
-      // this.total = users.total
-      // this.perPage = users.perPage
-      // this.currentPage = users.page
     });
   }
 

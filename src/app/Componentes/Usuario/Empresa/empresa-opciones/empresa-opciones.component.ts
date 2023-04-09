@@ -10,10 +10,12 @@ import { map } from 'rxjs/operators';
 })
 export class EmpresaOpcionesComponent implements OnInit {
   hasEnterprise: boolean = false;
+  isInProcess: boolean = false;
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     this.hasCompany();
+    this.isCompanyInProcess();
   }
 
   hasCompany() {
@@ -23,6 +25,17 @@ export class EmpresaOpcionesComponent implements OnInit {
           this.hasEnterprise = true;
         } else {
           this.hasEnterprise = false;
+        }
+      })).subscribe();
+  }
+
+  isCompanyInProcess() {
+    this.userService.isCompanyInProcess().pipe(
+      map(isCompanyInProcess => {
+        if(isCompanyInProcess) {
+          this.isInProcess = true;
+        } else {
+          this.isInProcess = false;
         }
       })).subscribe();
   }

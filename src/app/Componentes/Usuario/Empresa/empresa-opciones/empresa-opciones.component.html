@@ -1,44 +1,44 @@
-
 <!--SI NO TIENE EMPRESA MOSTRAMOS ESTO-->
-  <div class="container mt-4" *ngIf="!hasEnterprise">
-    <p class="fs-4 text-center"></p><p class="fw-medium fs-4 text-center">  Parece ser que aún no perteneces a ninguna empresa. Para empezar a monitorear tus carritos necesitas ser parte de alguna. ¿Qué quieres hacer?.</p>
-    <div class="row">
-      <div class="col-sm-6 mb-3 mb-sm-0">
-        <div class="card">
-          <div class="card-body text-center">
-            <h2 class="card-title ">Crear empresa</h2>
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-workspace text-center" viewBox="0 0 16 16">
-              <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-              <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"/>
-            </svg>
-            <p class="card-text mt-3 fs-6">
-                Consiste en llenar una solicitud que despues sera evaluada por el administrador para ver si cumple con los requisitos para ser dada de alta.</p>
-              <button type="button" (click)="crearEmpresa()" class="btn btn-danger">Quiero crearla!</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body text-center">
-              <h2 class="card-title text-center">Afiliarse a empresa</h2>
-           
-              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
-                <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z"/>
-                <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V1Zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3V1Z"/>
-              </svg>
-              <p class="card-text mt-3 fs-6">Si no tienes la necesidad de crear una empresa, entonces afiliate una,donde tendras que esperar que se te acepte para pertenecer a ella.</p>
-              <button type="button" (click)="afiliarEmpresa()" class="btn btn-danger">Quiero afiliarme a una!</button>
-            </div>
-          </div>
+<div class="container mt-4" *ngIf="!hasEnterprise">
+  <p class="fs-4 text-center"></p><p class="fw-medium fs-4 text-center">Parece ser que aún no perteneces a ninguna empresa. Para empezar a monitorear tus carritos necesitas ser parte de alguna. ¿Qué quieres hacer?</p>
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body text-center">
+          <h2 class="card-title ">Crear una empresa</h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-workspace text-center" viewBox="0 0 16 16">
+            <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+            <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"/>
+          </svg>
+          <p class="card-text mt-3 fs-6">
+              Si la empresa a la que perteneces aún no hace uso de nuestros servicios, deberás llenar una solicitud con los datos de tu empresa que posteriormente será evaluada por un administrador, para ver si cumple con los requisitos para ser dada de alta. Te enviaremos un correo en cuanto se revise tu solicitud.
+          </p>
+          <button type="button" (click)="crearEmpresa()" class="btn btn-danger">Quiero crearla</button>
         </div>
       </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <h2 class="card-title text-center">Afiliarse a una empresa</h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+            <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z"/>
+            <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V1Zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3V1Z"/>
+          </svg>
+          <p class="card-text mt-3 fs-6">Si la empresa a la que perteneces ya hace uso de nuestros servicios entonces, afíliate a ella. Deberás seleccionarla de entre todas las empresas y esperar a que el dueño de esta te acepte para pertenecer a la misma. Te enviaremos un correo si es que se te acepta.</p>
+          <button type="button" (click)="afiliarEmpresa()" class="btn btn-danger">Quiero afiliarme</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-
+<div *ngIf="isInProcess">
+  Prueba de que si funciona. Aquí Pablito va el mensaje de cuando está en proceso gg.
+</div>
 
 <!--SI TIENE EMPRESA Y ES EL CEO-->
-<div class="container-fluid " *ngIf="hasEnterprise">
+<div class="container-fluid " *ngIf="hasEnterprise && !isInProcess">
   <div class="row">
     <div class=" col-12 col-sm-12 col-md-12 col-lg-4 col-xs-12">
       <ul class="nav flex-column">

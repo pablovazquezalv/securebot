@@ -26,6 +26,7 @@ export class UserService {
   private resendCodeUrl = environment.API_URL + '/user/code';
   private recoverPasswordUrl = environment.API_URL + '/recover/password';
   private userComapnyUrl = environment.API_URL + '/user/company';
+  private userRequestUrl = environment.API_URL + '/user/request';
 
   private userLoggedIn = new Subject<boolean>();
   private signedRoute?: string;
@@ -182,6 +183,14 @@ export class UserService {
 
   hasEnterprise() {
     return this.http.get(this.userComapnyUrl)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  isCompanyInProcess() {
+    return this.http.get(this.userRequestUrl)
       .pipe(
         retry(3),
         catchError(this.handleError)
