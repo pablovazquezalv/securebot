@@ -50,4 +50,23 @@ body{
     .slow-spin {
       animation-duration: 3.5s; /* Doble de tiempo de animación */
     }
+    .texto-uno{
+      font-size: 50px;  
+      font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+      margin-bottom: -20px;
+      
+    }
     
+    .texto-dos{
+      font-size: 40px;
+      font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+      
+      margin-bottom: 20px;
+    
+    }
+    
+    .texto-tres{
+      font-size: 30px;
+      font-family:  'Segoe UI', Roboto;
+      margin-bottom: 10px;
+    }
