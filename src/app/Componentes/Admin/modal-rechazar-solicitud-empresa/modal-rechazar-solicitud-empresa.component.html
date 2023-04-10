@@ -11,14 +11,10 @@
         <p class="card-text mt-2">¿Estás seguro de que quieres rechazar esta solicitud?</p>
         <div class="mb-3 text-start">
             <label for="Motivo" class="mobile-text">Motivo</label>
-            <input type="text" formControlName="motivo" class="form-control" placeholder="Escribe el motivo por el cual rechazas la solicitud" maxlength="40" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$">
-          
-          <!--<div *ngIf="nameForm.get('name')?.invalid && (nameForm.get('name')?.touched || nameForm.get('name')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
-              <span class="error-message" *ngIf="nameForm.get('motivo')?.errors?.['required']">El campo nombre es obligatorio.</span>
-              <span class="error-message" *ngIf="nameForm.get('motivo')?.errors?.['minlength']">El campo nombre debe tener un mínimo de 2 caracteres.<br></span>
-              <span class="error-message" *ngIf="nameForm.get('motivo')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
-            </div>-->  
-          </div>
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Escribe el motivo" id="floatingTextarea"></textarea>
+              <label for="floatingTextarea">Escribe el motivo</label>
+            </div>
     </div>
     <div class="card-footer text-end text-body-secondary">
         <button type="button" class="btn btn-danger"
