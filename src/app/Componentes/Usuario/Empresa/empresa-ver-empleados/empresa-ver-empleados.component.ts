@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class EmpresaVerEmpleadosComponent {
   
-	
+	tieneSolicitud:boolean = false;
   constructor(private router:Router) { }
 
   
@@ -27,6 +27,11 @@ export class EmpresaVerEmpleadosComponent {
   verEmpleados()
   {
     this.router.navigate(['/ver-empleados']);
+  }
+
+  verSolicitudes()
+  {
+    this.router.navigate(['/aceptar-empleados']);
   }
 
   carrosEmpresa()

@@ -14,6 +14,7 @@ export class VerEmpresasComponent implements OnInit {
   pageSize = 5;
   desde:number = 0;
   hasta:number = 5;
+  tieneSolicitud:boolean = false;
   constructor(private enterpriseService: EnterpriseService, private router: Router) { }
 
   ngOnInit() {
@@ -30,6 +31,11 @@ export class VerEmpresasComponent implements OnInit {
     });
   }
 
+  verSolicitudes()
+  {
+    this.router.navigate(['/solicitudes-empresa']);
+  }
+  
   cambiarPagina(e:PageEvent)
   {
     this.desde = e.pageIndex * e.pageSize

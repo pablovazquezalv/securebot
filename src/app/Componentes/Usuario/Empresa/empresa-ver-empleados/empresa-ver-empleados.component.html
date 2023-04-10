@@ -24,9 +24,31 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-                <br>
-
-                <h2 class="text-center">Tus Empleados</h2>
+                
+                <div class="container mt-3">
+                  <div class="row">
+                    <div class="col-4">
+                      
+                    </div>
+                  <div class="col-4">
+                   <h2 class="text-center">Tus Empleados</h2>
+                  </div>
+                  <div class="col-4 d-grid gap-2 d-md-flex  justify-content-md-end">
+                    <button type="button" (click)="verSolicitudes()" class="btn btn-light position-relative" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .95rem;display: flex; flex-direction: column; justify-content: center;"> 
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="margin-left: 20px;" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                      </svg>
+                      Solicitudes
+                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" *ngIf="tieneSolicitud">
+                        23
+                      </span>
+                      <span class="sinsolicitudes"*ngIf="!tieneSolicitud" ></span>
+                    </button>
+                    
+                  </div>
+                </div>
+                </div>
+                
                 <br>
                 <div class="container">
                   <div class="row table-responsive">
