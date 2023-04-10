@@ -129,7 +129,7 @@ export class EmpresaOpcionesComponent implements OnInit {
   }
   
   solicitudesDeEmpleados() {
-    this.router.navigate(['/aceptar-empleados']);
+    this.router.navigate(['/solicitudes-empleados']);
   }
   
   empresaOpciones() {
@@ -137,7 +137,7 @@ export class EmpresaOpcionesComponent implements OnInit {
   }
 
   verEmpleados() {
-    this.router.navigate(['/ver-empleados']);
+    this.router.navigate(['/empleados']);
   }
 
   carrosEmpresa() {

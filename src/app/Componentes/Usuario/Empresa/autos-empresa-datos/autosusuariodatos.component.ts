@@ -13,7 +13,7 @@ export class AutosusuariodatosComponent {
 
   solicitudesDeEmpleados()
   {
-    this.router.navigate(['/aceptar-empleados']);
+    this.router.navigate(['/solicitudes-empleados']);
   }
 
 
@@ -22,7 +22,7 @@ export class AutosusuariodatosComponent {
   }
   verEmpleados()
   {
-    this.router.navigate(['/ver-empleados']);
+    this.router.navigate(['/empleados']);
   }
 
   carrosEmpresa()

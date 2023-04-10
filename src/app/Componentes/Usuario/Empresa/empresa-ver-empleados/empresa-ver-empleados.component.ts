@@ -16,7 +16,7 @@ export class EmpresaVerEmpleadosComponent {
   
   solicitudesDeEmpleados()
   {
-    this.router.navigate(['/aceptar-empleados']);
+    this.router.navigate(['/solicitudes-empleados']);
   }
 
 
@@ -26,12 +26,12 @@ export class EmpresaVerEmpleadosComponent {
   }
   verEmpleados()
   {
-    this.router.navigate(['/ver-empleados']);
+    this.router.navigate(['/empleados']);
   }
 
   verSolicitudes()
   {
-    this.router.navigate(['/aceptar-empleados']);
+    this.router.navigate(['/solicitudes-empleados']);
   }
 
   carrosEmpresa()

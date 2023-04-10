@@ -18,7 +18,7 @@ export class EmpresaAceptarEmpleadosComponent {
 
   solicitudesDeEmpleados()
   {
-    this.router.navigate(['/aceptar-empleados']);
+    this.router.navigate(['/solicitudes-empleados']);
   }
 
 
@@ -27,7 +27,7 @@ export class EmpresaAceptarEmpleadosComponent {
   }
   verEmpleados()
   {
-    this.router.navigate(['/ver-empleados']);
+    this.router.navigate(['/empleados']);
   }
 
   carrosEmpresa()
