@@ -19,6 +19,8 @@ export class EmpresaOpcionesComponent implements OnInit {
   hasEnterprise: boolean = false;
   isInProcess: boolean = false;
   isFormDirty: boolean = false;
+  errorMessage = null;
+  show = true;
 
   nameDefaultValue: string = '';
   emailDefaultValue: string = '';
@@ -41,6 +43,7 @@ export class EmpresaOpcionesComponent implements OnInit {
     activity: '',
   };
 
+  
   constructor(private router: Router, private userService: UserService, private enterpriseService: EnterpriseService, private fb: FormBuilder, public dialog: MatDialog) { 
     this.updateEnterpriseForm = this.fb.group({
       name: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
@@ -97,9 +100,25 @@ export class EmpresaOpcionesComponent implements OnInit {
   }
 
   updateEnterprise(values: Enterprise) {
-    if(this.updateEnterpriseForm.valid) {
-      this.enterpriseService.updateCompany(values, this.enterprise.id).subscribe(() => location.reload())
-    }
+    if(this.updateEnterpriseForm.valid) 
+    {
+      this.enterpriseService.updateCompany(values, this.enterprise.id).subscribe((response:any)=>
+      {
+        if(response.status == 200) {
+          location.reload();
+        }
+        else{
+          this.errorMessage = response.message;
+          this.show = true;
+        }
+      },
+      (error) => {
+        this.errorMessage = error.message;
+        this.show = true;
+      }
+
+     
+      ) }
   }
 
   openModal() { 

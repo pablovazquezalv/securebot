@@ -12,6 +12,8 @@ import { UserService } from 'src/app/Services/user.service';
 @Injectable()
 export class ModalRecuperarContrasenaComponent {
   recoverPasswordForm: FormGroup;
+  errorMessage = null;
+  show = true;
   constructor(public dialog: MatDialog, private userService: UserService, private formBuilder: FormBuilder) {
     this.recoverPasswordForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$')])]
@@ -23,9 +25,26 @@ export class ModalRecuperarContrasenaComponent {
   }
 
   onSubmit(data: JSON) {
-    if(this.recoverPasswordForm.valid) {
-      this.userService.recoverPassword(data).subscribe();
-      this.close();
+    if(this.recoverPasswordForm.valid)
+    {
+      this.userService.recoverPassword(data).subscribe((response:any)=> 
+      {
+        if(response.status === 200) 
+        {
+          
+          this.close();
+        }
+        else {
+          this.errorMessage = response.message;
+          this.show = true; 
+        }
+      },
+      (error) => {
+        this.errorMessage = error.message;
+        this.show = true;
+        console.log("Error");
+      });
+      
     }
   }
 }

@@ -16,6 +16,9 @@ export class RegistrarseComponent implements OnInit {
   user?: User;
   hasId: boolean = false;
   id: number = 0;
+  
+  errorMessage = null;
+  show = true;
 
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
     this.registerForm = this.fb.group({
@@ -56,6 +59,16 @@ export class RegistrarseComponent implements OnInit {
           localStorage.setItem('id', response.data.id);
           this.router.navigate(['/instrucciones']);
         } 
+        else {
+          this.errorMessage = response.message;
+          console.log("Error: ", this.errorMessage);
+          this.show = true; 
+        }
+      }
+      , (error) => {
+        this.errorMessage = error.message;
+        this.show = true;
+        console.log("Error: ", this.errorMessage);
       });
     } else {
       if (this.registerForm.valid && values.password === values.password_confirmation && localStorage.getItem('id')) {

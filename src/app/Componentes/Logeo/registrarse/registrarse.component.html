@@ -1,8 +1,10 @@
 
 <div class="vh-100 w-100 imagen">
   <div class="d-flex justify-content-center container">
+
     <div class="card py-5 px-3 ">
       <h5 class="m-0 text-center">Crear cuenta</h5>
+      
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
           <div class="mb-3">
             <label for="name" class="mobile-text">Nombre</label>
@@ -46,7 +48,9 @@
             <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
               <span class="error-message" *ngIf="registerForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.</span>
               <span class="error-message" *ngIf="registerForm.get('email')?.errors?.['pattern']">El campo correo electrónico no es válido.</span>
+            
             </div>
+            
           </div>
           <div class="mb-3">
             <label for="password" class="mobile-text">Contraseña</label>
@@ -75,5 +79,12 @@
             <a class="fw-bold text-danger cursor" (click)="login()">Inicia sesión</a>
         </div>  
     </div>
+  
+    
+  </div>
+  <div *ngIf="errorMessage" style="position: fixed; top: 10px; right: 10px;">
+    <ngb-toast *ngIf="show" class="fondotoast" [autohide]="true" [delay]="4000" (hidden)="show=false">
+      {{ errorMessage }}
+    </ngb-toast>
   </div>
 </div>

@@ -20,6 +20,9 @@ export class IniciosesionComponent {
   //errors
   showError: boolean = false;
   public apiFailed: boolean = false;
+  errorMessage = null;
+  show = true;
+
 
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService, public dialog: MatDialog) {
     this.loginForm = this.fb.group({
@@ -28,15 +31,28 @@ export class IniciosesionComponent {
     });
   }
 
-  onSubmit(values: User) {
-    if(this.loginForm.valid) {
+  onSubmit(values: User) 
+  {
+    if(this.loginForm.valid)
+     {
       this.userService.login(values).subscribe((response: any) => {
         localStorage.setItem('token', response.token);
-        if(response.status === 200) {
+        if(response.status === 200) 
+        {
           if(this.userService.getUserLoggedIn()) {
             location.assign('/inicio');
           }
         }
+        else {
+          this.errorMessage = response.message;
+          this.show = true; 
+        }
+      },
+      (error) => {
+        this.errorMessage = error.message;
+        this.show = true;
+
+        
       });
     }
   }

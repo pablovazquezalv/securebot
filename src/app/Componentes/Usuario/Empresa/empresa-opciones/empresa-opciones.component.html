@@ -1,5 +1,6 @@
 <!--SI NO TIENE EMPRESA MOSTRAMOS ESTO-->
 <div class="container mt-4" *ngIf="!hasEnterprise">
+
   <p class="fs-4 text-center"></p><p class="fw-medium fs-4 text-center">Parece ser que aún no perteneces a ninguna empresa. Para empezar a monitorear tus carritos necesitas ser parte de alguna. ¿Qué quieres hacer?</p>
   <div class="row">
     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -83,6 +84,11 @@
     </div>
     <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xs-12">
       <div class="container">
+        <div *ngIf="errorMessage" class="arriba">
+          <ngb-toast *ngIf="show" class="fondotoast" [autohide]="true" [delay]="4000" (hidden)="show=false">
+            {{ errorMessage }}
+          </ngb-toast>
+        </div> 
         <div class="row">
           <div class="col-12">
             <div class="card">

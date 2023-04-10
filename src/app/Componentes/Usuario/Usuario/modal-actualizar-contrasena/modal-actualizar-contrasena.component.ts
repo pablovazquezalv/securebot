@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/user.service';
 import { User } from 'src/app/Interfaces/user.interface';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-modal-actualizar-contrasena',
@@ -15,6 +16,8 @@ export class ModalActualizarContrasenaComponent {
   passwordForm: FormGroup;
   user?: User;
 
+  errorMessage = null;
+  show = true;
   constructor(public dialog: MatDialog, private userService: UserService, private formBuilder: FormBuilder) {
     this.passwordForm = this.formBuilder.group({
       password: ['', Validators.compose([Validators.required, Validators.minLength(8)])], 
@@ -27,10 +30,30 @@ export class ModalActualizarContrasenaComponent {
     this.dialog.closeAll();
   }
 
-  onSubmit(user: User) {
-    if(this.passwordForm.valid) {
-      this.userService.updatePassword(user).subscribe(() => location.reload());
-      this.close();
+  onSubmit(user: User) 
+  {
+    if(this.passwordForm.valid) 
+    {
+      //this.userService.updatePassword(user).subscribe(() => location.reload());
+      //this.close();
+      this.userService.updatePassword(user).subscribe((response: any) => {
+        if(response.status === 200) 
+        {
+          location.reload();
+          this.close();
+        }
+        else {
+          this.errorMessage = response.message;
+          this.show = true; 
+        }
+      },
+      (error) => {
+        this.errorMessage = error.message;
+        this.show = true;
+        console.log("Error");
+
+      });
     }
+
   }
 }

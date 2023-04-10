@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class CodigotelComponent implements OnInit {
   codeForm: FormGroup;
   id: number = 0;
+  errorMessage = null;
+  show = true;
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.codeForm = this.fb.group({
@@ -36,11 +38,20 @@ export class CodigotelComponent implements OnInit {
 
     if(this.codeForm.valid) {
       this.userService.verifyPhone(jsonString).subscribe((response: any) => {
-        if(response.status == 200) {
+        if(response.status == 200)
+         {
           this.router.navigate(['/login']);
           localStorage.removeItem('signedRoute');
           localStorage.removeItem('id');
+        }else {
+          this.errorMessage = response.message;
+          this.show = true; // Agregar esta línea para mostrar la alerta
         }
+      },
+      (error) => {
+        this.errorMessage|| "El código ingresado es incorrecto"  ;
+        this.show = true; // Agregar esta línea para mostrar la alerta
+
       })
     }
   }
@@ -51,9 +62,20 @@ export class CodigotelComponent implements OnInit {
 
   reenviarCodigo() {
     this.userService.resendCode(this.id).subscribe((response: any) => {
-      if(response.status == 200) {
+      if(response.status == 200)
+       {
         localStorage.setItem('signedRoute', response.url);
       }
+      else {
+        this.errorMessage = response.message;
+        this.show = true; // Agregar esta línea para mostrar la alerta
+      }
+    },
+    (error) => {
+      this.errorMessage = error.message ;
+      this.show = true; // Agregar esta línea para mostrar la alerta
+
+    
     })
   }
 }

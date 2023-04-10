@@ -17,6 +17,8 @@ export class RolesModificarComponent {
   roleForm: FormGroup;
   user?: User;
   roles?: Role[];
+  errorMessage = null;
+  show = true;
 
   constructor(public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: { id: number }, private userService: UserService, private roleService: RoleService, private formBuilder: FormBuilder) {
     this.roleForm = this.formBuilder.group({
@@ -33,9 +35,25 @@ export class RolesModificarComponent {
   }
 
   onSubmit(user: User) {
-    if(this.roleForm.valid) {
-      this.userService.changeRole(user, this.data.id).subscribe(() => location.reload());
-      this.close();
+    if(this.roleForm.valid) 
+    {
+      this.userService.changeRole(user, this.data.id).subscribe((response: any) => {
+        if(response.status === 200)
+        {
+          location.reload();
+          this.close();
+        }
+        else {
+          this.errorMessage = response.message;
+          this.show = true;
+        }
+      },
+      (error) => {
+        this.errorMessage = error.message;
+        this.show = true;
+
+      });
+      
     }
   }
 }

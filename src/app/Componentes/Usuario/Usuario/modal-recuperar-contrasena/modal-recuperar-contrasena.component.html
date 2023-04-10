@@ -1,4 +1,9 @@
 <div class="card " style="width: 28rem;" align="center">
+  <div *ngIf="errorMessage" class="arriba">
+    <ngb-toast *ngIf="show" class="fondotoast" [autohide]="true" [delay]="4000" (hidden)="show=false">
+      {{ errorMessage }}
+    </ngb-toast>
+  </div> 
   <div class="card-header d-flex justify-content-between align-items-center">
     <h4 class="text-start">Recuperar contraseña</h4>  
     <button type="button" class="btn-close shadow-none" (click)="close()"></button>

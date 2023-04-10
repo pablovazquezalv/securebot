@@ -220,6 +220,6 @@ export class UserService {
       )
     }
 
-    return throwError(() => new Error('Algo malo ha ocurrido; por favor, inténtelo de nuevo más tarde.'));
+    return throwError(() => new Error(error.error.message));
   }
 }

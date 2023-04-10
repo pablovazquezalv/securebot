@@ -29,5 +29,12 @@
         <a class="fw-bold text-danger cursor" (click)="registrarse()">Crea una</a></div>
         <br>
       </div>
+      
+
+      <div *ngIf="errorMessage" style="position: fixed; top: 10px; right: 10px;">
+        <ngb-toast *ngIf="show" class="fondotoast" [autohide]="true" [delay]="4000" (hidden)="show=false">
+          {{ errorMessage }}
+        </ngb-toast>
+      </div>
     </div>
 </div>

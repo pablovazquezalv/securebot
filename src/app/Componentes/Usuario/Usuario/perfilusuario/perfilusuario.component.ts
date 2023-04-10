@@ -53,6 +53,9 @@ export class PerfilusuarioComponent implements OnInit {
   emailChanges: boolean = false;
   hasEnterprise: boolean = false;
 
+  errorMessage = null;
+  show = true;
+  
   constructor(private router: Router, private userService: UserService, public dialog: MatDialog) {
     this.emailForm = new FormBuilder().group({
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$')])]
