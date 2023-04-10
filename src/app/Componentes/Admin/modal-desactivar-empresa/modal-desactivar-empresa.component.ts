@@ -5,29 +5,29 @@ import { EnterpriseService } from 'src/app/Services/enterprise.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-modal-rechazar-solicitud-empresa',
-  templateUrl: './modal-rechazar-solicitud-empresa.component.html',
-  styleUrls: ['./modal-rechazar-solicitud-empresa.component.css']
+  selector: 'app-modal-desactivar-empresa',
+  templateUrl: './modal-desactivar-empresa.component.html',
+  styleUrls: ['./modal-desactivar-empresa.component.css']
 })
 
 @Injectable()
-export class ModalRechazarSolicitudEmpresaComponent {
+export class ModalDesactivarEmpresaComponent {
   enterprise?: Enterprise;
-  rejectForm: FormGroup;
+  disableForm: FormGroup;
 
   constructor(public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: { id: number }, private enterpriseService: EnterpriseService, private fb: FormBuilder) {
-    this.rejectForm = this.fb.group({
+    this.disableForm = this.fb.group({
       motivo: ['', Validators.required]
     });
    }
 
-  close() {
+   close() {
     this.dialog.closeAll();
   }
 
   onSubmit(enterprise: Enterprise) {
-    if(this.rejectForm.valid) {
-      this.enterpriseService.rejectEnterprise(this.data.id, enterprise).subscribe(() => location.reload());
+    if(this.disableForm.valid) {
+      this.enterpriseService.disableEnterprise(this.data.id, enterprise).subscribe(() => location.reload());
       this.close();
     }
   }

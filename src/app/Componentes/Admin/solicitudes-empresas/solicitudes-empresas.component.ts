@@ -4,13 +4,15 @@ import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgFor, NgIf, SlicePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalRechazarSolicitudEmpresaComponent } from '../modal-rechazar-solicitud-empresa/modal-rechazar-solicitud-empresa.component';
 
 @Component({
   selector: 'app-solicitudes-empresas',
   templateUrl: './solicitudes-empresas.component.html',
   standalone: true,
 
-  imports: [NgbToastModule, NgIf,NgFor,MatPaginatorModule,SlicePipe],
+  imports: [NgbToastModule, NgIf, NgFor, MatPaginatorModule, SlicePipe],
   styleUrls: ['./solicitudes-empresas.component.css']
 })
 export class SolicitudesEmpresasComponent implements OnInit {
@@ -19,7 +21,7 @@ export class SolicitudesEmpresasComponent implements OnInit {
   pageSize = 5;
   desde:number = 0;
   hasta:number = 5;
-  constructor(private enterpriseService: EnterpriseService) { }
+  constructor(private enterpriseService: EnterpriseService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getEnterprises();
@@ -28,6 +30,18 @@ export class SolicitudesEmpresasComponent implements OnInit {
   getEnterprises() {
     this.enterpriseService.getInProcessEnterprises().subscribe((enterprises: any) => {
       this.enterprises = enterprises.data;
+    });
+  }
+
+  acceptEnterprise(id: number) {
+    this.enterpriseService.acceptEnterprise(id).subscribe(() => location.reload());
+  }
+
+  openModal(id: number) {
+    const dialogRef = this.dialog.open(ModalRechazarSolicitudEmpresaComponent, {
+      width: '448px',
+      height: 'auto',
+      data: { id: id }
     });
   }
 

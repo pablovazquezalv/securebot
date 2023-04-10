@@ -31,14 +31,14 @@
         </div>
         <div class="row mt-2">
           <div class="col-7">
-          |<div class="form-group">
-            <label for="colonia">Colonia</label>
-            <input type="text" formControlName="colonia" class="form-control" placeholder="Ingresa el nombre de la colonia" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" maxlength="40">   
-            <div *ngIf="addressEnterpriseForm.get('colonia')?.invalid && (addressEnterpriseForm.get('colonia')?.touched || addressEnterpriseForm.get('colonia')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
-              <span class="error-message" *ngIf="addressEnterpriseForm.get('colonia')?.errors?.['required']">El campo calle es obligatorio.</span>
-              <span class="error-message" *ngIf="addressEnterpriseForm.get('colonia')?.errors?.['minlength']">El campo calle debe tener un mínimo de 3 caracteres.<br></span>
-              <span class="error-message" *ngIf="addressEnterpriseForm.get('colonia')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
-            </div>
+            <div class="form-group">
+              <label for="colonia">Colonia</label>
+              <input type="text" formControlName="colonia" class="form-control" placeholder="Ingresa el nombre de la colonia" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" maxlength="40">   
+              <div *ngIf="addressEnterpriseForm.get('colonia')?.invalid && (addressEnterpriseForm.get('colonia')?.touched || addressEnterpriseForm.get('colonia')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('colonia')?.errors?.['required']">El campo calle es obligatorio.</span>
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('colonia')?.errors?.['minlength']">El campo calle debe tener un mínimo de 3 caracteres.<br></span>
+                <span class="error-message" *ngIf="addressEnterpriseForm.get('colonia')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
+              </div>
             </div>
           </div>
           <div class="col-5">

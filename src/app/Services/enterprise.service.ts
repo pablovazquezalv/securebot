@@ -14,6 +14,9 @@ export class EnterpriseService {
   private getInProcessEnterprisesUrl = environment.API_URL + '/process/companies';
   private updateCompanyUrl = environment.API_URL + '/update/company';
   private addressCompanyUrl = environment.API_URL + '/address/company';
+  private acceptCompanyUrl = environment.API_URL + '/accept/company';
+  private rejectCompanyUrl = environment.API_URL + '/reject/company';
+  private disableCompanyUrl = environment.API_URL + '/disable/company';
 
   constructor(private http: HttpClient) { }
 
@@ -64,6 +67,27 @@ export class EnterpriseService {
 
   addEnterprise(company: Number) {
     return this.http.post(environment.API_URL + '/user/company/' + company, "")
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  acceptEnterprise(id: number) {
+    return this.http.put(this.acceptCompanyUrl + '/' + id, "")
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  rejectEnterprise(id: number, enterprise: Enterprise) {
+    return this.http.put(this.rejectCompanyUrl + '/' + id, enterprise)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  disableEnterprise(id: number, enterprise: Enterprise) {
+    return this.http.put(this.disableCompanyUrl + '/' + id, enterprise)
       .pipe(
         catchError(this.handleError)
       );
