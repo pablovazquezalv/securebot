@@ -25,6 +25,7 @@ import { VerEmpleadosEmpresaComponent } from './Componentes/Admin/ver-empleados-
 import { ModalRechazarSolicitudEmpresaComponent } from './Componentes/Admin/modal-rechazar-solicitud-empresa/modal-rechazar-solicitud-empresa.component';
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
+  
   { path: 'inicio', component: InicioComponent, title: 'Inicio - SecureBot' },
   { path: 'conocenos', component: TiposcarrosComponent, title: 'Conócenos' },
     //LOGEO

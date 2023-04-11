@@ -48,6 +48,7 @@
                       <th scope="col">Nombre</th>
                       <th scope="col">Email</th>
                       <th scope="col">Teléfono</th>
+                      <th scope="col">Rol</th>
                       <th scope="col">Acciones</th>       
                     </thead>
                     <tbody class="text-center">
@@ -56,6 +57,9 @@
                           <td>{{ e.name }} {{ e.ap_paterno }} {{ e.ap_materno }}</td>
                           <td>{{ e.email }}</td>
                           <td>{{ e.phone_number }}</td>
+                          <td *ngIf="e.rol_id == 1">Administrador</td>
+                          <td *ngIf="e.rol_id == 2">Dueño de empresa</td>
+                          <td *ngIf="e.rol_id == 3">Empleado</td>
                           <td>
                             <button type="button" class="btn btn-light text-dark border rounded-pill" 
                                 
