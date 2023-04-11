@@ -28,6 +28,10 @@ export class UserService {
   private userComapnyUrl = environment.API_URL + '/user/company';
   private userRequestUrl = environment.API_URL + '/user/request';
   private companyUserUrl = environment.API_URL + '/company/user';
+  private getEmployeesUrl = environment.API_URL + '/employees';
+  private acceptEmployeeUrl = environment.API_URL + '/accept/user';
+  private rejectEmployeeUrl = environment.API_URL + '/reject/user';
+  private disableEmployeeUrl = environment.API_URL + '/disable/user';
 
   private userLoggedIn = new Subject<boolean>();
   private signedRoute?: string;
@@ -205,6 +209,44 @@ export class UserService {
         catchError(this.handleError)
       );
   }
+
+  getEmployees(): Observable<User[]> {
+    return this.http.get<User[]>(this.getEmployeesUrl)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  getEmployeesRequest(): Observable<User[]> {
+    return this.http.get<User[]>(this.getEmployeesUrl + '/request')
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  acceptEmployee(id: number) {
+    return this.http.put(this.acceptEmployeeUrl + '/' + id, "")
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  rejectEmployee(id: number) {
+    return this.http.put(this.rejectEmployeeUrl + '/' + id, "")
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  disableEmployee(id: number, user: User) {
+    return this.http.put(this.disableEmployeeUrl + '/' + id, user)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  
 
   getUserLoggedIn() {
     return this.userLoggedIn.asObservable();

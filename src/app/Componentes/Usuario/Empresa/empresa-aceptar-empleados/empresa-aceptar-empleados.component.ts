@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/Services/user.service';
+import { User } from 'src/app/Interfaces/user.interface';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
 import { NgFor, NgIf } from '@angular/common';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalRechazarEmpleadoComponent } from '../modal-rechazar-empleado/modal-rechazar-empleado.component';
 
 @Component({
   selector: 'app-empresa-aceptar-empleados',
@@ -12,26 +15,47 @@ import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [NgbToastModule, NgIf,NgFor],
   styleUrls: ['./empresa-aceptar-empleados.component.css']
 })
-export class EmpresaAceptarEmpleadosComponent {
+export class EmpresaAceptarEmpleadosComponent implements OnInit {
   show = true;
-  constructor(private router:Router) { }
+  employees: User[] = [];
 
-  solicitudesDeEmpleados()
-  {
-    this.router.navigate(['/solicitudes-empleados']);
+  constructor(private router: Router, private userService: UserService, public dialog: MatDialog) { }
+
+  ngOnInit() {
+    this.getEmployees();
   }
 
+  getEmployees() {
+    this.userService.getEmployeesRequest().subscribe((employees: any) => {
+      this.employees = employees.users;
+    });
+  }
+
+  acceptEmployee(id: number) {
+    this.userService.acceptEmployee(id).subscribe(() => location.reload());
+  }
+
+  openModal(id: number) {
+    const dialogRef = this.dialog.open(ModalRechazarEmpleadoComponent, {
+      width: '448px',
+      height: 'auto',
+      data: { id: id }
+    });
+  }
+
+  solicitudesDeEmpleados() {
+    this.router.navigate(['/solicitudes-empleados']);
+  }
 
   empresaOpciones() {
     this.router.navigate(['/mi-empresa']);
   }
-  verEmpleados()
-  {
+
+  verEmpleados() {
     this.router.navigate(['/empleados']);
   }
 
-  carrosEmpresa()
-  {
+  carrosEmpresa() {
     this.router.navigate(['/autos-usuario']);
   }
 }

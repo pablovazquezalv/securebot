@@ -18,7 +18,6 @@ export class VerEmpresasComponent implements OnInit {
   pageSize = 5;
   desde:number = 0;
   hasta:number = 5;
-  tieneSolicitud:boolean = false;
   constructor(private enterpriseService: EnterpriseService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {

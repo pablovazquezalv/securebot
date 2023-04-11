@@ -49,6 +49,8 @@ import { BuscadorEmpresasComponent } from './Componentes/Usuario/Empresa/buscado
 import { ModalDirreccionEmpresaComponent } from './Componentes/Usuario/Empresa/modal-dirreccion-empresa/modal-dirreccion-empresa.component';
 import { ModalRechazarSolicitudEmpresaComponent } from './Componentes/Admin/modal-rechazar-solicitud-empresa/modal-rechazar-solicitud-empresa.component';
 import { ModalDesactivarEmpresaComponent } from './Componentes/Admin/modal-desactivar-empresa/modal-desactivar-empresa.component';
+import { ModalRechazarEmpleadoComponent } from './Componentes/Usuario/Empresa/modal-rechazar-empleado/modal-rechazar-empleado.component';
+import { ModalEliminarEmpleadoComponent } from './Componentes/Usuario/Empresa/modal-eliminar-empleado/modal-eliminar-empleado.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { ModalDesactivarEmpresaComponent } from './Componentes/Admin/modal-desac
     EmpresaVerEmpleadosComponent,
     ModalDirreccionEmpresaComponent,
     ModalRechazarSolicitudEmpresaComponent,
-    ModalDesactivarEmpresaComponent, 
+    ModalDesactivarEmpresaComponent,
+    ModalRechazarEmpleadoComponent,
+    ModalEliminarEmpleadoComponent, 
   ],
   imports: [
     BrowserModule,
