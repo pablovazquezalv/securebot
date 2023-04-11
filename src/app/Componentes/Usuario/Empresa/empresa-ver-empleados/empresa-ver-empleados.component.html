@@ -21,7 +21,8 @@
             <div class="card">    
               <div class="container mt-3">
                 <div class="row">
-                  <div class="col-4"></div>
+                  <div class="col-4">
+                  </div>
                   <div class="col-4">
                     <h2 class="text-center">Tus empleados</h2>
                   </div>
@@ -36,6 +37,13 @@
                       </span>
                       <span class="sinsolicitudes"*ngIf="count == 0" ></span>
                     </button>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Empleado:</label>
+                    <div class="col-xs-3 col-sm-auto">
+                      <input id="table-filtering-search" class="form-control" type="text"  />
+                    </div>
+                    
                   </div>
                 </div>
               </div>  

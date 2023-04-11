@@ -1,8 +1,34 @@
-<br>
+<br><div class="container">
 <h2 class="text-center">Administrar usuarios</h2>
+<div class="row mt-2">
+  <div class="col-lg-4 col-12  mt-2 text-center">
+    <div class="d-flex d-md-flex justify-content-md-center align-items-center">
+  <label for="table-filtering-search" class="col-1 col-sm-auto col-form-label " >Usuario:</label>
+  <div class="col-3 col-sm-auto">
+    <input id="table-filtering-search" class="form-control" style="margin-left: 10px;" type="text"  />
+  </div>
+    </div>
+</div>
+<div class="col-lg-4 col-12 mt-2 text-center">
+  <div class="btn-group "  role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-light border" style="margin-left: 30px;">Admin</button>
+    <button type="button" class="btn btn-light border">Dueño</button>
+    <button type="button" class="btn btn-light border">Encargado</button>
+    <button type="button" class="btn btn-light border">Empleado</button>
+  </div>
+</div>
+<div class="col-lg-4 col-12 mt-2 ">
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <div class="form-check form-switch custom-switch-lg shadow-none">
+    <input class="form-check-input shadow-none" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+    <label class="form-check-label "style="margin-left: 20px;font-size:19px" for="flexSwitchCheckChecked">Activos</label>
+  </div>
+</div>
+</div>
+</div>
 <br>
-<div class="container">
-  <div class="row table-responsive">
+
+  <div class="row table-responsive mt-2">
     <table class="table table-bordered">
       <thead class="border text-center">
         <th scope="col">ID</th>
