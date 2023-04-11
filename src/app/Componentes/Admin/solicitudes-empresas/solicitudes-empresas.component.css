@@ -4,3 +4,13 @@ ngb-toast {
     right: 20px;
     z-index: 9999;
   }
+  
+  .button-container {
+    white-space: nowrap; /* Evita que los botones se salgan de la línea */
+  }
+  
+  .button-container button {
+    display: inline-block; /* Muestra los botones en línea */
+    margin-right: 10px; /* Separa los botones con un margen */
+  }
+  

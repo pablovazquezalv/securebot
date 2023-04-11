@@ -1,10 +1,8 @@
 <div class="container-fluid ">
   <div class="row">
-    <div class=" col-12 col-sm-12 col-md-12 col-lg-4 col-xs-12">
+    <div class=" col-12 col-sm-12 col-md-12 col-lg-3 col-xs-12">
       <ul class="nav flex-column">
-        <li class="nav-item border-end border-bottom p-3 nav-item-spaced">
-          <a class="nav-link btn" (click)="solicitudesDeEmpleados()">Solicitud de Empleados</a>
-        </li>
+       
         <li class="nav-item border-end  border-bottom p-3 nav-item-spaced">
           <a class="nav-link btn" (click)="verEmpleados()">Empleados</a>
         </li>
@@ -16,7 +14,7 @@
         </li> 
       </ul>
     </div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xs-12">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xs-12">
       <div class="container">
         <ngb-toast *ngIf="show" [autohide]="true" (hidden)="show=false">
           <ng-template ngbToastHeader>
