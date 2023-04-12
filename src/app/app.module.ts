@@ -51,6 +51,7 @@ import { ModalRechazarSolicitudEmpresaComponent } from './Componentes/Admin/moda
 import { ModalDesactivarEmpresaComponent } from './Componentes/Admin/modal-desactivar-empresa/modal-desactivar-empresa.component';
 import { ModalRechazarEmpleadoComponent } from './Componentes/Usuario/Empresa/modal-rechazar-empleado/modal-rechazar-empleado.component';
 import { ModalEliminarEmpleadoComponent } from './Componentes/Usuario/Empresa/modal-eliminar-empleado/modal-eliminar-empleado.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { ModalEliminarEmpleadoComponent } from './Componentes/Usuario/Empresa/mo
     ModalRechazarSolicitudEmpresaComponent,
     ModalDesactivarEmpresaComponent,
     ModalRechazarEmpleadoComponent,
-    ModalEliminarEmpleadoComponent, 
+    ModalEliminarEmpleadoComponent,
+    FilterPipe, 
   ],
   imports: [
     BrowserModule,

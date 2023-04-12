@@ -16,6 +16,7 @@ export class VerusuariosComponent implements OnInit {
   pageSize = 5;
   desde:number = 0;
   hasta:number = 5;
+  filterPost = "";
   constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -23,8 +24,16 @@ export class VerusuariosComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe( users => {
-      this.users = users.data
+    this.userService.getUsers().subscribe(users => {
+      this.users = users.data;
+  
+      // Verificación adicional para ajustar pageSize y desde/hasta
+      if (this.pageSize > this.users.length) {
+        this.pageSize = this.users.length;
+      }
+      if (this.hasta > this.users.length) {
+        this.hasta = this.users.length;
+      }
     });
   }
 
