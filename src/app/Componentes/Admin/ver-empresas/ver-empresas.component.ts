@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalDesactivarEmpresaComponent } from '../modal-desactivar-empresa/modal-desactivar-empresa.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-ver-empresas',
@@ -12,13 +13,20 @@ import { ModalDesactivarEmpresaComponent } from '../modal-desactivar-empresa/mod
   styleUrls: ['./ver-empresas.component.css']
 })
 export class VerEmpresasComponent implements OnInit {
+  filterPost = "";
   enterprises: Enterprise[] = [];
   requests: Enterprise[] = [];
   count: number = 0;
   pageSize = 5;
   desde:number = 0;
   hasta:number = 5;
-  constructor(private enterpriseService: EnterpriseService, private router: Router, public dialog: MatDialog) { }
+  enterpriseForm: FormGroup;
+
+  constructor(private enterpriseService: EnterpriseService, private router: Router, public dialog: MatDialog, private fb: FormBuilder) { 
+    this.enterpriseForm = this.fb.group({
+      company: ['', Validators.compose([Validators.required])],
+    })
+  }
 
   ngOnInit() {
     this.getEnterprises();
@@ -56,5 +64,11 @@ export class VerEmpresasComponent implements OnInit {
   cambiarPagina(e:PageEvent) {
     this.desde = e.pageIndex * e.pageSize
     this.hasta = this.desde + e.pageSize
+  }
+  onSubmit(values: String) {
+    // console.log(values)
+    this.enterpriseService.getSearchingEnterprises(values).subscribe((res) => {
+      this.enterprises = res
+    })
   }
 }

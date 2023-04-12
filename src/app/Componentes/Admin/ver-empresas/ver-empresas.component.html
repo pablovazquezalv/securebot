@@ -20,7 +20,10 @@
   <div class="mb-3 row">
 		<label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Empresa:</label>
 		<div class="col-xs-3 col-sm-auto">
-			<input id="table-filtering-search" class="form-control" type="text"  />
+      <form class="d-flex" role="search" [formGroup]="enterpriseForm" (ngSubmit)="onSubmit(enterpriseForm.value)" >
+        <input class="form-control me-2" type="text" name="company" formControlName="company" class="form-control" placeholder="" aria-label="company">
+        <button class="btn btn-dark" type="submit">Buscar</button>
+      </form>  
 		</div>
 	</div>
 </div>
@@ -39,10 +42,10 @@
         <th scope="col">Acciones</th>       
       </thead>
       <tbody class="text-center">
-        <tr *ngFor="let e of enterprises | slice:desde:hasta">
+        <tr *ngFor="let e of enterprises | filterCompany:filterPost :desde :pageSize | slice:desde:hasta">
           <th class="text-minimo">{{ e.id }}</th>
           <td >{{ e.name }} </td>
-          <td class="text-min">{{ e.calle }} {{ e.numero }}, {{ e.colonia }}, {{ e.ciudad }}, {{ e.estado }}</td>
+          <td class="text-min">{{ e.calle }} {{ e.numero }} {{ e.colonia }} {{ e.ciudad }} {{ e.estado }}</td>
           <td >{{ e.phone }}</td>
           <td class="text-min">{{ e.email }}</td>
           <td>

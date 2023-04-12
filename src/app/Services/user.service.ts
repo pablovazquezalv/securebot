@@ -89,6 +89,14 @@ export class UserService {
       );
   }
 
+  getSearchingUsers(user: String): Observable<any> {
+    console.log(user)
+    return this.http.post<String>(environment.API_URL + "/user/search",user)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
   changeStatus(id: number) {
     const user = this.getUser(id);
     return this.http.put(this.changeStatusUrl + '/' + id, user)

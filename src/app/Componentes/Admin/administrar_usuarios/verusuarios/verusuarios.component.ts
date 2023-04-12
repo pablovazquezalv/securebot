@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalConfirmacionStatusComponent } from '../../modal-confirmacion-status/modal-confirmacion-status.component';
 import { RolesModificarComponent } from '../../roles-modificar/roles-modificar.component';
 import { PageEvent } from '@angular/material/paginator';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-verusuarios',
@@ -17,9 +18,13 @@ export class VerusuariosComponent implements OnInit {
   desde:number = 0;
   hasta:number = 5;
   filterPost = "";
-  st = 1;
-  Infinity = 0;
-  constructor(private userService: UserService, public dialog: MatDialog) { }
+  userForm: FormGroup;
+  filteredUsers: any[] = [];
+  constructor(private userService: UserService, public dialog: MatDialog, private fb: FormBuilder) { 
+    this.userForm = this.fb.group({
+      user: ['', Validators.compose([Validators.required])],
+    })
+  }
 
   ngOnInit() {
     this.getUsers();
@@ -62,9 +67,11 @@ export class VerusuariosComponent implements OnInit {
     this.hasta = this.desde + e.pageSize
   }
 
-  buscar()
-  {
-    this.st = 0
+  onSubmit(values: String) {
+    // console.log(values)
+    this.userService.getSearchingUsers(values).subscribe((res) => {
+      this.users = res
+    })
   }
 }
  
