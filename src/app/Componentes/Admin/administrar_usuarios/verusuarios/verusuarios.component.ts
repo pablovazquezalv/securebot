@@ -17,10 +17,13 @@ export class VerusuariosComponent implements OnInit {
   desde:number = 0;
   hasta:number = 5;
   filterPost = "";
+  st = 1;
+  Infinity = 0;
   constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getUsers();
+    console.log(this.users)
   }
 
   getUsers() {
@@ -34,6 +37,7 @@ export class VerusuariosComponent implements OnInit {
       if (this.hasta > this.users.length) {
         this.hasta = this.users.length;
       }
+
     });
   }
 
@@ -56,6 +60,11 @@ export class VerusuariosComponent implements OnInit {
   {
     this.desde = e.pageIndex * e.pageSize
     this.hasta = this.desde + e.pageSize
+  }
+
+  buscar()
+  {
+    this.st = 0
   }
 }
  
