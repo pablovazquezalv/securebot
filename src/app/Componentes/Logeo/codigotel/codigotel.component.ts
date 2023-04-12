@@ -38,20 +38,14 @@ export class CodigotelComponent implements OnInit {
 
     if(this.codeForm.valid) {
       this.userService.verifyPhone(jsonString).subscribe((response: any) => {
-        if(response.status == 200)
-         {
+        if(response.status == 200) {
           this.router.navigate(['/login']);
           localStorage.removeItem('signedRoute');
           localStorage.removeItem('id');
-        }else {
-          this.errorMessage = response.message;
-          this.show = true; // Agregar esta línea para mostrar la alerta
-        }
-      },
-      (error) => {
-        this.errorMessage|| "El código ingresado es incorrecto"  ;
+        } 
+      }, (error) => {
+        this.errorMessage = error.message;
         this.show = true; // Agregar esta línea para mostrar la alerta
-
       })
     }
   }
@@ -62,20 +56,12 @@ export class CodigotelComponent implements OnInit {
 
   reenviarCodigo() {
     this.userService.resendCode(this.id).subscribe((response: any) => {
-      if(response.status == 200)
-       {
+      if(response.status == 200) {
         localStorage.setItem('signedRoute', response.url);
       }
-      else {
-        this.errorMessage = response.message;
-        this.show = true; // Agregar esta línea para mostrar la alerta
-      }
-    },
-    (error) => {
+    }, (error) => {
       this.errorMessage = error.message ;
       this.show = true; // Agregar esta línea para mostrar la alerta
-
-    
     })
   }
 }

@@ -17,7 +17,7 @@ export class RegistrarseComponent implements OnInit {
   hasId: boolean = false;
   id: number = 0;
   
-  errorMessage = null;
+  errorMessage = '';
   show = true;
 
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
@@ -59,14 +59,8 @@ export class RegistrarseComponent implements OnInit {
           localStorage.setItem('id', response.data.id);
           this.router.navigate(['/instrucciones']);
         } 
-        else {
-          this.errorMessage = response.message;
-          console.log("Error: ", this.errorMessage);
-          this.show = true; 
-        }
-      }
-      , (error) => {
-        this.errorMessage = error.message;
+      }, (error) => {
+        this.errorMessage = "El correo electrónico ya se encuentra en uso.";
         this.show = true;
         console.log("Error: ", this.errorMessage);
       });
@@ -76,6 +70,16 @@ export class RegistrarseComponent implements OnInit {
           if (response.status == 200) {
             this.userService.setSignedRoute(response.url);
             this.router.navigate(['/instrucciones']);
+          }
+        }, (error) => {
+          if(error.status == 400) {
+          this.errorMessage = error.message;
+          this.show = true;
+          console.log("Error: ", this.errorMessage);
+          } else {
+            this.errorMessage = "El correo electrónico ya se encuentra en uso.";
+            this.show = true;
+            console.log("Error: ", this.errorMessage);
           }
         });
       }

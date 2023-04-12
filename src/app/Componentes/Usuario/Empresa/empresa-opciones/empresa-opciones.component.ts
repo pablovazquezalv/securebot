@@ -19,7 +19,7 @@ export class EmpresaOpcionesComponent implements OnInit {
   hasEnterprise: boolean = false;
   isInProcess: boolean = false;
   isFormDirty: boolean = false;
-  errorMessage = null;
+  errorMessage = '';
   show = true;
 
   nameDefaultValue: string = '';
@@ -102,23 +102,15 @@ export class EmpresaOpcionesComponent implements OnInit {
   updateEnterprise(values: Enterprise) {
     if(this.updateEnterpriseForm.valid) 
     {
-      this.enterpriseService.updateCompany(values, this.enterprise.id).subscribe((response:any)=>
-      {
+      this.enterpriseService.updateCompany(values, this.enterprise.id).subscribe((response:any)=>{ 
         if(response.status == 200) {
           location.reload();
         }
-        else{
-          this.errorMessage = response.message;
-          this.show = true;
-        }
-      },
-      (error) => {
-        this.errorMessage = error.message;
+      }, (error) => {
+        this.errorMessage = 'El correo electrónico ya está en uso';
         this.show = true;
-      }
-
-     
-      ) }
+      }) 
+    }
   }
 
   openModal() { 

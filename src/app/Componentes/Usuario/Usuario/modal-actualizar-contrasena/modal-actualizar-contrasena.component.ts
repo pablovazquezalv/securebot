@@ -32,28 +32,17 @@ export class ModalActualizarContrasenaComponent {
 
   onSubmit(user: User) 
   {
-    if(this.passwordForm.valid) 
-    {
-      //this.userService.updatePassword(user).subscribe(() => location.reload());
-      //this.close();
+    if(this.passwordForm.valid) {
       this.userService.updatePassword(user).subscribe((response: any) => {
-        if(response.status === 200) 
-        {
+        if(response.status === 200) {
           location.reload();
           this.close();
         }
-        else {
-          this.errorMessage = response.message;
-          this.show = true; 
-        }
-      },
-      (error) => {
+      }, (error) => {
         this.errorMessage = error.message;
         this.show = true;
         console.log("Error");
-
       });
     }
-
   }
 }
