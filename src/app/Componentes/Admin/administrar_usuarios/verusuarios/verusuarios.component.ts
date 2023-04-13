@@ -25,6 +25,7 @@ export const fadeInOut = trigger('fadeInOut', [
   animations: [fadeInOut],
 })
 export class VerusuariosComponent implements OnInit {
+  rol:Number = 0
   st = 1;
   users: User[] = [];
   pageSize = 5;
@@ -81,13 +82,6 @@ export class VerusuariosComponent implements OnInit {
     this.hasta = this.desde + e.pageSize
   }
 
-  // onSubmit(values: String) {
-  //   // console.log(values)
-  //   this.userService.getSearchingUsers(values).subscribe((res) => {
-  //     this.users = res
-  //   })
-  // }
-
   nextPage()
   {
     if (this.page <= this.users.length)
@@ -108,21 +102,28 @@ export class VerusuariosComponent implements OnInit {
 
   status()
   {
-    console.log(this.st)
     if (this.st == 1)
     {
       this.st = 0
-      this.userService.getUsersAI(this.st).subscribe(users => {
+      this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
         this.users = users.data;
       });
     }
     else
     {
       this.st = 1
-      this.userService.getUsersAI(this.st).subscribe(users => {
+      this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
         this.users = users.data;
       });
     }
+  }
+
+  rolCheck(rol: Number)
+  {
+    this.rol = rol
+    this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
+      this.users = users.data;
+    });
   }
 }
  

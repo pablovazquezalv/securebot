@@ -81,8 +81,10 @@ export class UserService {
       );
   }
 
-  getUsersAI(st: Number): Observable<any> {
-    return this.http.get<any>(environment.API_URL + '/usersAI' + '/' + st)
+  getUsersAI(st: Number, rol: Number): Observable<any> {
+    const ruta = environment.API_URL + '/usersAI' + '/' + st + '/' + rol
+    console.log(ruta)
+    return this.http.get<any>(ruta)
       .pipe(
         retry(3),
         catchError(this.handleError)
