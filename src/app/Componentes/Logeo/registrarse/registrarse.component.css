@@ -7,7 +7,7 @@ background: #ffffff;
 
 backdrop-filter: blur(2px);
   border: 1px solid #fcfcfc;
-  height: auto;
+  height: max-content;
   position: relative;
 }
 
