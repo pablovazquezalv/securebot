@@ -81,6 +81,14 @@ export class UserService {
       );
   }
 
+  getUsersAI(st: Number): Observable<any> {
+    return this.http.get<any>(environment.API_URL + '/usersAI' + '/' + st)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
   getUser(id: number): Observable<User> {
     return this.http.get<User>(this.userUrl + '/' + id)
       .pipe(

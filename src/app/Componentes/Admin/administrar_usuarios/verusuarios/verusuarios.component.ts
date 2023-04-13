@@ -25,6 +25,7 @@ export const fadeInOut = trigger('fadeInOut', [
   animations: [fadeInOut],
 })
 export class VerusuariosComponent implements OnInit {
+  st = 1;
   users: User[] = [];
   pageSize = 5;
   page = 0;
@@ -103,6 +104,25 @@ export class VerusuariosComponent implements OnInit {
   {
     this.page = 0;
     this.filterPost = filterPost;
+  }
+
+  status()
+  {
+    console.log(this.st)
+    if (this.st == 1)
+    {
+      this.st = 0
+      this.userService.getUsersAI(this.st).subscribe(users => {
+        this.users = users.data;
+      });
+    }
+    else
+    {
+      this.st = 1
+      this.userService.getUsersAI(this.st).subscribe(users => {
+        this.users = users.data;
+      });
+    }
   }
 }
  

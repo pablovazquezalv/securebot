@@ -11,6 +11,7 @@ import { Enterprise } from '../Interfaces/enterprise.interface';
 export class EnterpriseService {
   private createEnterpriseUrl = environment.API_URL + '/company';
   private getActiveEnterprisesUrl = environment.API_URL + '/companies';
+  private getInactiveEnterprisesUrl = environment.API_URL + '/inCompanies';
   private getInProcessEnterprisesUrl = environment.API_URL + '/process/companies';
   private updateCompanyUrl = environment.API_URL + '/update/company';
   private addressCompanyUrl = environment.API_URL + '/address/company';
@@ -29,6 +30,14 @@ export class EnterpriseService {
 
   getActiveEnterprises(): Observable<Enterprise[]> {
     return this.http.get<Enterprise[]>(this.getActiveEnterprisesUrl)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      )  
+  }
+
+  getInactiveEnterprises(): Observable<Enterprise[]> {
+    return this.http.get<Enterprise[]>(this.getInactiveEnterprisesUrl)
       .pipe(
         retry(3),
         catchError(this.handleError)
