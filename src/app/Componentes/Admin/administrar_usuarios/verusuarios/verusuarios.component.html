@@ -3,12 +3,15 @@
 <div class="row mt-2">
   <div class="col-lg-4 col-12  mt-2 text-center">
     <div class="d-flex d-md-flex justify-content-md-center align-items-center">
-  <label for="table-filtering-search" class="col-1 col-sm-auto col-form-label " >Usuario:</label>
+  <label for="table-filtering-search" class="col-1 col-sm-auto col-form-label " >Usuario: </label>
   <div class="col-3 col-sm-auto">
-    <form class="d-flex" role="search" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)" >
+    <!-- <form class="d-flex" role="search" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)" >
       <input class="form-control me-2" type="text" name="user" formControlName="user" class="form-control" placeholder="" aria-label="user">
       <button class="btn btn-dark" type="submit">Buscar</button>
-    </form>  
+    </form>   -->
+    <input id="filterPost" class="form-control" name="filterPost" tyle="margin-left: 10px;" type="text" [(ngModel)]="filterPost" 
+    (keyup)="onSearch( filterPost )"
+    />
   </div>
     </div>
 </div>
@@ -30,7 +33,9 @@
 </div>
 </div>
 <br>
-
+<div *ngIf="(users  | filter:filterPost :page).length === 0 || users === undefined" [@fadeInOut]>
+  <p>No se encontraron datos</p>
+</div>
   <div class="row table-responsive mt-2">
     <table class="table table-bordered">
       <thead class="border text-center">
@@ -43,7 +48,7 @@
         <th scope="col">Acciones</th>       
       </thead>
       <tbody class="text-center">
-        <tr *ngFor="let u of users  | filter:filterPost :desde :pageSize | slice:desde:hasta">
+        <tr *ngFor="let u of users  | filter:filterPost :page">
           <th scope="row">{{ u.id }}</th>
           <td>{{ u.name }} {{ u.ap_paterno }} {{ u.ap_materno }}</td>
           <td>{{ u.email }}</td>
@@ -69,11 +74,17 @@
          </td>
         </tr>
       </tbody>  
-      <mat-paginator [length]="users.length"
-      [pageSize]="pageSize"
-      (page)="cambiarPagina($event)"
-      [hidePageSize]="true">
-    </mat-paginator>            
+      <br>
+      <button [disabled]="page === 0" type="button" class="btn btn-dark" (click)="previousPage()"
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+        --bs-btn-font-size: .75rem;margin-right: 10px;">
+        Anterior
+      </button>
+      <button [disabled]="(users  | filter:filterPost :page).length === 0" type="button" class="btn btn-dark" (click)="nextPage()"
+      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+      --bs-btn-font-size: .75rem;margin-right: 10px;">
+      Siguiente
+      </button>
     </table>
   </div>
 </div>
