@@ -13,6 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./ver-empresas.component.css']
 })
 export class VerEmpresasComponent implements OnInit {
+  page = 0
   filterPost = "";
   enterprises: Enterprise[] = [];
   requests: Enterprise[] = [];
@@ -71,4 +72,22 @@ export class VerEmpresasComponent implements OnInit {
       this.enterprises = res
     })
   }
+
+  nextPage()
+  {
+    this.page += 5;
+  }
+
+  previousPage()
+  {
+    if (this.page >= 0)
+      this.page -= 5;
+  }
+
+  onSearch( filterPost: string )
+  {
+    this.page = 0;
+    this.filterPost = filterPost;
+  }
+
 }

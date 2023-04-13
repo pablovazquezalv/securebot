@@ -30,8 +30,6 @@ export class VerusuariosComponent implements OnInit {
   users: User[] = [];
   pageSize = 5;
   page = 0;
-  desde:number = 0;
-  hasta:number = 5;
   filterPost = "";
   userForm: FormGroup;
   filteredUsers: any[] = [];
@@ -47,17 +45,8 @@ export class VerusuariosComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe(users => {
+    this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
       this.users = users.data;
-  
-      // Verificación adicional para ajustar pageSize y desde/hasta
-      // if (this.pageSize > this.users.length) {
-      //   this.pageSize = this.users.length;
-      // }
-      // if (this.hasta > this.users.length) {
-      //   this.hasta = this.users.length;
-      // }
-
     });
   }
 
@@ -74,12 +63,6 @@ export class VerusuariosComponent implements OnInit {
       height: 'auto',
       data: { id: id }
     });
-  }
-
-  cambiarPagina(e:PageEvent)
-  {
-    this.desde = e.pageIndex * e.pageSize
-    this.hasta = this.desde + e.pageSize
   }
 
   nextPage()

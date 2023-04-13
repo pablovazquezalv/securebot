@@ -5,24 +5,28 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterCompanyPipe implements PipeTransform {
 
-  hasta = 0
-  transform(company: any[], searchTerm: string, desde = 0, pageSize = 0): any[] {
-    if(searchTerm === "" || searchTerm.length < 3) return company
-    if (!company) {
-      return [];
-    }
-    if (!searchTerm) {
-      return company;
-    }
+  transform(companie: any[], searchTerm: string, page = 0): any[] {
+    if (searchTerm.length === 0)
+      return companie.slice(page,page + 5)
+
     searchTerm = searchTerm.toLowerCase();
-    this.hasta = desde + pageSize
-    return company.slice(desde,this.hasta).filter(user => {
-      const fullAddress = user.calle.toLowerCase() + ' ' + user.numero.toLowerCase() + ', ' + user.colonia.toLowerCase() + ', ' + user.ciudad.toLowerCase() + ', ' + user.estado.toLowerCase();
-      return user.name.toLowerCase().includes(searchTerm)
-        || fullAddress.includes(searchTerm)
-        || user.email.toLowerCase().includes(searchTerm)
-        || user.phone.toLowerCase().includes(searchTerm);
+    const filteredUsers = companie.filter(company => {
+      const searchStr = `${company.calle} ${company.numero} ${company.colonia} ${company.ciudad} ${company.estado} ${company.phone}`.toLowerCase();
+      return company.name.toLowerCase().includes(searchTerm)
+        || company.calle.toLowerCase().includes(searchTerm)
+        || company.numero.toLowerCase().includes(searchTerm)
+        || company.colonia.toLowerCase().includes(searchTerm)
+        || company.ciudad.toLowerCase().includes(searchTerm)
+        || company.estado.toLowerCase().includes(searchTerm)
+        || company.phone.toLowerCase().includes(searchTerm)
+        || searchStr.includes(searchTerm)
     });
+
+    return filteredUsers.slice(page,page + 5)
   }
 
 }
+
+// <td class="text-min">{{ e.calle }} {{ e.numero }} {{ e.colonia }} {{ e.ciudad }} {{ e.estado }}</td>
+// <td >{{ e.phone }}</td>
+// <td class="text-min">{{ e.email }}</td>

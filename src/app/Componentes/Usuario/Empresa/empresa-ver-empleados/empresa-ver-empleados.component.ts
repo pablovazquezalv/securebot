@@ -11,6 +11,8 @@ import { ModalEliminarEmpleadoComponent } from '../modal-eliminar-empleado/modal
   styleUrls: ['./empresa-ver-empleados.component.css']
 })
 export class EmpresaVerEmpleadosComponent implements OnInit {
+  page = 0
+  filterPost = "";
   employees: User[] = [];
   requests: User[] = [];
   count: number = 0;
@@ -60,5 +62,21 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
 
   carrosEmpresa() {
     this.router.navigate(['/autos-usuario']);
+  }
+  nextPage()
+  {
+      this.page += 5;
+  }
+
+  previousPage()
+  {
+    if (this.page >= 0)
+      this.page -= 5;
+  }
+
+  onSearch( filterPost: string )
+  {
+    this.page = 0;
+    this.filterPost = filterPost;
   }
 }

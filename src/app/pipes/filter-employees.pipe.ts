@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filter'
+  name: 'filterEmployees'
 })
-export class FilterPipe implements PipeTransform {
+export class FilterEmployeesPipe implements PipeTransform {
 
   transform(users: any[], searchTerm: string, page = 0): any[] {
     if (searchTerm.length === 0)
@@ -21,5 +21,5 @@ export class FilterPipe implements PipeTransform {
 
     return filteredUsers.slice(page,page + 5)
   }
-  
+
 }
