@@ -28,7 +28,8 @@
                     <p class="fw-bold fs-4">{{ user.name }} {{ user.ap_paterno}}  {{ user.ap_materno }}</p>
                     <p *ngIf="user.rol_id == 1">Administrador</p>
                     <p *ngIf="user.rol_id == 2">Dueño de empresa</p>
-                    <p *ngIf="user.rol_id == 3">Empleado</p>
+                    <p *ngIf="user.rol_id == 3">Encargado</p>
+                    <p *ngIf="user.rol_id == 4">Empleado</p>
                   </div>   
                   
                                  

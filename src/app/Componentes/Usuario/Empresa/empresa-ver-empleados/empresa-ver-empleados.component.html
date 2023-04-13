@@ -66,10 +66,7 @@
                           <td>{{ e.name }} {{ e.ap_paterno }} {{ e.ap_materno }}</td>
                           <td>{{ e.email }}</td>
                           <td>{{ e.phone_number }}</td>
-                          <td *ngIf="e.rol_id == 1">Administrador</td>
-                          <td *ngIf="e.rol_id == 2">Dueño de empresa</td>
-                          <td *ngIf="e.rol_id == 3">Empleado</td>
-                          <td *ngIf="e.rol_id == 4">Empleado</td>
+                          <td>{{ e.rol }}</td> 
                           <td>
                             <button type="button" class="btn btn-light text-dark border rounded-pill" 
                                 
