@@ -25,21 +25,12 @@ export class ModalRecuperarContrasenaComponent {
   }
 
   onSubmit(data: JSON) {
-    if(this.recoverPasswordForm.valid)
-    {
-      this.userService.recoverPassword(data).subscribe((response:any)=> 
-      {
-        if(response.status === 200) 
-        {
-          
+    if(this.recoverPasswordForm.valid) {
+      this.userService.recoverPassword(data).subscribe((response:any)=> {
+        if(response.status === 200) {
           this.close();
         }
-        else {
-          this.errorMessage = response.message;
-          this.show = true; 
-        }
-      },
-      (error) => {
+      },(error) => {
         this.errorMessage = error.message;
         this.show = true;
         console.log("Error");

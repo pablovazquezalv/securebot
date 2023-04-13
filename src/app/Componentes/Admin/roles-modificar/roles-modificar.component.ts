@@ -38,20 +38,13 @@ export class RolesModificarComponent {
     if(this.roleForm.valid) 
     {
       this.userService.changeRole(user, this.data.id).subscribe((response: any) => {
-        if(response.status === 200)
-        {
+        if(response.status === 200) {
           location.reload();
           this.close();
         }
-        else {
-          this.errorMessage = response.message;
-          this.show = true;
-        }
-      },
-      (error) => {
+      }, (error) => {
         this.errorMessage = error.message;
         this.show = true;
-
       });
       
     }

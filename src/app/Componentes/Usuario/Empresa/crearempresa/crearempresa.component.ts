@@ -11,6 +11,8 @@ import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
 
 @Injectable()
 export class CrearempresaComponent {
+  errorMessage = '';
+  show = true;
   enterpriseForm: FormGroup;
   enterprise?: Enterprise;
 
@@ -31,7 +33,13 @@ export class CrearempresaComponent {
 
   onSubmit(values: Enterprise) {
     if (this.enterpriseForm.valid) {
-      this.enterpriseService.createEnterprise(values).subscribe(() => location.assign('/mi-empresa'))
+      this.enterpriseService.createEnterprise(values).subscribe((response:any) => {
+        location.assign('/mi-empresa')
+      }, (error) => {
+        this.errorMessage = "El correo electrónico ya se encuentra en uso.";
+        this.show = true;
+        console.log("Error: ", this.errorMessage);
+      });
     };
   }
 }
