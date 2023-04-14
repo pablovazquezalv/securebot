@@ -32,6 +32,8 @@ export class VerusuariosComponent implements OnInit {
   l = false
   users: User[] = [];
   pageSize = 5;
+  desde = 0;
+  hasta = 5;
   page = 0;
   filterPost = "";
   userForm: FormGroup;
@@ -46,7 +48,6 @@ export class VerusuariosComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
-    console.log(this.filterPost)
   }
 
   getUsers() {
@@ -68,6 +69,12 @@ export class VerusuariosComponent implements OnInit {
       height: 'auto',
       data: { id: id }
     });
+  }
+
+  cambiarPagina(e:PageEvent)
+  {
+    this.desde = e.pageIndex * e.pageSize
+    this.hasta = this.desde + e.pageSize
   }
 
   nextPage()
@@ -93,7 +100,7 @@ export class VerusuariosComponent implements OnInit {
 
   onSearch( filterPost: string )
   {
-    this.page = 0;
+    this.desde = 0;
     this.filterPost = filterPost;
     if(this.filterPost != "")
     {

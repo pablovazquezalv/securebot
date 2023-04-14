@@ -48,7 +48,7 @@
         <th scope="col">Acciones</th>       
       </thead>
       <tbody class="text-center">
-        <tr *ngFor="let u of users | slice:page:page+5">
+        <tr *ngFor="let u of users | slice:desde:hasta">
           <th scope="row">{{ u.id }}</th>
           <td>{{ u.name }} {{ u.ap_paterno }} {{ u.ap_materno }}</td>
           <td>{{ u.email }}</td>
@@ -75,7 +75,7 @@
         </tr>
       </tbody>  
       <br>
-      <button [disabled]="page === 0" type="button" class="btn btn-dark" (click)="previousPage()"
+      <!-- <button [disabled]="page === 0" type="button" class="btn btn-dark" (click)="previousPage()"
         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
         --bs-btn-font-size: .75rem;margin-right: 10px;">
         Anterior
@@ -84,7 +84,13 @@
       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
       --bs-btn-font-size: .75rem;margin-right: 10px;">
       Siguiente
-      </button>
+      </button> -->
+      <mat-paginator [length]="users.length"
+        [pageSize]="pageSize"
+        (page)="cambiarPagina($event)"
+        [hidePageSize]="true"
+        >
+      </mat-paginator>
     </table>
   </div>
 </div>
