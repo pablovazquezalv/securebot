@@ -16,6 +16,7 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
   employees: User[] = [];
   requests: User[] = [];
   count: number = 0;
+  show = true;
 
   constructor(private router: Router, private userService: UserService, public dialog: MatDialog) { }
 
