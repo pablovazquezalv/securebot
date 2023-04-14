@@ -17,10 +17,10 @@
 </div>
 <div class="col-lg-4 col-12 mt-2 text-center">
   <div class="btn-group "  role="group" aria-label="Basic example">
-    <button type="button" class="btn" style="margin-left: 30px;" [ngClass]="{'btn-light border': selectedRole !== 1, 'btn-dark': selectedRole === 1}" (click)="rolCheck(1)">Admin</button>
-    <button type="button" class="btn btn-light border" [ngClass]="{'btn-light border': selectedRole !== 2, 'btn-dark': selectedRole === 2}" (click)="rolCheck(2)">Dueño</button>
-    <button type="button" class="btn btn-light border" [ngClass]="{'btn-light border': selectedRole !== 3, 'btn-dark': selectedRole === 3}" (click)="rolCheck(3)">Encargado</button>
-    <button type="button" class="btn btn-light border" [ngClass]="{'btn-light border': selectedRole !== 4, 'btn-dark': selectedRole === 4}" (click)="rolCheck(4)">Empleado</button>
+    <button type="button" class="btn btn-light border" style="margin-left: 30px;" (click)="rolCheck(1)">Admin</button>
+    <button type="button" class="btn btn-light border" (click)="rolCheck(2)">Dueño</button>
+    <button type="button" class="btn btn-light border" (click)="rolCheck(3)">Encargado</button>
+    <button type="button" class="btn btn-light border" (click)="rolCheck(4)">Empleado</button>
   </div>
 </div>
 <div class="col-lg-4 col-12 mt-2 ">
@@ -33,7 +33,7 @@
 </div>
 </div>
 <br>
-<div *ngIf="(users  | filter:filterPost :page).length === 0 || users === undefined" [@fadeInOut]>
+<div *ngIf="(users).length === 0 || users === undefined" [@fadeInOut]>
   <p>No se encontraron datos</p>
 </div>
   <div class="row table-responsive mt-2">
@@ -48,7 +48,7 @@
         <th scope="col">Acciones</th>       
       </thead>
       <tbody class="text-center">
-        <tr *ngFor="let u of users | filter:filterPost :page">
+        <tr *ngFor="let u of users | slice:page:page+5">
           <th scope="row">{{ u.id }}</th>
           <td>{{ u.name }} {{ u.ap_paterno }} {{ u.ap_materno }}</td>
           <td>{{ u.email }}</td>
@@ -80,7 +80,7 @@
         --bs-btn-font-size: .75rem;margin-right: 10px;">
         Anterior
       </button>
-      <button [disabled]="(users  | filter:filterPost :page).length < users.length -1" type="button" class="btn btn-dark" (click)="nextPage()"
+      <button [disabled]="users.length < 5" type="button" class="btn btn-dark" (click)="nextPage()"
       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
       --bs-btn-font-size: .75rem;margin-right: 10px;">
       Siguiente

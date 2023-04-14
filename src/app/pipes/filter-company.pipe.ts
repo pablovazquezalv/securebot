@@ -19,14 +19,8 @@ export class FilterCompanyPipe implements PipeTransform {
         || company.ciudad.toLowerCase().includes(searchTerm)
         || company.estado.toLowerCase().includes(searchTerm)
         || company.phone.toLowerCase().includes(searchTerm)
-        || searchStr.includes(searchTerm)
     });
 
     return filteredUsers.slice(page,page + 5)
   }
-
 }
-
-// <td class="text-min">{{ e.calle }} {{ e.numero }} {{ e.colonia }} {{ e.ciudad }} {{ e.estado }}</td>
-// <td >{{ e.phone }}</td>
-// <td class="text-min">{{ e.email }}</td>

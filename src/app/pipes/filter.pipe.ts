@@ -7,7 +7,7 @@ export class FilterPipe implements PipeTransform {
 
   transform(users: any[], searchTerm: string, page = 0): any[] {
     if (searchTerm.length === 0)
-      return users.slice(page,page + 5)
+      return users
 
     searchTerm = searchTerm.toLowerCase();
     const filteredUsers = users.filter(user => {
@@ -19,7 +19,7 @@ export class FilterPipe implements PipeTransform {
         || `${user.name.toLowerCase()} ${user.ap_paterno.toLowerCase()} ${user.ap_materno.toLowerCase()}`.includes(searchTerm);
     });
 
-    return filteredUsers.slice(page,page + 5)
+    return filteredUsers
   }
   
 }

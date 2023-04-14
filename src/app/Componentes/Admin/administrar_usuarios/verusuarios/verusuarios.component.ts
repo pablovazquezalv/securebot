@@ -7,8 +7,8 @@ import { RolesModificarComponent } from '../../roles-modificar/roles-modificar.c
 import { PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Observable } from 'rxjs';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
+import { pipe } from 'rxjs';
 
 export const fadeInOut = trigger('fadeInOut', [
   transition(':enter', [
@@ -29,14 +29,15 @@ export const fadeInOut = trigger('fadeInOut', [
 export class VerusuariosComponent implements OnInit {
   rol:Number = 0
   st = 1;
-  users:[] = []
+  l = false
+  users: User[] = [];
   pageSize = 5;
   page = 0;
   filterPost = "";
-  selectedRole: Number = 0;
-
   userForm: FormGroup;
-  filteredUsers:[] = [];
+  filteredUsers: any[] = [];
+  mipipe = new FilterPipe()
+
   constructor(private userService: UserService, public dialog: MatDialog, private fb: FormBuilder) { 
     this.userForm = this.fb.group({
       user: ['', Validators.compose([Validators.required])],
@@ -71,20 +72,36 @@ export class VerusuariosComponent implements OnInit {
 
   nextPage()
   {
-    if (this.page <= 0)
+    if (this.page <= this.users.length)
       this.page += 5;
+      this.l = false
+      if(this.page == this.users.length)
+      {
+        console.log(this.l)
+        this.l = true
+        this.page -= 5
+      }
   }
 
   previousPage()
   {
     if (this.page >= 0)
       this.page -= 5;
+      this.l = false
   }
 
   onSearch( filterPost: string )
   {
     this.page = 0;
     this.filterPost = filterPost;
+    if(this.filterPost != "")
+    {
+      this.users = this.mipipe.transform(this.users,this.filterPost,this.page)
+      console.log(this.users)
+    }
+    else{
+      this.getUsers()
+    }
   }
 
   status()
@@ -110,10 +127,7 @@ export class VerusuariosComponent implements OnInit {
     this.rol = rol
     this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
       this.users = users.data;
-      this.selectedRole = rol;
     });
   }
-
- 
 }
  
