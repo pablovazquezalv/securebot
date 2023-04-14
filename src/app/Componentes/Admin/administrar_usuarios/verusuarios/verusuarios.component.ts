@@ -75,7 +75,8 @@ export class VerusuariosComponent implements OnInit {
     if (this.page <= this.users.length)
       this.page += 5;
       this.l = false
-      if(this.page == this.users.length)
+      if(this.page == this.users.length || this.page == this.users.length + 1 || this.page == this.users.length + 2
+        || this.page == this.users.length + 3 || this.page == this.users.length + 4 || this.page == this.users.length + 5)
       {
         console.log(this.l)
         this.l = true
