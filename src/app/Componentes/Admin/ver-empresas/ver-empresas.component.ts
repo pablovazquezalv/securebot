@@ -34,8 +34,8 @@ export class VerEmpresasComponent implements OnInit {
     this.getRequests();
   }
 
-  empleadosEmpresa() {
-    this.router.navigate(['/empleados-empresa']);
+  empleadosEmpresa(id: number) {
+    this.router.navigate(['/empleados-empresa', id]);
   }
 
   getEnterprises() {

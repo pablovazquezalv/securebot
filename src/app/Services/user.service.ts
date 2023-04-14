@@ -32,6 +32,7 @@ export class UserService {
   private acceptEmployeeUrl = environment.API_URL + '/accept/user';
   private rejectEmployeeUrl = environment.API_URL + '/reject/user';
   private disableEmployeeUrl = environment.API_URL + '/disable/user';
+  private changePuestoUrl = environment.API_URL + '/change/puesto';
 
   private userLoggedIn = new Subject<boolean>();
   private signedRoute?: string;
@@ -270,6 +271,20 @@ export class UserService {
       );
   }
   
+  getEmployeesWithParams(id: number) {
+    return this.http.get(this.getEmployeesUrl + '/' + id)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  changePuesto(id: number) {
+    return this.http.put(this.changePuestoUrl + '/' + id, "")
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
   getUserLoggedIn() {
     return this.userLoggedIn.asObservable();

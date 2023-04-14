@@ -2,6 +2,11 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-lg-7 mx-auto">
+        <div *ngIf="errorMessage">
+          <ngb-toast *ngIf="show" class="fondotoast" [autohide]="true" [delay]="4000" (hidden)="show=false">
+            {{ errorMessage }}
+          </ngb-toast>
+        </div>
         <div class="card mt-2 mx-auto p-4 bg-light">
           <div class="card-body bg-light">
             <div class="text-center ">
@@ -165,5 +170,6 @@
       </div>
     </div>
   </div>
+ 
 </div>
 </div>

@@ -38,7 +38,7 @@ const routes: Routes = [
    //ADMINISTRADOR
   { path:'users', component: VerusuariosComponent, title: 'Usuarios'},
   { path: 'empresas', component: VerEmpresasComponent, title: 'Empresas' },
-  { path: 'empleados-empresa', component:VerEmpleadosEmpresaComponent, title: 'Empleados de empresa' },
+  { path: 'empleados-empresa/:id', component:VerEmpleadosEmpresaComponent, title: 'Empleados de empresa' },
   { path: 'solicitudes-empresa', component: SolicitudesEmpresasComponent, title: 'Solicitudes de empresas' },
    
     //DUEÑO DE EMPRESA

@@ -1,5 +1,5 @@
 <br>
-<h2 class="text-center">Solicitudes de empresas</h2>
+
 <br>
 <div class="container">
   <ngb-toast *ngIf="show" [autohide]="true" (hidden)="show=false">
@@ -19,8 +19,20 @@
       </svg> para rechazar las solicitudes.
     </p>
   </ngb-toast>
+<div class="row">
+<div class="col-4">
+  <button type="button" class="btn btn-dark" (click)="regresarVerEmpresas()"
+  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+Regresar
+</button>
+</div>
+<div class="col-4">
+  <h2 class="text-center">Solicitudes de empresas</h2>
+</div>
+<div class="col-4"></div>
+</div>
 
-  <div class="row table-responsive">
+  <div class="row table-responsive mt-5">
     <table class="table table-bordered">
       <thead class="border text-center">
         <th scope="col">ID</th>
