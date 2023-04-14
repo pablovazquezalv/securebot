@@ -1,15 +1,13 @@
 <br>
 <div class="container">
-
-<h2 class="text-center">Empleados de Santos Laguna</h2>
-<div class="mb-3 row">
-  <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Empleado:</label>
-  <div class="col-xs-3 col-sm-auto">
-    <input id="table-filtering-search" class="form-control" type="text"  />
+  <h2 class="text-center">Empleados de {{ company }}</h2>
+  <div class="mb-3 row">
+    <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Empleado:</label>
+    <div class="col-xs-3 col-sm-auto">
+      <input id="table-filtering-search" class="form-control" type="text"  />
+    </div> 
   </div>
-  
-</div>
-<br>
+  <br>
 
   <div class="row table-responsive">
     <table class="table table-bordered">
@@ -18,28 +16,15 @@
         <th scope="col">Nombre</th>
         <th scope="col">Teléfono</th>
         <th scope="col">Email</th> 
-        
-        <th scope="col">Acciones</th>       
+        <th scope="col">Rol</th>       
       </thead>
       <tbody class="text-center">
-        <tr >
-          <th>1</th>
-          <td>Miguel De la Torre</td>
-          <td>87872827</td>
-          <td>clubsantos@gmail.com</td>
-            <td>
-                <button type="button"  class="btn btn-light text-dark border rounded-pill" 
-                
-                style="--bs-btn-padding-y: .28rem; --bs-btn-padding-x: .5rem; 
-                --bs-btn-font-size: .75rem;margin-right: 10px;">
-               Editar
-                </button>
-                <button type="button" class="btn btn-danger rounded-pill" 
-                
-                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-                --bs-btn-font-size: .75rem;margin-right: 10px;">
-                Expulsar
-                </button>
+        <tr *ngFor="let e of employees">
+          <th>{{ e. id }}</th>
+          <td>{{ e.name }} {{ e.ap_paterno }} {{ e.ap_materno }}</td>
+          <td>{{ e.phone_number }}</td>
+          <td>{{ e.email }}</td>
+          <td>{{ e.rol }}</td>
         </tr>
       </tbody>            
     </table>

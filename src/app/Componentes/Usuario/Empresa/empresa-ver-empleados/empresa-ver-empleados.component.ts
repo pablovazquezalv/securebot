@@ -36,6 +36,10 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
     });
   }
 
+  changePuesto(id: number) {
+    this.userService.changePuesto(id).subscribe(() => location.reload());
+  }
+
   openModal(id: number) {
     const dialogRef = this.dialog.open(ModalEliminarEmpleadoComponent, {
       width: '448px',

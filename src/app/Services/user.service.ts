@@ -267,15 +267,15 @@ export class UserService {
   }
   
   getEmployeesWithParams(id: number) {
-    return this.http.get(this.getEmployees + '/' + id)
+    return this.http.get(this.getEmployeesUrl + '/' + id)
       .pipe(
         retry(3),
         catchError(this.handleError)
       );
   }
 
-  changePuesto(id: number, user: User) {
-    return this.http.put(this.changePuestoUrl + '/' + id, user)
+  changePuesto(id: number) {
+    return this.http.put(this.changePuestoUrl + '/' + id, "")
       .pipe(
         catchError(this.handleError)
       );

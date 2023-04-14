@@ -69,7 +69,8 @@
                           <td>{{ e.rol }}</td> 
                           <td>
                             <button type="button" class="btn btn-light text-dark border rounded-pill" 
-                                
+                               (click)="changePuesto(e.id)"
+                              *ngIf="e.rol_id == 3 || e.rol_id == 4"
                               style="--bs-btn-padding-y: .28rem; --bs-btn-padding-x: .5rem; 
                               --bs-btn-font-size: .75rem;margin-right: 10px;">
                             Cambiar puesto
