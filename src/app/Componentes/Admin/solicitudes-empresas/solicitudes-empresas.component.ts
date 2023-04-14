@@ -6,6 +6,7 @@ import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgFor, NgIf, SlicePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalRechazarSolicitudEmpresaComponent } from '../modal-rechazar-solicitud-empresa/modal-rechazar-solicitud-empresa.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solicitudes-empresas',
@@ -21,7 +22,7 @@ export class SolicitudesEmpresasComponent implements OnInit {
   pageSize = 5;
   desde:number = 0;
   hasta:number = 5;
-  constructor(private enterpriseService: EnterpriseService, public dialog: MatDialog) { }
+  constructor(private enterpriseService: EnterpriseService, public dialog: MatDialog,private router:Router) { }
 
   ngOnInit() {
     this.getEnterprises();
@@ -37,12 +38,18 @@ export class SolicitudesEmpresasComponent implements OnInit {
     this.enterpriseService.acceptEnterprise(id).subscribe(() => location.reload());
   }
 
-  openModal(id: number) {
+  openModal(id: number) 
+  {
     const dialogRef = this.dialog.open(ModalRechazarSolicitudEmpresaComponent, {
       width: '448px',
       height: 'auto',
       data: { id: id }
     });
+  }
+
+  regresarVerEmpresas()
+  {
+    this.router.navigate(['/empresas']);
   }
 
   cambiarPagina(e:PageEvent)

@@ -1,6 +1,27 @@
 <br>
 <div class="container">
+ 
+  <div class="row">
+<div class="col-4">
+ 
+</div>
+
+<div class="col-4">
   <h2 class="text-center">Empleados de {{ company }}</h2>
+</div>
+
+<div class="col-4">
+ 
+<div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+  <button type="button" class="btn btn-dark" (click)="regresarVerEmpresas()"
+  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+Regresar
+</button>
+</div>
+</div>
+
+  </div>
+  
   <div class="mb-3 row">
     <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Empleado:</label>
     <div class="col-xs-3 col-sm-auto">
@@ -10,6 +31,11 @@
   <br>
 
   <div class="row table-responsive">
+    <div *ngIf="errorMessage" >
+      <ngb-toast *ngIf="show" class="arriba" [autohide]="true" [delay]="4000" (hidden)="show=false">
+        {{ errorMessage }}
+      </ngb-toast>
+    </div>
     <table class="table table-bordered">
       <thead class="border text-center">
         <th scope="col">ID</th>

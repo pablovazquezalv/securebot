@@ -33,11 +33,25 @@
             </svg> para rechazar las solicitudes.
           </p>
         </ngb-toast>
+       
         <div class="row">
           <div class="col-12">
+            
             <div class="card">
             <br>
-              <h2 class="text-center">Solicitudes de empleados</h2>
+            
+              <div class="col-4 ">
+                <button type="button" class="btn btn-dark"  (click)="verEmpleados()"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 20px;">
+                Regresar
+                </button>
+              </div>
+              <div class="col4">
+                <h2 class="text-center">Solicitudes de empleados</h2>
+              </div>
+              <div class="col4"></div>
+
+              
               <br>
                 <div class="container">
                   <div class="row table-responsive">

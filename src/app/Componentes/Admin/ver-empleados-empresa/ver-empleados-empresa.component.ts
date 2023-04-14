@@ -13,16 +13,40 @@ export class VerEmpleadosEmpresaComponent implements OnInit {
   company?: string;
   employees: User[] = [];
   id?: number;
+  errorMessage = '';
+  show = true;
+  
 
   constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, private location: Location) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    const errorMessage = localStorage.getItem('errorMessage');
+    
+    if (errorMessage)
+     {
+      this.errorMessage = "Esa empresa no existe!";
+      this.show = true;
+      localStorage.removeItem('errorMessage');
+    }
+    
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.userService.getEmployeesWithParams(this.id).subscribe((employees: any) => {
       this.employees = employees.users;
       this.company = employees.company.name;
+      
     }, (error) => {
-      this.location.back();
+      this.errorMessage = error.message;
+      localStorage.setItem('errorMessage', error.message);
+     this.location.back();
+
+      
     });
   }
+
+  regresarVerEmpresas() 
+  {
+    this.router.navigate(['/empresas']);
+  }
+
 }

@@ -31,6 +31,8 @@ export class VerusuariosComponent implements OnInit {
   pageSize = 5;
   page = 0;
   filterPost = "";
+  selectedRole: Number = 0;
+
   userForm: FormGroup;
   filteredUsers: any[] = [];
   constructor(private userService: UserService, public dialog: MatDialog, private fb: FormBuilder) { 
@@ -106,7 +108,10 @@ export class VerusuariosComponent implements OnInit {
     this.rol = rol
     this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
       this.users = users.data;
+      this.selectedRole = rol;
     });
   }
+
+ 
 }
  
