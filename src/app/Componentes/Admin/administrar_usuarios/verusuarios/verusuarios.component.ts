@@ -7,6 +7,8 @@ import { RolesModificarComponent } from '../../roles-modificar/roles-modificar.c
 import { PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Observable } from 'rxjs';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
 
 export const fadeInOut = trigger('fadeInOut', [
   transition(':enter', [
@@ -27,12 +29,12 @@ export const fadeInOut = trigger('fadeInOut', [
 export class VerusuariosComponent implements OnInit {
   rol:Number = 0
   st = 1;
-  users: User[] = [];
+  users:[] = []
   pageSize = 5;
   page = 0;
   filterPost = "";
   userForm: FormGroup;
-  filteredUsers: any[] = [];
+  filteredUsers:[] = [];
   constructor(private userService: UserService, public dialog: MatDialog, private fb: FormBuilder) { 
     this.userForm = this.fb.group({
       user: ['', Validators.compose([Validators.required])],
@@ -67,7 +69,7 @@ export class VerusuariosComponent implements OnInit {
 
   nextPage()
   {
-    if (this.page <= this.users.length)
+    if (this.page <= 0)
       this.page += 5;
   }
 

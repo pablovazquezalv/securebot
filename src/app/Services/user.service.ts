@@ -122,6 +122,11 @@ export class UserService {
       );
   }
 
+  imagen()
+  {
+    
+  }
+
   getRole() {
     return this.http.get<User>(this.getRoleUrl)
       .pipe(

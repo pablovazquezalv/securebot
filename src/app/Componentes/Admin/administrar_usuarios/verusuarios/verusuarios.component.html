@@ -48,7 +48,7 @@
         <th scope="col">Acciones</th>       
       </thead>
       <tbody class="text-center">
-        <tr *ngFor="let u of users  | filter:filterPost :page">
+        <tr *ngFor="let u of users | filter:filterPost :page">
           <th scope="row">{{ u.id }}</th>
           <td>{{ u.name }} {{ u.ap_paterno }} {{ u.ap_materno }}</td>
           <td>{{ u.email }}</td>
@@ -80,7 +80,7 @@
         --bs-btn-font-size: .75rem;margin-right: 10px;">
         Anterior
       </button>
-      <button [disabled]="(users  | filter:filterPost :page).length === 0" type="button" class="btn btn-dark" (click)="nextPage()"
+      <button [disabled]="(users  | filter:filterPost :page).length < users.length -1" type="button" class="btn btn-dark" (click)="nextPage()"
       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
       --bs-btn-font-size: .75rem;margin-right: 10px;">
       Siguiente

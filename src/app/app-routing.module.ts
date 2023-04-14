@@ -23,6 +23,7 @@ import { EmpresaVerEmpleadosComponent } from './Componentes/Usuario/Empresa/empr
 import { VerEmpresasComponent } from './Componentes/Admin/ver-empresas/ver-empresas.component';
 import { VerEmpleadosEmpresaComponent } from './Componentes/Admin/ver-empleados-empresa/ver-empleados-empresa.component';
 import { ModalRechazarSolicitudEmpresaComponent } from './Componentes/Admin/modal-rechazar-solicitud-empresa/modal-rechazar-solicitud-empresa.component';
+
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
   

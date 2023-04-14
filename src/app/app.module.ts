@@ -99,7 +99,7 @@ import { FilterEmployeesPipe } from './pipes/filter-employees.pipe';
     FilterPipe,
     FilterCompanyPipe,
     FilterRequestPipe,
-    FilterEmployeesPipe, 
+    FilterEmployeesPipe,
   ],
   imports: [
     BrowserModule,
