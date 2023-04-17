@@ -41,7 +41,7 @@
         <th scope="col">Acciones</th>       
       </thead>
       <tbody class="text-center">
-        <tr *ngFor="let e of enterprises | filterCompany:filterPost :page">
+        <tr *ngFor="let e of enterprises | slice:desde:hasta">
           <th class="text-minimo">{{ e.id }}</th>
           <td >{{ e.name }} </td>
           <td class="text-min">{{ e.calle }} {{ e.numero }} {{ e.colonia }} {{ e.ciudad }} {{ e.estado }}</td>
@@ -61,16 +61,12 @@
             </button>
         </tr>
       </tbody>
-      <button [disabled]="page === 0" type="button" class="btn btn-dark" (click)="previousPage()"
-      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-      --bs-btn-font-size: .75rem;margin-right: 10px;">
-      Anterior
-      </button>
-      <button [disabled]="(enterprises  | filterCompany:filterPost :page).length < enterprises.length" type="button" class="btn btn-dark" (click)="nextPage()"
-      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
-      --bs-btn-font-size: .75rem;margin-right: 10px;">
-      Siguiente
-      </button>
+      <mat-paginator [length]="enterprises.length"
+      [pageSize]="pageSize"
+      (page)="cambiarPagina($event)"
+      [hidePageSize]="true"
+      >
+      </mat-paginator>  
     </table>
   </div>
 </div>

@@ -4,6 +4,8 @@ import { User } from 'src/app/Interfaces/user.interface';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEliminarEmpleadoComponent } from '../modal-eliminar-empleado/modal-eliminar-empleado.component';
+import { PageEvent } from '@angular/material/paginator';
+import { FilterEmployeesPipe } from 'src/app/pipes/filter-employees.pipe';
 
 @Component({
   selector: 'app-empresa-ver-empleados',
@@ -17,6 +19,10 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
   requests: User[] = [];
   count: number = 0;
   show = true;
+  mipipe = new FilterEmployeesPipe()
+  pageSize = 5;
+  desde = 0;
+  hasta = 5;
 
   constructor(private router: Router, private userService: UserService, public dialog: MatDialog) { }
 
@@ -83,5 +89,19 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
   {
     this.page = 0;
     this.filterPost = filterPost;
+    if(this.filterPost != "")
+    {
+      this.employees = this.mipipe.transform(this.employees,this.filterPost)
+      console.log(this.employees)
+    }
+    else{
+      this.getEmployeees()
+    }
+  }
+
+  cambiarPagina(e:PageEvent)
+  {
+    this.desde = e.pageIndex * e.pageSize
+    this.hasta = this.desde + e.pageSize
   }
 }

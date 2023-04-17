@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalRechazarEmpleadoComponent } from '../modal-rechazar-empleado/modal-rechazar-empleado.component';
+import { FilterEmployeesPipe } from 'src/app/pipes/filter-employees.pipe';
 
 @Component({
   selector: 'app-empresa-aceptar-empleados',
@@ -18,6 +19,10 @@ import { ModalRechazarEmpleadoComponent } from '../modal-rechazar-empleado/modal
 export class EmpresaAceptarEmpleadosComponent implements OnInit {
   show = true;
   employees: User[] = [];
+  mipipe = new FilterEmployeesPipe()
+  pageSize = 5;
+  desde = 0;
+  hasta = 5;
 
   constructor(private router: Router, private userService: UserService, public dialog: MatDialog) { }
 

@@ -6,6 +6,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalDesactivarEmpresaComponent } from '../modal-desactivar-empresa/modal-desactivar-empresa.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FilterCompanyPipe } from 'src/app/pipes/filter-company.pipe';
 
 @Component({
   selector: 'app-ver-empresas',
@@ -22,6 +23,8 @@ export class VerEmpresasComponent implements OnInit {
   desde:number = 0;
   hasta:number = 5;
   enterpriseForm: FormGroup;
+  mipipe = new FilterCompanyPipe;
+
 
   constructor(private enterpriseService: EnterpriseService, private router: Router, public dialog: MatDialog, private fb: FormBuilder) { 
     this.enterpriseForm = this.fb.group({
@@ -88,6 +91,14 @@ export class VerEmpresasComponent implements OnInit {
   {
     this.page = 0;
     this.filterPost = filterPost;
+    if(this.filterPost != "")
+    {
+      this.enterprises = this.mipipe.transform(this.enterprises,this.filterPost)
+      console.log(this.enterprises)
+    }
+    else{
+      this.getEnterprises()
+    }
   }
 
 }

@@ -104,7 +104,7 @@ export class VerusuariosComponent implements OnInit {
     this.filterPost = filterPost;
     if(this.filterPost != "")
     {
-      this.users = this.mipipe.transform(this.users,this.filterPost,this.page)
+      this.users = this.mipipe.transform(this.users,this.filterPost)
       console.log(this.users)
     }
     else{
