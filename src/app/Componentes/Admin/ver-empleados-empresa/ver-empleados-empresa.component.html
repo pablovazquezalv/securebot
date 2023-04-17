@@ -26,7 +26,9 @@ Regresar
   <div class="mb-3 row">
     <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Empleado:</label>
     <div class="col-xs-3 col-sm-auto">
-      <input id="table-filtering-search" class="form-control" type="text"  />
+      <input id="filterPost" class="form-control" name="filterPost" tyle="margin-left: 10px;" type="text" [(ngModel)]="filterPost" 
+        (keyup)="onSearch( filterPost )"
+      />
     </div> 
   </div>
   <br>
@@ -46,7 +48,7 @@ Regresar
         <th scope="col">Rol</th>       
       </thead>
       <tbody class="text-center">
-        <tr *ngFor="let e of employees">
+        <tr *ngFor="let e of employees | slice:desde:hasta">
           <th>{{ e. id }}</th>
           <td>{{ e.name }} {{ e.ap_paterno }} {{ e.ap_materno }}</td>
           <td>{{ e.phone_number }}</td>
@@ -54,6 +56,12 @@ Regresar
           <td>{{ e.rol }}</td>
         </tr>
       </tbody>            
+      <mat-paginator [length]="employees.length"
+      [pageSize]="pageSize"
+      (page)="cambiarPagina($event)"
+      [hidePageSize]="true"
+      >
+    </mat-paginator>
     </table>
   </div>
 </div>
