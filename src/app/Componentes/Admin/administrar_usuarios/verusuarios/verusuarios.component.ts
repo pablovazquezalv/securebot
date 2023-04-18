@@ -38,6 +38,8 @@ export class VerusuariosComponent implements OnInit {
   filterPost = "";
   userForm: FormGroup;
   filteredUsers: any[] = [];
+  selectedRole: Number = 0;
+
   mipipe = new FilterPipe()
 
   constructor(private userService: UserService, public dialog: MatDialog, private fb: FormBuilder) { 
@@ -136,6 +138,8 @@ export class VerusuariosComponent implements OnInit {
     this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
       this.users = users.data;
     });
+    this.selectedRole = rol;
+
   }
 }
  

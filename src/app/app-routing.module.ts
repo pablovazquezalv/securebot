@@ -23,7 +23,8 @@ import { EmpresaVerEmpleadosComponent } from './Componentes/Usuario/Empresa/empr
 import { VerEmpresasComponent } from './Componentes/Admin/ver-empresas/ver-empresas.component';
 import { VerEmpleadosEmpresaComponent } from './Componentes/Admin/ver-empleados-empresa/ver-empleados-empresa.component';
 import { ModalRechazarSolicitudEmpresaComponent } from './Componentes/Admin/modal-rechazar-solicitud-empresa/modal-rechazar-solicitud-empresa.component';
-
+//Guards
+import { RolesGuard } from './Guards/roles.guard';
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
   
@@ -36,21 +37,21 @@ const routes: Routes = [
   { path: 'code-verify', component: CodigotelComponent, title: 'Verificar cuenta' },
 
    //ADMINISTRADOR
-  { path:'users', component: VerusuariosComponent, title: 'Usuarios'},
-  { path: 'empresas', component: VerEmpresasComponent, title: 'Empresas' },
-  { path: 'empleados-empresa/:id', component:VerEmpleadosEmpresaComponent, title: 'Empleados de empresa' },
-  { path: 'solicitudes-empresa', component: SolicitudesEmpresasComponent, title: 'Solicitudes de empresas' },
+  { path:'users', component: VerusuariosComponent, title: 'Usuarios',canActivate: [RolesGuard], data: {expectedRole: [1]} },
+  { path: 'empresas', component: VerEmpresasComponent, title: 'Empresas',canActivate: [RolesGuard], data: {expectedRole: [1]} },
+  { path: 'empleados-empresa/:id', component:VerEmpleadosEmpresaComponent, title: 'Empleados de empresa',canActivate: [RolesGuard], data: {expectedRole: [1]} },
+  { path: 'solicitudes-empresa', component: SolicitudesEmpresasComponent, title: 'Solicitudes de empresas',canActivate: [RolesGuard], data: {expectedRole: [1]} },
    
     //DUEÑO DE EMPRESA
-  { path: 'solicitudes-empleados', component: EmpresaAceptarEmpleadosComponent, title: 'Solicitudes de empleados' },
-  { path: 'empleados', component: EmpresaVerEmpleadosComponent, title: 'Ver empleados' },
+  { path: 'solicitudes-empleados', component: EmpresaAceptarEmpleadosComponent, title: 'Solicitudes de empleados',canActivate: [RolesGuard], data: {expectedRole: [3]} },
+  { path: 'empleados', component: EmpresaVerEmpleadosComponent, title: 'Ver empleados',canActivate: [RolesGuard], data: {expectedRole: [3]} },
 
    //EMPLEADO
-  { path: 'profile', component: PerfilusuarioComponent, title: 'Mi perfil' },
-  { path: 'empresa-usuario', component: EmpresausuarioComponent, title: 'Mi empresa'},
-  { path: 'mi-empresa', component: EmpresaOpcionesComponent, title: 'Mi empresa'},
-  { path: 'crear-empresa', component: CrearempresaComponent, title: 'Crear empresa' }, 
-  { path: 'afiliar-empresa', component: AfilarEmpresaComponent, title: 'Afiliarme a empresa' },
+  { path: 'profile', component: PerfilusuarioComponent, title: 'Mi perfil',canActivate: [RolesGuard], data: {expectedRole: [1,2,3,4]} },
+  { path: 'empresa-usuario', component: EmpresausuarioComponent, title: 'Mi empresa',canActivate: [RolesGuard], data: {expectedRole: [1,2,3,4]} },
+  { path: 'mi-empresa', component: EmpresaOpcionesComponent, title: 'Mi empresa',canActivate: [RolesGuard], data: {expectedRole: [1,2,3,4]} },
+  { path: 'crear-empresa', component: CrearempresaComponent, title: 'Crear empresa',canActivate: [RolesGuard], data: {expectedRole: [1,2,3,4]}  }, 
+  { path: 'afiliar-empresa', component: AfilarEmpresaComponent, title: 'Afiliarme a empresa',canActivate: [RolesGuard], data: {expectedRole: [1,2,3,4]}  },
 
   {path:'autos-usuario',component:AutosusuariodatosComponent},
   {path:'crear-carro',component:CrearcarroComponent},

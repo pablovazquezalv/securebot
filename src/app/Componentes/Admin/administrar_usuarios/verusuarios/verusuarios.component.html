@@ -17,10 +17,10 @@
 </div>
 <div class="col-lg-4 col-12 mt-2 text-center">
   <div class="btn-group "  role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-light border" style="margin-left: 30px;" (click)="rolCheck(1)">Admin</button>
-    <button type="button" class="btn btn-light border" (click)="rolCheck(2)">Dueño</button>
-    <button type="button" class="btn btn-light border" (click)="rolCheck(3)">Encargado</button>
-    <button type="button" class="btn btn-light border" (click)="rolCheck(4)">Empleado</button>
+    <button type="button" class="btn" [ngClass]="{'btn-light border': selectedRole !== 1, 'btn-dark': selectedRole === 1}"  style="margin-left: 30px;" (click)="rolCheck(1)">Admin</button>
+    <button type="button" class="btn" [ngClass]="{'btn-light border': selectedRole !== 2, 'btn-dark': selectedRole === 2}" (click)="rolCheck(2)">Dueño</button>
+    <button type="button" class="btn" [ngClass]="{'btn-light border': selectedRole !== 3, 'btn-dark': selectedRole === 3}"(click)="rolCheck(3)">Encargado</button>
+    <button type="button" class="btn" [ngClass]="{'btn-light border': selectedRole !== 4, 'btn-dark': selectedRole === 4}" (click)="rolCheck(4)">Empleado</button>
   </div>
 </div>
 <div class="col-lg-4 col-12 mt-2 ">
