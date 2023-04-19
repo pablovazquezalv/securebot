@@ -5,10 +5,6 @@
     <div class="d-flex d-md-flex justify-content-md-center align-items-center">
   <label for="table-filtering-search" class="col-1 col-sm-auto col-form-label " >Usuario: </label>
   <div class="col-3 col-sm-auto">
-    <!-- <form class="d-flex" role="search" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)" >
-      <input class="form-control me-2" type="text" name="user" formControlName="user" class="form-control" placeholder="" aria-label="user">
-      <button class="btn btn-dark" type="submit">Buscar</button>
-    </form>   -->
     <input id="filterPost" class="form-control" name="filterPost" tyle="margin-left: 10px;" type="text" [(ngModel)]="filterPost" 
     (keyup)="onSearch( filterPost )"
     />
