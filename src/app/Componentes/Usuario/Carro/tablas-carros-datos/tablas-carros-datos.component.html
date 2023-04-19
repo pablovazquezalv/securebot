@@ -12,8 +12,7 @@
                             placeholder="yyyy-mm-dd"
                             name="dp"
                             [(ngModel)]="model"ngbDatepicker
-                            #d="ngbDatepicker"
-                        />
+                            #d="ngbDatepicker"/>
                         <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                           </svg></button>
@@ -25,7 +24,9 @@
         -->    
       </div>
       <div class="col-lg-4 col-12 mt-2 text-center">
-      
+        <div class="btn-group "  role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-dark" (click)="verUltimos()" >Ver ultimos</button>
+          </div>
       </div>
       <div class="col-lg-4 col-12 mt-2 ">
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">

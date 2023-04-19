@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgbDateStruct, NgbCalendar, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,5 +17,14 @@ export class TablasCarrosDatosComponent {
   model!: NgbDateStruct;
 
 
+  constructor(private router:Router)
+  {
+    
+  }
+
+  verUltimos( )
+  {
+    this.router.navigate(['/ver-carro-especifico']);
+  }
 	
 }
