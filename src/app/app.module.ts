@@ -55,6 +55,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { FilterCompanyPipe } from './pipes/filter-company.pipe';
 import { FilterRequestPipe } from './pipes/filter-request.pipe';
 import { FilterEmployeesPipe } from './pipes/filter-employees.pipe';
+import { TablasCarrosDatosComponent } from './Componentes/Usuario/Carro/tablas-carros-datos/tablas-carros-datos.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { FilterEmployeesPipe } from './pipes/filter-employees.pipe';
     FilterCompanyPipe,
     FilterRequestPipe,
     FilterEmployeesPipe,
+    //TablasCarrosDatosComponent,
   ],
   imports: [
     BrowserModule,

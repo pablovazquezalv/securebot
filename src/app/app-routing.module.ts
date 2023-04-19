@@ -23,6 +23,8 @@ import { EmpresaVerEmpleadosComponent } from './Componentes/Usuario/Empresa/empr
 import { VerEmpresasComponent } from './Componentes/Admin/ver-empresas/ver-empresas.component';
 import { VerEmpleadosEmpresaComponent } from './Componentes/Admin/ver-empleados-empresa/ver-empleados-empresa.component';
 import { ModalRechazarSolicitudEmpresaComponent } from './Componentes/Admin/modal-rechazar-solicitud-empresa/modal-rechazar-solicitud-empresa.component';
+import { TablasCarrosDatosComponent } from './Componentes/Usuario/Carro/tablas-carros-datos/tablas-carros-datos.component';
+//Guards
 
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
@@ -55,7 +57,7 @@ const routes: Routes = [
   {path:'autos-usuario',component:AutosusuariodatosComponent},
   {path:'crear-carro',component:CrearcarroComponent},
   {path:'ver-carro-especifico',component:VercarroespecificoComponent},
-
+  {path:'ver-datos-carro',component:TablasCarrosDatosComponent},
   { path:'**', component: WildcardComponent, title: 'Página no encontrada' },
 ];
 

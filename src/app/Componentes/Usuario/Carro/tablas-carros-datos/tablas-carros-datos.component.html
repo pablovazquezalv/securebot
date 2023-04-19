@@ -1,0 +1,67 @@
+<br><div class="container">
+    <h2 class="text-center">Datos de mi carrito</h2>
+    <div class="row mt-2">
+      <div class="col-lg-4 col-12  mt-2 text-center">
+        <div class="d-flex d-md-flex justify-content-md-center align-items-center">
+      <div class="col-3 col-sm-auto">
+        <form class="row row-cols-sm-auto">
+            <div class="col-12">
+                <div class="input-group">
+                    <input
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="dp"
+                        [(ngModel)]="model"
+                        ngbDatepicker
+                        #d="ngbDatepicker"
+                    />
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                      </svg></button>
+                </div>
+            </div>
+        </form>
+        
+        <!--Aqui imprime los datos-->
+        <!--<pre>Model: {{ model | json }}</pre>
+        -->
+        
+       
+        
+        
+      </div>
+        </div>
+    </div>
+  
+    </div>
+    <br>
+    
+      <div class="row table-responsive mt-2">
+        <table class="table table-bordered">
+          <thead class="border text-center">
+            <th scope="col">ID</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Unidad</th>
+            <th scope="col">Pines</th> 
+            <th scope="col">Fecha</th>
+                   
+          </thead>
+          <tbody class="text-center">
+            <tr >
+              <th scope="row">1</th>
+              <td>Temperatura</td>
+              <td>Temperatura</td>
+              <td>20</td>
+              <td>Celsius</td>
+              <td>20,40</td>
+              <td>20-10-2023 </td>
+            </tr>
+          </tbody>  
+          <br>
+        
+         
+        </table>
+      </div>
+    </div> 
