@@ -4,7 +4,7 @@
       <ul class="nav flex-column">
         
         <li class="nav-item border-end  border-bottom p-3 nav-item-spaced">
-          <a class="nav-link btn" (click)="verEmpleados()">Empleados</a>
+          <a class="nav-link btn" (click)="verEmpleados()" *ngIf="iAdmin || iOwner">Empleados</a>
         </li>
         <li class="nav-item border-end  border-bottom p-3 nav-item-spaced">
           <a class="nav-link btn" (click)="empresaOpciones()">Empresa</a>
@@ -20,14 +20,14 @@
           <div class="col-12">
             <div class="card">    
               <div class="container mt-3">
-                <ngb-toast *ngIf="show" [autohide]="true" (hidden)="show=false">
+                <ngb-toast *ngIf="show" [autohide]="true" [delay]="7000" (hidden)="show=false">
                   <ng-template ngbToastHeader>
                     <div class="me-auto">
                       <strong class="mx-1">Ayuda</strong>
                     </div>
                   </ng-template>
                   <p class="text-center">
-                    Te recordamos que cambiar de puesto, funciona para que puedas cambiar de puesto a tus empleados,solo dando click se cambiara
+                    Recuerda que "Cambiar puesto" alterna entre encargado, el cual puede agregar carritos de seguridad y empleado, el cual sólo puede ver los datos de los sensores.
                   </p>
                   
                 </ngb-toast>

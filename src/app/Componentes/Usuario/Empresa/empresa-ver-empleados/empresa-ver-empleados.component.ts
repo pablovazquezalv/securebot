@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalEliminarEmpleadoComponent } from '../modal-eliminar-empleado/modal-eliminar-empleado.component';
 import { PageEvent } from '@angular/material/paginator';
 import { FilterEmployeesPipe } from 'src/app/pipes/filter-employees.pipe';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-empresa-ver-empleados',
@@ -24,11 +25,16 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
   desde = 0;
   hasta = 5;
 
+  iOwner: boolean = false;
+  iAdmin: boolean = false;
+
   constructor(private router: Router, private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getEmployeees();
     this.getRequests();
+    this.isOwner();
+    this.isAdmin();
   }
 
   getEmployeees() {
@@ -53,6 +59,30 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
       height: 'auto',
       data: { id: id }
     });
+  }
+
+  isOwner() {
+    this.userService.isOwner().pipe(
+      map(isOwner => {
+        if(isOwner) {
+          this.iOwner = true;
+        } else {
+          this.iOwner = false;
+        }
+      })
+    ).subscribe();
+  }
+
+  isAdmin() {
+    this.userService.isAdmin().pipe(
+      map(isAdmin => {
+        if(isAdmin) {
+          this.iAdmin = true;
+        } else {
+          this.iAdmin = false;
+        }
+      })
+    ).subscribe();
   }
 
   solicitudesDeEmpleados() {

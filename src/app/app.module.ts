@@ -31,6 +31,7 @@ import { InstruccionesComponent } from './Componentes/Logeo/instrucciones/instru
 
 //Interceptors
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+import { SpinnerInterceptor } from './Interceptors/spinner.interceptor';
 import { RolesModificarComponent } from './Componentes/Admin/roles-modificar/roles-modificar.component';
 import { ModalActualizarNombreComponent } from './Componentes/Usuario/Usuario/modal-actualizar-nombre/modal-actualizar-nombre.component';
 import { ModalActualizarCorreoComponent } from './Componentes/Usuario/Usuario/modal-actualizar-correo/modal-actualizar-correo.component';
@@ -57,6 +58,7 @@ import { FilterRequestPipe } from './pipes/filter-request.pipe';
 import { FilterEmployeesPipe } from './pipes/filter-employees.pipe';
 import { TablasCarrosDatosComponent } from './Componentes/Usuario/Carro/tablas-carros-datos/tablas-carros-datos.component';
 import { FilterSensoresPipe } from './pipes/filter-sensores.pipe';
+import { SpinnerComponent } from './Componentes/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +106,7 @@ import { FilterSensoresPipe } from './pipes/filter-sensores.pipe';
     FilterEmployeesPipe,
     TablasCarrosDatosComponent,
     FilterSensoresPipe,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,7 +119,7 @@ import { FilterSensoresPipe } from './pipes/filter-sensores.pipe';
     MatDialogModule,
     MatPaginatorModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

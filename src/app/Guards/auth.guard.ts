@@ -1,26 +1,28 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { map, Observable, take } from 'rxjs';
-import { AuthService } from '../Services/auth.service';
+import { Observable } from 'rxjs';
+import { UserService } from '../Services/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+  private tokenValid:boolean = true
+  constructor(private userService: UserService) {}
 
-  constructor(private authService: AuthService, private router: Router) {}
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    const token = localStorage.getItem('token')
+      if(token){
+        this.userService.verifyToken(token).subscribe(
+        ()=>{
+        this.tokenValid = true
+        },
+        ()=> { this.userService.logout().subscribe(), localStorage.removeItem('token'), localStorage.removeItem('iAdmin'), localStorage.removeItem('userLoggedIn'), location.assign('/login')
+        alert('Tu sesión ha expirado o tu token es inválido.');
+        this.tokenValid = false
+        })
+      }
 
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.authService.isLoggedIn.pipe(
-      take(1),
-      map((isLoggedIn: boolean) => {
-        if (!isLoggedIn) {
-          this.router.navigate(['/login']);
-          return false;
-        }
-        return true;
-      })
-    );
+      return this.tokenValid
   }
-  
 }

@@ -18,6 +18,7 @@ export class UserService {
   private changeRoleUrl = environment.API_URL + '/change/role';
   private getRoleUrl = environment.API_URL + '/user/role';
   private isAdminUrl = environment.API_URL + '/user/admin';
+  private isOwnerUrl = environment.API_URL + '/user/owner';
   private updateNamesUrl = environment.API_URL + '/user/names';
   private updatePasswordUrl = environment.API_URL + '/user/password';
   private updatePhoneUrl = environment.API_URL + '/user/phone';
@@ -123,11 +124,6 @@ export class UserService {
       );
   }
 
-  imagen()
-  {
-    
-  }
-
   getRole() {
     return this.http.get<User>(this.getRoleUrl)
       .pipe(
@@ -138,6 +134,14 @@ export class UserService {
 
   isAdmin() {
     return this.http.get<User>(this.isAdminUrl)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  isOwner() {
+    return this.http.get<User>(this.isOwnerUrl)
       .pipe(
         retry(3),
         catchError(this.handleError)
@@ -285,6 +289,10 @@ export class UserService {
         catchError(this.handleError)
       );
   }
+
+  verifyToken(token:string){
+    return this.http.get(this.userUrl, { headers: {'Authorization': token} })
+   }
 
   getUserLoggedIn() {
     return this.userLoggedIn.asObservable();

@@ -19,6 +19,8 @@ export class EmpresaOpcionesComponent implements OnInit {
   hasEnterprise: boolean = false;
   isInProcess: boolean = false;
   isFormDirty: boolean = false;
+  iOwner: boolean = false;
+  iAdmin: boolean = false;
   errorMessage = '';
   show = true;
 
@@ -58,6 +60,8 @@ export class EmpresaOpcionesComponent implements OnInit {
     this.hasCompany();
     this.isCompanyInProcess();
     this.getEnterprise();
+    this.isOwner();
+    this.isAdmin();
   }
 
   hasCompany() {
@@ -111,6 +115,30 @@ export class EmpresaOpcionesComponent implements OnInit {
         this.show = true;
       }) 
     }
+  }
+
+  isOwner() {
+    this.userService.isOwner().pipe(
+      map(isOwner => {
+        if(isOwner) {
+          this.iOwner = true;
+        } else {
+          this.iOwner = false;
+        }
+      })
+    ).subscribe();
+  }
+
+  isAdmin() {
+    this.userService.isAdmin().pipe(
+      map(isAdmin => {
+        if(isAdmin) {
+          this.iAdmin = true;
+        } else {
+          this.iAdmin = false;
+        }
+      })
+    ).subscribe();
   }
 
   openModal() { 

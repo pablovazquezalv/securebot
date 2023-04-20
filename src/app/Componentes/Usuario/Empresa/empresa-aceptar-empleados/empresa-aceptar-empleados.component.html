@@ -16,7 +16,7 @@
     </div>
     <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xs-12">
       <div class="container">
-        <ngb-toast *ngIf="show" [autohide]="true" (hidden)="show=false">
+        <ngb-toast *ngIf="show" [autohide]="true" [delay]="4000" (hidden)="show=false">
           <ng-template ngbToastHeader>
             <div class="me-auto">
               <strong class="mx-1">Ayuda</strong>

@@ -69,7 +69,7 @@
     <div class=" col-12 col-sm-12 col-md-12 col-lg-3 col-xs-12">
       <ul class="nav flex-column">
       
-        <li class="nav-item border-end  border-bottom p-3 nav-item-spaced">
+        <li class="nav-item border-end  border-bottom p-3 nav-item-spaced" *ngIf="iAdmin || iOwner">
           <a class="nav-link btn" (click)="verEmpleados()" >Empleados</a>
         </li>
         <li class="nav-item border-end  border-bottom p-3 nav-item-spaced">
@@ -100,16 +100,19 @@
                     <p class="fw-bold fs-4"> {{ enterprise.name }} </p>
                     <p> {{enterprise.activity }}</p>
                   </div>
-                  <div class="col-4">
+                  <div class="col-4" *ngIf="iAdmin || iOwner">
                     <label for="name" class="mobile-text">Nombre</label>
                     <input type="text" formControlName="name" class="form-control" [value]="enterprise.name" [(ngModel)]="nameDefaultValue" (ngModelChange)="onFormChanges()" maxlength="40">
                     <div *ngIf="updateEnterpriseForm.get('name')?.invalid && (updateEnterpriseForm.get('name')?.touched || updateEnterpriseForm.get('name')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
                       <span class="error-message" *ngIf="updateEnterpriseForm.get('name')?.errors?.['required']">El campo nombre es obligatorio.</span>
                       <span class="error-message" *ngIf="updateEnterpriseForm.get('name')?.errors?.['minlength']">El campo nombre debe tener un mínimo de 2 caracteres.<br></span>
-                    </div>                                      
+                    </div>                                  
+                  </div>
+                  <div class="col-4" *ngIf="!iAdmin && !iOwner">
+                    <input type="text" disabled class="form-control" [value]="enterprise.name" maxlength="40">
                   </div>
                   <div class="col-2"></div> 
-                  <div class="col-5">
+                  <div class="col-5" *ngIf="iAdmin || iOwner">
                     <label for="email" class="mobile-text">Correo electrónico</label>
                     <input type="text" formControlName="email" class="form-control col 3 disabled" [value]="enterprise.email" [(ngModel)]="emailDefaultValue" (ngModelChange)="onFormChanges()" maxlength="80">
                     <div *ngIf="updateEnterpriseForm.get('email')?.invalid && (updateEnterpriseForm.get('email')?.touched || updateEnterpriseForm.get('email')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
@@ -117,8 +120,11 @@
                       <span class="error-message" *ngIf="updateEnterpriseForm.get('email')?.errors?.['pattern']">El campo correo electrónico no es válido.</span>
                     </div>
                   </div>
+                  <div class="col-5" *ngIf="!iAdmin && !iOwner">
+                    <input type="text" disabled class="form-control" [value]="enterprise.email" maxlength="80">
+                  </div>
                   <br>
-                  <div class="col-4 mt-3">
+                  <div class="col-4 mt-3" *ngIf="iAdmin || iOwner">
                     <label for="phone" class="form-label">Teléfono</label>
                     <input type="text" formControlName="phone" class="form-control col 3 disabled" [value]="enterprise.phone" [(ngModel)]="phoneDefaultValue" (ngModelChange)="onFormChanges()" maxlength="10">
                     <div *ngIf="updateEnterpriseForm.get('phone')?.invalid && (updateEnterpriseForm.get('phone')?.touched || updateEnterpriseForm.get('phone')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
@@ -127,12 +133,15 @@
                       <span class="error-message" *ngIf="updateEnterpriseForm.get('phone')?.errors?.['pattern']">El campo teléfono solo acepta números.</span>
                     </div>
                   </div>
+                  <div class="col-4 mt-3" *ngIf="!iAdmin && !iOwner">
+                    <input type="text" disabled class="form-control" [value]="enterprise.phone" maxlength="10">
+                  </div>
                   <div class="col-2"></div>
                   <div class="col-5 mt-3">
                     <label for="address" class="form-label">Dirección</label>
                     <div class="d-flex">    
                       <input type="text" class="form-control col-4 disabled" [value]="enterprise.calle + ' ' + enterprise.numero + ', ' + enterprise.colonia + ' ' + enterprise.cp" disabled>
-                      <button type="button"  class="btn btn-dark mt-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="openModal()">
+                      <button type="button"  class="btn btn-dark mt-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="openModal()" *ngIf="iAdmin || iOwner">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                           <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                           <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -140,7 +149,7 @@
                       </button>
                     </div>
                   </div>
-                  <div class="col-4 mt-3">
+                  <div class="col-4 mt-3" *ngIf="iAdmin || iOwner">
                     <label for="ciudad" class="form-label">Ciudad</label>
                     <input type="text" formControlName="ciudad" class="form-control col-4 disabled" [value]="enterprise.ciudad" [(ngModel)]="ciudadDefaultValue" (ngModelChange)="onFormChanges()" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" maxlength="40">
                     <div *ngIf="updateEnterpriseForm.get('ciudad')?.invalid && (updateEnterpriseForm.get('ciudad')?.touched || updateEnterpriseForm.get('ciudad')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
@@ -149,8 +158,11 @@
                       <span class="error-message" *ngIf="updateEnterpriseForm.get('ciudad')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
                     </div> 
                   </div>
+                  <div class="col-4 mt-3" *ngIf="!iAdmin && !iOwner">
+                    <input type="text" disabled class="form-control" [value]="enterprise.ciudad" maxlength="40">
+                  </div>
                   <div class="col-2"></div>
-                  <div class="col-5 mt-3">
+                  <div class="col-5 mt-3" *ngIf="iAdmin || iOwner">
                     <label for="estado" class="form-label">Estado</label>
                     <select formControlName="estado" class="form-select shadow-none" [(ngModel)]="estadoDefaultValue" (ngModelChange)="onFormChanges()">
                       <option [value]="enterprise.estado" selected disabled> {{ enterprise.estado }}</option>
@@ -188,8 +200,11 @@
                       <option value="Zacatecas">Zacatecas</option>
                     </select>
                   </div>
+                  <div class="col-5 mt-3" *ngIf="!iAdmin && !iOwner">
+                    <input type="text" disabled class="form-control" [value]="enterprise.estado" maxlength="40">
+                  </div>
                   <div class="col-4"></div>
-                  <div class="col-4">
+                  <div class="col-4" *ngIf="iAdmin || iOwner">
                     <button type="submit" class="btn btn-dark border  col-12 col-sm-12 col-md-12 col-lg-5 col-xs-12 m-1" [disabled]="!isFormDirty && !updateEnterpriseForm.valid">Guardar</button>
                   </div>
                   <div class="col-4"></div>
