@@ -1,42 +1,25 @@
 <br>
 <div class="container">
-    <div class="row mt-2">
+    <div class="row ">
         <h2 class="text-center">Datos de mi carrito</h2>
-        <div class="col-lg-4 col-12  mt-2 text-center">
-         
-            <!-- <form class="row row-cols-sm-auto">
-                <div class="col-12">
-                    <div class="input-group">
-                        <input
-                            class="form-control"
-                            placeholder="yyyy-mm-dd"
-                            name="dp"
-                            [(ngModel)]="model"ngbDatepicker
-                            #d="ngbDatepicker"
-                            
-                        />
-                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                          </svg>
-                        </button>
-                    </div>
-                </div>
-            </form> -->
-            <div class="row row-cols-sm-auto col-lg-8 col-12">
-              <p>De: </p>
+        
+          <div class="row row-cols-sm-auto col-lg-8 col-12 d-flex flex-row align-items-center">
+            <div>
+              <p class="text-fechas">De: </p>
               <input type="date" (change)="SendDataonChange($event)" />
-              <p *ngIf="cal == false">Hasta: </p>
+            </div>
+            <div>  
+              <p class="text-fechas" *ngIf="cal == false">Hasta: </p>
               <input *ngIf="cal == false" type="date" (change)="SendDataonChange2($event)" />
             </div>
-             <!--Aqui imprime los datos-->
-        <!--<pre>Model: {{ model | json }}</pre>
-        -->    
-      </div>
-      <div class="col-lg-4 col-12 mt-2 text-center">
+          </div>
+            
+      
+      <div class="row row-cols-sm-auto col-lg-2 col-12 d-flex flex-row align-items-center">
       
       </div>
-      <div class="col-lg-4 col-12 mt-2 ">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <div class="row row-cols-sm-auto col-lg-2 col-12 d-flex flex-row align-items-center">
+      
         <div class="form-check form-switch custom-switch-lg shadow-none">
             <select class="form-select shadow-none" aria-label="Default select example" [(ngModel)]="seleccion" (change)="getDatos()">
               <option [ngValue]="'ult0'" selected>Ultrasonico 1</option>
@@ -52,7 +35,7 @@
               <option [ngValue]="'ifr1'" >Infrarojo 2</option>
             </select> 
         </div>
-      </div>
+
       </div>
       </div>
     <br>

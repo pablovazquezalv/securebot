@@ -1,6 +1,6 @@
 
 .text2 {
-    color: #a5aec0
+    color: #000000
 }
 .text1 {
     font-size: 14px;
@@ -15,17 +15,18 @@
     border-radius: 10px
 }
 .badge span {
-    background-color: #fffbec;
+    background-color: #f0f0f0;
     width: 60px;
     height: 25px;
     padding-bottom: 3px;
     border-radius: 5px;
+    font-size: 18px;
     display: flex;
-    color: #fed85d;
+    color: #000000;
     justify-content: center;
     align-items: center
 }
 .c-details span {
     font-weight: 300;
-    font-size: 13px
+    font-size: 16px
 }

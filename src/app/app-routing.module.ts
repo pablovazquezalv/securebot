@@ -54,9 +54,13 @@ const routes: Routes = [
   { path: 'crear-empresa', component: CrearempresaComponent, title: 'Crear empresa' }, 
   { path: 'afiliar-empresa', component: AfilarEmpresaComponent, title: 'Afiliarme a empresa' },
 
-  {path:'autos-usuario',component:AutosusuariodatosComponent},
-  {path:'crear-carro',component:CrearcarroComponent},
-  {path:'ver-carro-especifico',component:VercarroespecificoComponent},
+  //VER LOS CARRITOS
+  {path:'autos-usuario',component:AutosusuariodatosComponent,title:'Autos empresa'},
+  //CREAR CARRITOS
+  {path:'crear-carro',component:CrearcarroComponent,title:'Crear carro'},
+  //VER CARRITOS ESPECIFICOS
+  {path:'ver-carro-especifico',component:VercarroespecificoComponent,title:'Ver carro especifico'},
+  //VER DATOS DE LOS CARRITOS (TABLA)
   {path:'ver-datos-carro',component:TablasCarrosDatosComponent},
   { path:'**', component: WildcardComponent, title: 'Página no encontrada' },
 ];

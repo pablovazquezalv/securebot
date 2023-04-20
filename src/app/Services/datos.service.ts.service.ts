@@ -20,6 +20,13 @@ export class DatosServiceTsService {
       )  
   }
 
+  getActiveEnterprisesArray(sensor: string[]): Observable<Sensor[]> {
+    return this.http.get<Sensor[]>("https://securebot.ninja/read/" + sensor)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      )  
+  }
   private handleError(error: HttpErrorResponse) {
     if(error.status === 0) {
       console.error('Un error inesperado ha ocurrido:', error.error);

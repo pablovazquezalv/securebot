@@ -50,7 +50,7 @@
                               <div class="card-description">
                                 <h2 class="h2btn">Crear Carrito</h2>
                                 <p>Pulsa aqui para añadir un nuevo carro.</p>
-                                <button   class="button-39" role="button">Crear</button>
+                                <button  (click)="crearCarro()"  class="button-39" role="button">Crear</button>
                               </div>
                             </div>
                           </div>
@@ -64,7 +64,7 @@
                                   <p>Carro en la zona de almacen, monitoria y vigila la zona.</p>
                                   <span>Haz click para monitoria!</span>
                                 </div>
-                                <a class="card-link"  > </a>
+                                <a class="card-link" (click)="verSensores()" > </a>
                               </div>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xs-12">
@@ -76,7 +76,7 @@
                                   <span>Haz click para monitoria!</span>
                       
                                 </div>
-                                <a class="card-link" ></a>
+                                <a class="card-link" (click)="verSensores()"  ></a>
                               </div>
                             </div>
                           </div>

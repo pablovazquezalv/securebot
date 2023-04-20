@@ -29,4 +29,14 @@ export class AutosusuariodatosComponent {
   {
     this.router.navigate(['/autos-usuario']);
   }
+
+  verSensores()
+  {
+    this.router.navigate(['/ver-carro-especifico']);
+  }
+  crearCarro()
+  {
+    this.router.navigate(['/crear-carro']);
+  }
+
 }

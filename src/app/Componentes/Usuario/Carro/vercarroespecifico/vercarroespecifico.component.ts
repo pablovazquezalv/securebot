@@ -1,17 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Sensor } from 'src/app/Interfaces/datos.interface';
+import { DatosServiceTsService } from 'src/app/Services/datos.service.ts.service';
 
 @Component({
   selector: 'app-vercarroespecifico',
   templateUrl: './vercarroespecifico.component.html',
   styleUrls: ['./vercarroespecifico.component.css']
 })
-export class VercarroespecificoComponent {
+export class VercarroespecificoComponent implements OnInit{
 
+  seleccion = "ult1"
+  sensor: Sensor[] = [];
+  constructor(private router:Router,private sensorService: DatosServiceTsService) { }
 
-  constructor(private router:Router) { }
+  ngOnInit() {
+    {
+      this.getDatos()
+    }
+    }
 
-
+  getDatos()
+  {
+    this.sensorService.getActiveEnterprises(this.seleccion).subscribe(datos => {
+        
+        this.sensor = datos
+      });
+    
+    
+  }
   perfilUsuario()
   {
     this.router.navigate(['/profile']);
@@ -30,5 +47,10 @@ export class VercarroespecificoComponent {
   verCarroEspecifico()
   {
     this.router.navigate(['/ver-carro-especifico']);
+  }
+
+  verTablas()
+  {
+    this.router.navigate(['/ver-datos-carro']);
   }
 }
