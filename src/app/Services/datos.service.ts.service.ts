@@ -13,7 +13,7 @@ export class DatosServiceTsService {
   constructor(private http: HttpClient) { }
 
   getActiveEnterprises(sensor:string): Observable<Sensor[]> {
-    return this.http.get<Sensor[]>("http://127.0.0.1:3333/read/" + sensor)
+    return this.http.get<Sensor[]>("https://securebot.ninja/read/" + sensor)
       .pipe(
         retry(3),
         catchError(this.handleError)

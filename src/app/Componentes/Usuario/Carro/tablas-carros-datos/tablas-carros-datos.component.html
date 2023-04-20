@@ -4,7 +4,7 @@
         <h2 class="text-center">Datos de mi carrito</h2>
         <div class="col-lg-4 col-12  mt-2 text-center">
          
-            <form class="row row-cols-sm-auto">
+            <!-- <form class="row row-cols-sm-auto">
                 <div class="col-12">
                     <div class="input-group">
                         <input
@@ -13,13 +13,21 @@
                             name="dp"
                             [(ngModel)]="model"ngbDatepicker
                             #d="ngbDatepicker"
+                            
                         />
                         <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                          </svg></button>
+                          </svg>
+                        </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
+            <div class="row row-cols-sm-auto col-lg-8 col-12">
+              <p>De: </p>
+              <input type="date" (change)="SendDataonChange($event)" />
+              <p *ngIf="cal == false">Hasta: </p>
+              <input *ngIf="cal == false" type="date" (change)="SendDataonChange2($event)" />
+            </div>
              <!--Aqui imprime los datos-->
         <!--<pre>Model: {{ model | json }}</pre>
         -->    
@@ -30,51 +38,57 @@
       <div class="col-lg-4 col-12 mt-2 ">
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <div class="form-check form-switch custom-switch-lg shadow-none">
-            <select class="form-select shadow-none" aria-label="Default select example">
-                <option selected>Sensores</option>
-                <option value="1">Ultrasonico</option>
-                <option value="2">Sonido</option>
-                <option value="3">Temperatura</option>
-                <option value="3">Humedad</option>
-                <option value="3">Bateria</option>
-                <option value="3">Movimiento</option>
-                <option value="3">Infrarojo</option>
-              </select> 
+            <select class="form-select shadow-none" aria-label="Default select example" [(ngModel)]="seleccion" (change)="getDatos()">
+              <option [ngValue]="'ult0'" selected>Ultrasonico 1</option>
+              <option [ngValue]="'ult1'" >Ultrasonico 2</option>
+              <option [ngValue]="'son0'" >Sonido</option>
+              <option [ngValue]="'tem0'" >Temperatura</option>
+              <option [ngValue]="'hum0'" >Humedad</option>
+              <option [ngValue]="'bat0'" >Bateria 1</option>
+              <option [ngValue]="'bat1'" >Bateria 2</option>
+              <option [ngValue]="'pir0'" >Movimiento 1</option>
+              <option [ngValue]="'pir1'" >Movimiento 2</option>
+              <option [ngValue]="'ifr0'" >Infrarojo 1</option>
+              <option [ngValue]="'ifr1'" >Infrarojo 2</option>
+            </select> 
         </div>
       </div>
       </div>
       </div>
-
-  
     <br>
-    
-      <div class="row table-responsive mt-2">
+      <div class="row table-responsive mt-2" mdbScrollbar
+      style="position: relative;height: 500px">
         <table class="table table-bordered">
           <thead class="border text-center">
             <th scope="col">ID</th>
+            <th scope="col">Clave</th>
             <th scope="col">Tipo</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Valor</th>
-            <th scope="col">Unidad</th>
-            <th scope="col">Pines</th> 
-            <th scope="col">Fecha</th>
-                   
+            <th scope="col">Valores</th>
+            <th scope="col">Dato</th>
+            <th scope="col">Fecha / Hora</th>
+            <th scope="col">Pines</th>
+            <th scope="col">File</th>
           </thead>
           <tbody class="text-center">
-            <!-- <tr *ngFor="let s in sensor">
+            <tr *ngFor="let s of sensor | slice:desde:hasta">
               <th scope="row">{{ s._id }}</th>
               <td>{{ s.clave }}</td>
               <td>{{ s.tipo }}</td>
               <td>{{ s.valores }}</td>
               <td>{{ s.dato }}</td>
-              <td>{{ s.fecha }}{{ s.hora }}</td>
+              <td>{{ s.fecha }} / {{ s.hora }}</td>
               <td>{{ s.pines }}</td>
               <td>{{ s.file }}</td>
-            </tr> -->
+            </tr>
           </tbody>  
           <br>
-        
-         
         </table>
       </div>
+      <mat-paginator [length]="sensor.length"
+      [pageSize]="pageSize"
+      (page)="cambiarPagina($event)"
+      [hidePageSize]="true"
+      >
+      </mat-paginator>  
+      <br>
     </div> 
