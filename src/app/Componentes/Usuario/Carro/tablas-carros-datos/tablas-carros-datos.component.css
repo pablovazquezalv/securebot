@@ -15,3 +15,20 @@ input[type="date"]{
     cursor: pointer;
     border-radius: 3px;
 }
+
+input[type="time"]{
+    background-color: #1b1b1b;
+    padding: 10px;
+    font-family: "Roboto Mono",monospace;
+    color: #ffffff;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}

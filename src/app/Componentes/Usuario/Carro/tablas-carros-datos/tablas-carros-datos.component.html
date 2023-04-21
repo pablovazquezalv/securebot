@@ -1,44 +1,58 @@
 <br>
 <div class="container">
-    <div class="row ">
-        <h2 class="text-center">Datos de mi carrito</h2>
+  <div class="row">
+    
+      <div class="row row-cols-sm-auto col-lg-4 col-12 d-flex flex-row align-items-center">
         
-          <div class="row row-cols-sm-auto col-lg-8 col-12 d-flex flex-row align-items-center">
-            <div>
-              <p class="text-fechas">De: </p>
-              <input type="date" (change)="SendDataonChange($event)" />
-            </div>
-            <div>  
-              <p class="text-fechas" *ngIf="cal == false">Hasta: </p>
-              <input *ngIf="cal == false" type="date" (change)="SendDataonChange2($event)" />
-            </div>
-          </div>
-            
-      
-      <div class="row row-cols-sm-auto col-lg-2 col-12 d-flex flex-row align-items-center">
-        Hora de inicio: <input type="time" [(ngModel)]="start" (change)="filter($event)">
-        Hora de fin: <input type="time" *ngIf="cal2 == false" [(ngModel)]="end" (change)="filter2($event)">
-      </div>
-      <div class="row row-cols-sm-auto col-lg-2 col-12 d-flex flex-row align-items-center">
-      
-        <div class="form-check form-switch custom-switch-lg shadow-none">
-            <select class="form-select shadow-none" aria-label="Default select example" [(ngModel)]="seleccion" (change)="getDatos()">
-              <option [ngValue]="'Ult0'" selected>Ultrasonico 1</option>
-              <option [ngValue]="'Ult1'" >Ultrasonico 2</option>
-              <option [ngValue]="'Son0'" >Sonido</option>
-              <option [ngValue]="'Tem0'" >Temperatura</option>
-              <option [ngValue]="'Hum0'" >Humedad</option>
-              <option [ngValue]="'Bat0'" >Bateria 1</option>
-              <option [ngValue]="'Bat1'" >Bateria 2</option>
-              <option [ngValue]="'Pir0'" >Movimiento 1</option>
-              <option [ngValue]="'Pir1'" >Movimiento 2</option>
-              <option [ngValue]="'Ifr0'" >Infrarojo 1</option>
-              <option [ngValue]="'Ifr1'" >Infrarojo 2</option>
-              <option [ngValue]="'Gas0'" >Gas 1</option>
-            </select> 
+        <div>
+          <button class="btn btn-dark text-center"   (click)="getDatos()">Regresar</button>
+          <p class="text-fechas mt-3">De: </p>
+          <input type="date" (change)="SendDataonChange($event)" />
         </div>
+        <div>  
+          <p class="text-fechas" *ngIf="cal == false">Hasta: </p>
+          <input *ngIf="cal == false" type="date" (change)="SendDataonChange2($event)" />
+        </div>
+      </div>  
+    <div class="col-4 text-center">
+      <h2 class="text-center">Datos de mi carrito</h2>
+      
+     
+  </div>
+  <div class="col-4 d-grid gap-2 d-md-flex  justify-content-md-end">
+    <div class="row row-cols-sm-auto col-lg-2 col-12 d-flex flex-row align-items-center">
+      
+      <div class="form-check form-switch custom-switch-lg shadow-none">
+          <select class="form-select shadow-none" aria-label="Default select example" [(ngModel)]="seleccion" (change)="getDatos()">
+            <option [ngValue]="'Ult0'" selected>Ultrasonico 1</option>
+            <option [ngValue]="'Ult1'" >Ultrasonico 2</option>
+            <option [ngValue]="'Son0'" >Sonido</option>
+            <option [ngValue]="'Tem0'" >Temperatura</option>
+            <option [ngValue]="'Hum0'" >Humedad</option>
+            <option [ngValue]="'Bat0'" >Bateria 1</option>
+            <option [ngValue]="'Bat1'" >Bateria 2</option>
+            <option [ngValue]="'Pir0'" >Movimiento 1</option>
+            <option [ngValue]="'Pir1'" >Movimiento 2</option>
+            <option [ngValue]="'Ifr0'" >Infrarojo 1</option>
+            <option [ngValue]="'Ifr1'" >Infrarojo 2</option>
+            <option [ngValue]="'Gas0'" >Gas 1</option>
+          </select> 
       </div>
-      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row row-cols-sm-auto col-lg-4 col-12 d-flex flex-row align-items-center mt-2">
+  <div>
+  <p>Hora de inicio:</p>
+  <input type="time" [(ngModel)]="start" (change)="filter($event)">
+  </div>
+  <div>
+  <p>Hora de fin:</p>
+   <input type="time" *ngIf="cal2 == false" [(ngModel)]="end" (change)="filter2($event)">
+  </div>
+</div>
+   
     <br>
       <div class="row table-responsive mt-2">
         <table class="table table-bordered">
