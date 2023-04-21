@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Car } from 'src/app/Interfaces/car.interface';
 import { DatosServiceTsService } from 'src/app/Services/datos.service.ts.service';
 import { UserService } from 'src/app/Services/user.service';
+import { WebSocketService } from 'src/app/Services/web-socket.service';
 
 @Component({
   selector: 'app-autosusuariodatos',
@@ -16,13 +17,17 @@ export class AutosusuariodatosComponent implements OnInit {
   iInCharge: boolean = false;
   carros:Car[] = [];
 
-  constructor(private router: Router, private userService: UserService, private carService:DatosServiceTsService) { }
+  constructor(private router: Router, private userService: UserService, private carService:DatosServiceTsService, private webSocketService: WebSocketService) { }
 
   ngOnInit() {
     this.isOwner();
     this.isAdmin();
     this.isInCharge();
     this.getCars();
+
+    this.webSocketService.socket.on('new:carro', ()=> {
+      this.getCars();
+    })
   }
 
   getCars()

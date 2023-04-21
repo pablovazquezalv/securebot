@@ -7,6 +7,7 @@ import { NgFor, NgIf, SlicePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalRechazarSolicitudEmpresaComponent } from '../modal-rechazar-solicitud-empresa/modal-rechazar-solicitud-empresa.component';
 import { Router } from '@angular/router';
+import { WebSocketService } from 'src/app/Services/web-socket.service';
 
 @Component({
   selector: 'app-solicitudes-empresas',
@@ -22,10 +23,14 @@ export class SolicitudesEmpresasComponent implements OnInit {
   pageSize = 5;
   desde:number = 0;
   hasta:number = 5;
-  constructor(private enterpriseService: EnterpriseService, public dialog: MatDialog,private router:Router) { }
+  constructor(private enterpriseService: EnterpriseService, public dialog: MatDialog,private router:Router, private webSocketService: WebSocketService) { }
 
   ngOnInit() {
     this.getEnterprises();
+
+    this.webSocketService.socket.on('new:company', ()=> {
+      this.getEnterprises();
+    })
   }
 
   getEnterprises() {

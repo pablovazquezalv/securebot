@@ -10,6 +10,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { FilterSensoresPipe } from 'src/app/pipes/filter-sensores.pipe';
 import { FilterSensoresHoraPipe } from 'src/app/pipes/filter-sensores-hora.pipe';
 import { Router } from '@angular/router';
+import { WebSocketService } from 'src/app/Services/web-socket.service';
 
 
 @Component({
@@ -40,11 +41,15 @@ export class TablasCarrosDatosComponent implements OnInit{
   start = ""
   end = ""
 
-  constructor(private sensorService: DatosServiceTsService, public dialog: MatDialog, private fb: FormBuilder,private router:Router){}
+  constructor(private sensorService: DatosServiceTsService, public dialog: MatDialog, private fb: FormBuilder,private router:Router, private webSocketService: WebSocketService){}
 
   ngOnInit() {
     console.log(this.seleccion)
     this.getDatos()
+
+    this.webSocketService.socket.on('new:datos', ()=> {
+      this.getDatos();
+    })
   }
 
   combinePipes(users: any[], start: string, end: string, fecha1: string, fecha2: string): any[] {

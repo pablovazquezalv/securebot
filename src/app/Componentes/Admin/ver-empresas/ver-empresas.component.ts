@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalDesactivarEmpresaComponent } from '../modal-desactivar-empresa/modal-desactivar-empresa.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FilterCompanyPipe } from 'src/app/pipes/filter-company.pipe';
+import { WebSocketService } from 'src/app/Services/web-socket.service';
 
 @Component({
   selector: 'app-ver-empresas',
@@ -26,7 +27,7 @@ export class VerEmpresasComponent implements OnInit {
   mipipe = new FilterCompanyPipe;
 
 
-  constructor(private enterpriseService: EnterpriseService, private router: Router, public dialog: MatDialog, private fb: FormBuilder) { 
+  constructor(private enterpriseService: EnterpriseService, private router: Router, public dialog: MatDialog, private fb: FormBuilder, private webSocketService: WebSocketService) { 
     this.enterpriseForm = this.fb.group({
       company: ['', Validators.compose([Validators.required])],
     })
@@ -35,6 +36,22 @@ export class VerEmpresasComponent implements OnInit {
   ngOnInit() {
     this.getEnterprises();
     this.getRequests();
+
+    this.webSocketService.socket.on('update:company', ()=> {
+      this.getEnterprises();
+    })
+
+    this.webSocketService.socket.on('update:address', ()=> {
+      this.getEnterprises();
+    })
+
+    this.webSocketService.socket.on('accept:company', ()=> {
+      this.getEnterprises();
+    })
+
+    this.webSocketService.socket.on('disable:company', ()=> {
+      this.getEnterprises();
+    })
   }
 
   empleadosEmpresa(id: number) {
