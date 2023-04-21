@@ -22,8 +22,7 @@ export class AppComponent implements OnInit {
           this.showSpinner = true;
           
         }
-         else if ( val.url == "/datos-carros")
-        {
+        else{
           this.showHeader=true;
           this.showSpinner = false;
           
