@@ -134,12 +134,22 @@ export class VerusuariosComponent implements OnInit {
 
   rolCheck(rol: Number)
   {
-    this.rol = rol
-    this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
-      this.users = users.data;
-    });
-    this.selectedRole = rol;
-
+    if(rol == this.rol)
+    {
+      this.rol = 0
+      this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
+        this.users = users.data;
+      });
+      this.selectedRole = 0;
+    }
+    else
+    {
+      this.rol = rol
+      this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
+        this.users = users.data;
+      });
+      this.selectedRole = rol;
+    }
   }
 }
  
