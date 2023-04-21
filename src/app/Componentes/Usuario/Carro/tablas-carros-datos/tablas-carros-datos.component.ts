@@ -46,18 +46,25 @@ export class TablasCarrosDatosComponent implements OnInit{
     this.getDatos()
   }
 
+  combinePipes(users: any[], start: string, end: string, fecha1: string, fecha2: string): any[] {
+    const filterByHora = this.mipipe2.transform(users, start, end);
+    const filterByFecha = this.mipipe.transform(filterByHora, fecha1, fecha2);
+    return filterByFecha;
+  }
+
   filter(event: any) {
     this.start = event.target.value;
     console.log(event.target.value);
     this.cal2 = false;
     if(event.target.value != "")
     {
-      this.sensor = this.mipipe2.transform(this.sensor,this.start,this.end)
-    }
-    else{
-      this.getDatos()
-      this.end = ""
-      this.cal2 = true
+      if(this.fecha1 != "")
+      {
+        this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
+      }
+      else{
+        this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
+      }
     }
   }
 
@@ -69,15 +76,11 @@ export class TablasCarrosDatosComponent implements OnInit{
       {
         if(event.target.value != "")
         {
-          this.sensor = this.mipipe2.transform(this.sensor,this.start,this.end)
+          this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
         }
         else{
-          this.sensor = this.mipipe2.transform(this.sensor,this.start,this.end)
+          this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
         }
-      }
-      else
-      {
-        this.getDatos()
       }
     }
   }
@@ -107,7 +110,7 @@ export class TablasCarrosDatosComponent implements OnInit{
     this.cal = false;
     if(event.target.value != "")
     {
-      this.sensor = this.mipipe.transform(this.sensors,this.fecha1,this.fecha2)
+      this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
     }
     else{
       this.getDatos()
@@ -122,10 +125,10 @@ export class TablasCarrosDatosComponent implements OnInit{
       this.fecha2 = event.target.value;
       if(event.target.value != "")
       {
-        this.sensor = this.mipipe.transform(this.sensors,this.fecha1,this.fecha2)
+        this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
       }
       else{
-        this.sensor = this.mipipe.transform(this.sensors,this.fecha1,this.fecha2)
+        this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
       }
     }
   }

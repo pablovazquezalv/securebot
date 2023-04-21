@@ -48,7 +48,7 @@
   <input type="time" [(ngModel)]="start" (change)="filter($event)">
   </div>
   <div>
-  <p>Hora de fin:</p>
+  <p *ngIf="cal2 == false">Hora de fin:</p>
    <input type="time" *ngIf="cal2 == false" [(ngModel)]="end" (change)="filter2($event)">
   </div>
 </div>
