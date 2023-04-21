@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
   providedIn: 'root'
 })
 export class WebSocketService {
-  public socket = io('http://159.203.186.210:3333/');
+  public socket = io('ws://159.203.186.210:3333/');
 
   constructor() { }
 
