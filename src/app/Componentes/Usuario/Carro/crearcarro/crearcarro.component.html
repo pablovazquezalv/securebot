@@ -15,6 +15,10 @@
                     <div class="form-group">
                         <label for="form_name">Nombre</label>
                         <input id="form_name" type="text" formControlName="nombre" name="nombre" class="form-control" placeholder="Ingresa el nombre que le quieres asignar a este carrito" maxlength="20">
+                        <div *ngIf="carForm.get('nombre')?.invalid && (carForm.get('nombre')?.touched || carForm.get('nombre')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+                            <span class="error-message" *ngIf="carForm.get('nombre')?.errors?.['required']">El campo nombre es obligatorio.</span>
+                            <span class="error-message" *ngIf="carForm.get('nombre')?.errors?.['minlength']">El campo nombre debe tener un mínimo de 2 caracteres.<br></span>
+                          </div>
                     </div>
                 </div>
                
@@ -27,12 +31,16 @@
                         <textarea id="form_message" name="descripcion" class="form-control" formControlName="descripcion" placeholder="Escribe la descripción del carrito aquí." rows="4" required="required" data-error="Please, leave us a message."></textarea
                             >
                         </div>
+                        <div *ngIf="carForm.get('descripcion')?.invalid && (carForm.get('descripcion')?.touched || carForm.get('descripcion')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+                            <span class="error-message" *ngIf="carForm.get('descripcion')?.errors?.['required']">El campo nombre es obligatorio.</span>
+                            <span class="error-message" *ngIf="carForm.get('descripcion')?.errors?.['minlength']">El campo nombre debe tener un mínimo de 2 caracteres.<br></span>
+                          </div>
 
                     </div>
 
                 <div class="col-md-12 mt-2">
                     
-                    <input type="submit" class="btn btn-dark  pt-2 btn-block
+                    <input type="submit" [disabled]="!carForm.valid" class="btn btn-dark  pt-2 btn-block
                         " value="Crear" >
                 
             </div>

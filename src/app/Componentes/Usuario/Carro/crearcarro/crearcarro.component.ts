@@ -13,8 +13,8 @@ export class CrearcarroComponent{
 
   constructor(private carService: DatosServiceTsService, private fb: FormBuilder){
     this.carForm = this.fb.group({
-      nombre: ['', Validators.compose([Validators.required])],
-      descripcion: ['', Validators.compose([Validators.required])]
+      nombre: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      descripcion: ['', Validators.compose([Validators.required,Validators.minLength(2)])]
     });
   }
 
