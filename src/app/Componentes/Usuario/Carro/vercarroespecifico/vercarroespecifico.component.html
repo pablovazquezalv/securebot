@@ -32,19 +32,36 @@
                 <div class="d-flex justify-content-between">
                     <div class="d-flex flex-row align-items-center">
                         <div class="ms-2 c-details">
-                            <h6 class="mb-0">Medida:</h6> <span *ngIf="s.dato == 'C'"> Celsius</span>
+                            <h6 class="mb-0">Valor:</h6> <!-- <span *ngIf="s.dato == 'C'"> Celsius</span>-->
                         </div>
                     </div>
                     <div class="badge"> <span>{{s.valores}} {{ s.dato }}</span> </div>
                 </div>
                 <div class="mt-5">
                     <h3 class="heading">Sensor {{s.tipo}}<br></h3>
-                    <p class="heading">{{s.clave}}<br></p>
-                    <div class="mt-5">
-                        <div class="progress">
+                    <p class="heading">clave: {{s.clave}}<br></p>
+                    <div class="mt-3" >
+                        <!--SE MUESTA SI NO ES GAS, INFRARROJO, MOVIMIENTO-->
+                        <div class="progress" *ngIf="s.tipo != 'Gas' && s.tipo !== 'Infrarrojo' && s.tipo !== 'Movimiento' " >
                             <div class="progress-bar" role="progressbar" style="width: {{s.valores}}%"  aria-valuemin="0" aria-valuemax="100" ></div>
                         </div>
-                        <div class="mt-3"> <span class="text1">Ult.Vez <span class="text2">{{ s.hora }}</span></span> </div>
+
+                <!--SE MUESTA SI  ES GAS, INFRARROJO, MOVIMIENTO y su valor es 0-->
+                        <div *ngIf="s.tipo == 'Gas' || s.tipo == 'Infrarrojo' || s.tipo == 'Movimiento' && s.valores == 0" class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-lightbulb-fill" viewBox="0 0 16 16">
+                                <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                        </div>
+
+<!--SE MUESTA SI  ES GAS, INFRARROJO, MOVIMIENTO y su valor es 1-->
+                        <div *ngIf="s.tipo == 'Gas' || s.tipo == 'Infrarrojo' || s.tipo == 'Movimiento' && s.valores != 0 " class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue" class="bi bi-lightbulb-fill" viewBox="0 0 16 16">
+                                <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z"/>
+                              </svg>
+                        </div>
+                        
+
+                        <div class="mt-2"> <span class="text1">Ult.Vez <span class="text2">{{ s.hora }}</span></span> </div>
                     </div>
                 </div>
             </div>
