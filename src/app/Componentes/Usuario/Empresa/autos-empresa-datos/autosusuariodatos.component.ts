@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Car } from 'src/app/Interfaces/car.interface';
+import { DatosServiceTsService } from 'src/app/Services/datos.service.ts.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -11,12 +13,21 @@ import { UserService } from 'src/app/Services/user.service';
 export class AutosusuariodatosComponent implements OnInit {
   iOwner: boolean = false;
   iAdmin: boolean = false;
+  carros:Car[] = [];
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService, private carService:DatosServiceTsService) { }
 
   ngOnInit() {
     this.isOwner();
     this.isAdmin();
+    this.getCars();
+  }
+
+  getCars()
+  {
+    this.carService.getCars().subscribe(data => {
+      this.carros = data
+    })
   }
 
   isOwner() {

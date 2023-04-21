@@ -10,7 +10,6 @@ import { DatosServiceTsService } from 'src/app/Services/datos.service.ts.service
 })
 export class VercarroespecificoComponent implements OnInit{
 
-  seleccion = "ult1"
   sensor: Sensor[] = [];
   constructor(private router:Router,private sensorService: DatosServiceTsService) { }
 
@@ -22,12 +21,9 @@ export class VercarroespecificoComponent implements OnInit{
 
   getDatos()
   {
-    this.sensorService.getActiveEnterprises(this.seleccion).subscribe(datos => {
-        
+    this.sensorService.getLastData().subscribe(datos => {
         this.sensor = datos
       });
-    
-    
   }
   perfilUsuario()
   {

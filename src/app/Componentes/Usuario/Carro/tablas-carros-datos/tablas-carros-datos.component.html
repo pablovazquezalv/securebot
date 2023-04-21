@@ -49,8 +49,6 @@
             <th scope="col">Valores</th>
             <th scope="col">Dato</th>
             <th scope="col">Fecha / Hora</th>
-            <th scope="col">Pines</th>
-            <th scope="col">File</th>
           </thead>
           <tbody class="text-center">
             <tr *ngFor="let s of sensor | slice:desde:hasta">
@@ -60,8 +58,6 @@
               <td>{{ s.valores }}</td>
               <td>{{ s.dato }}</td>
               <td>{{ s.fecha }} / {{ s.hora }}</td>
-              <td>{{ s.pines }}</td>
-              <td>{{ s.file }}</td>
             </tr>
           </tbody>  
           <br>

@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Sensor } from '../Interfaces/datos.interface';
+import { Car } from '../Interfaces/car.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +14,39 @@ export class DatosServiceTsService {
   constructor(private http: HttpClient) { }
 
   getActiveEnterprises(sensor:string): Observable<Sensor[]> {
-    return this.http.get<Sensor[]>("https://securebot.ninja/read/" + sensor)
+    return this.http.get<Sensor[]>(environment.API_URL + "/read/" + sensor)
       .pipe(
         retry(3),
         catchError(this.handleError)
       )  
   }
 
+  getLastData(): Observable<Sensor[]> {
+    return this.http.get<Sensor[]>(environment.API_URL + "/ultimoDato")
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      )  
+  }
+
+  createCar(car: Car): Observable<Car> {
+    return this.http.post<Car>(environment.API_URL + "/crearCarro", car)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getCars(): Observable<Car[]> {
+    return this.http.get<Car[]>(environment.API_URL + "/verCarros")
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      )  
+  }
+
+
   getActiveEnterprisesArray(sensor: string[]): Observable<Sensor[]> {
-    return this.http.get<Sensor[]>("https://securebot.ninja/read/" + sensor)
+    return this.http.get<Sensor[]>(environment.API_URL + "/read/" + sensor)
       .pipe(
         retry(3),
         catchError(this.handleError)

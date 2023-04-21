@@ -106,7 +106,7 @@ import { SpinnerComponent } from './Componentes/spinner/spinner.component';
     FilterEmployeesPipe,
     TablasCarrosDatosComponent,
     FilterSensoresPipe,
-    SpinnerComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

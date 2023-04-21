@@ -28,6 +28,7 @@
         
         <div class="col  " *ngFor="let s of sensor">
             <div class="card p-3 mb-2">
+
                 <div class="d-flex justify-content-between">
                     <div class="d-flex flex-row align-items-center">
                         <div class="ms-2 c-details">
@@ -38,6 +39,7 @@
                 </div>
                 <div class="mt-5">
                     <h3 class="heading">Sensor {{s.tipo}}<br></h3>
+                    <p class="heading">{{s.clave}}<br></p>
                     <div class="mt-5">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: {{s.valores}}%"  aria-valuemin="0" aria-valuemax="100" ></div>
