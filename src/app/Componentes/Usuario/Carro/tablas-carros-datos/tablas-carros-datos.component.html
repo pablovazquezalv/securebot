@@ -7,11 +7,12 @@
         <div>
           <button class="btn btn-dark text-center" type="button"  (click)="regresar()">Regresar</button>
          
-          <p class="text-fechas mt-3">De: </p>
+          <p class="text-fechas mt-2">De: </p>
+          
           <input type="date" (change)="SendDataonChange($event)" />
         </div>
         <div>  
-          <p class="text-fechas" *ngIf="cal == false">Hasta: </p>
+          <p class="text-fechas mt-5" *ngIf="cal == false">Hasta: </p>
           <input *ngIf="cal == false" type="date" (change)="SendDataonChange2($event)" />
         </div>
       </div>  
