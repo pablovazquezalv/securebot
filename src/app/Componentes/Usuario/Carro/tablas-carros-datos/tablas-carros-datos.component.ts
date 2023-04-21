@@ -9,6 +9,7 @@ import { Sensor } from 'src/app/Interfaces/datos.interface';
 import { PageEvent } from '@angular/material/paginator';
 import { FilterSensoresPipe } from 'src/app/pipes/filter-sensores.pipe';
 import { FilterSensoresHoraPipe } from 'src/app/pipes/filter-sensores-hora.pipe';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class TablasCarrosDatosComponent implements OnInit{
   start = ""
   end = ""
 
-  constructor(private sensorService: DatosServiceTsService, public dialog: MatDialog, private fb: FormBuilder){}
+  constructor(private sensorService: DatosServiceTsService, public dialog: MatDialog, private fb: FormBuilder,private router:Router){}
 
   ngOnInit() {
     console.log(this.seleccion)
@@ -77,6 +78,12 @@ export class TablasCarrosDatosComponent implements OnInit{
       }
     }
   }
+
+  regresar()
+  {
+    this.router.navigate(['/ver-carro-especifico']);
+  }
+    
 
   getDatos()
   {

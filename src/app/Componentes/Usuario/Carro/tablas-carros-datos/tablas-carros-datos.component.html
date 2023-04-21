@@ -5,7 +5,8 @@
       <div class="row row-cols-sm-auto col-lg-4 col-12 d-flex flex-row align-items-center">
         
         <div>
-          <button class="btn btn-dark text-center"   (click)="getDatos()">Regresar</button>
+          <button class="btn btn-dark text-center" type="button"  (click)="regresar()">Regresar</button>
+         
           <p class="text-fechas mt-3">De: </p>
           <input type="date" (change)="SendDataonChange($event)" />
         </div>
