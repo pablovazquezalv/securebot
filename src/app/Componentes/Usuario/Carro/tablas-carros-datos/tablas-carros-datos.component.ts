@@ -28,7 +28,7 @@ export class TablasCarrosDatosComponent implements OnInit{
   filterPost = "";
   filteredUsers: any[] = [];
   selectedRole: Number = 0;
-  seleccion = "ult0"
+  seleccion = "Ult0"
   mipipe = new FilterSensoresPipe;
   fecha1 = "";
   fecha2 = "";
