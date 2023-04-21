@@ -42,11 +42,11 @@ export class VercarroespecificoComponent implements OnInit{
 
   verCarroEspecifico()
   {
-    this.router.navigate(['/ver-carro-especifico']);
+    this.router.navigate(['/datos-carrito']);
   }
 
   verTablas()
   {
-    this.router.navigate(['/ver-datos-carro']);
+    this.router.navigate(['/historial-datos']);
   }
 }

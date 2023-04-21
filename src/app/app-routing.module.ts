@@ -29,6 +29,7 @@ import { TablasCarrosDatosComponent } from './Componentes/Usuario/Carro/tablas-c
 import { LoginGuard } from './Guards/login.guard';
 import { RoleGuard } from './Guards/role.guard';
 import { AuthGuard } from './Guards/auth.guard';
+import { HasEnterpriseGuard } from './Guards/has-enterprise.guard';
 
 const routes: Routes = [
   { path: '', redirectTo:'/inicio', pathMatch:'full' },
@@ -45,27 +46,23 @@ const routes: Routes = [
   { path:'users', component: VerusuariosComponent, title: 'Usuarios', canActivate: [AuthGuard, RoleGuard], data: { roles: [1] } },
   { path: 'empresas', component: VerEmpresasComponent, title: 'Empresas', canActivate: [AuthGuard, RoleGuard], data: { roles: [1] } },
   { path: 'empleados-empresa/:id', component:VerEmpleadosEmpresaComponent, title: 'Empleados de empresa', canActivate: [AuthGuard, RoleGuard], data: { roles: [1] } },
-  { path: 'solicitudes-empresa', component: SolicitudesEmpresasComponent, title: 'Solicitudes de empresas', canActivate: [AuthGuard ,RoleGuard], data: { roles: [1] } },
+  { path: 'solicitudes-empresa', component: SolicitudesEmpresasComponent, title: 'Solicitudes de empresas', canActivate: [AuthGuard, RoleGuard], data: { roles: [1] } },
    
     //DUEÑO DE EMPRESA
   { path: 'solicitudes-empleados', component: EmpresaAceptarEmpleadosComponent, title: 'Solicitudes de empleados', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2] } },
   { path: 'empleados', component: EmpresaVerEmpleadosComponent, title: 'Ver empleados', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2] } },
+  { path:'crear-carrito', component:CrearcarroComponent, title: 'Crear carrito', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3] } },
 
    //EMPLEADO
   { path: 'profile', component: PerfilusuarioComponent, title: 'Mi perfil', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] } },
   { path: 'empresa-usuario', component: EmpresausuarioComponent, title: 'Mi empresa', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }},
   { path: 'mi-empresa', component: EmpresaOpcionesComponent, title: 'Mi empresa', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }},
-  { path: 'crear-empresa', component: CrearempresaComponent, title: 'Crear empresa', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }}, 
-  { path: 'afiliar-empresa', component: AfilarEmpresaComponent, title: 'Afiliarme a empresa', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] } },
+  { path: 'crear-empresa', component: CrearempresaComponent, title: 'Crear empresa', canActivate: [AuthGuard, HasEnterpriseGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }}, 
+  { path: 'afiliar-empresa', component: AfilarEmpresaComponent, title: 'Afiliarme a empresa', canActivate: [AuthGuard, HasEnterpriseGuard, RoleGuard], data: { roles: [1, 2, 3, 4] } },
+  { path:'autos-empresa', component:AutosusuariodatosComponent, title: 'Carritos de empresa', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] } },
+  { path: 'datos-carrito', component:VercarroespecificoComponent, title: 'Ver datos de carrito', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }},
+  { path:'historial-datos', component:TablasCarrosDatosComponent, title: 'Historial de datos', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }},
 
-  //VER LOS CARRITOS
-  {path:'autos-usuario',component:AutosusuariodatosComponent,title:'Autos empresa'},
-  //CREAR CARRITOS
-  {path:'crear-carro',component:CrearcarroComponent,title:'Crear carro'},
-  //VER CARRITOS ESPECIFICOS
-  {path:'ver-carro-especifico',component:VercarroespecificoComponent,title:'Ver carro especifico'},
-  //VER DATOS DE LOS CARRITOS (TABLA)
-  {path:'ver-datos-carro',component:TablasCarrosDatosComponent},
   { path:'**', component: WildcardComponent, title: 'Página no encontrada' },
 ];
 

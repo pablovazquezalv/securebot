@@ -180,6 +180,6 @@ export class EmpresaOpcionesComponent implements OnInit {
   }
 
   carrosEmpresa() {
-    this.router.navigate(['/autos-usuario']);
+    this.router.navigate(['/autos-empresa']);
   }
 }

@@ -81,15 +81,15 @@ export class AutosusuariodatosComponent implements OnInit {
   }
 
   carrosEmpresa() {
-    this.router.navigate(['/autos-usuario']);
+    this.router.navigate(['/autos-empresa']);
   }
 
   verSensores() {
-    this.router.navigate(['/ver-carro-especifico']);
+    this.router.navigate(['/datos-carrito']);
   }
 
   crearCarro() {
-    this.router.navigate(['/crear-carro']);
+    this.router.navigate(['/crear-carrito']);
   }
 
 }

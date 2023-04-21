@@ -88,7 +88,7 @@ export class TablasCarrosDatosComponent implements OnInit{
 
   regresar()
   {
-    this.router.navigate(['/ver-carro-especifico']);
+    this.router.navigate(['/datos-carrito']);
   }
     
 
