@@ -75,6 +75,10 @@ export class TablasCarrosDatosComponent implements OnInit{
           this.sensor = this.mipipe2.transform(this.sensor,this.start,this.end)
         }
       }
+      else
+      {
+        this.getDatos()
+      }
     }
   }
 
@@ -103,7 +107,7 @@ export class TablasCarrosDatosComponent implements OnInit{
     this.cal = false;
     if(event.target.value != "")
     {
-      this.sensor = this.mipipe.transform(this.sensor,this.fecha1,this.fecha2)
+      this.sensor = this.mipipe.transform(this.sensors,this.fecha1,this.fecha2)
     }
     else{
       this.getDatos()
@@ -118,10 +122,10 @@ export class TablasCarrosDatosComponent implements OnInit{
       this.fecha2 = event.target.value;
       if(event.target.value != "")
       {
-        this.sensor = this.mipipe.transform(this.sensor,this.fecha1,this.fecha2)
+        this.sensor = this.mipipe.transform(this.sensors,this.fecha1,this.fecha2)
       }
       else{
-        this.sensor = this.mipipe.transform(this.sensor,this.fecha1,this.fecha2)
+        this.sensor = this.mipipe.transform(this.sensors,this.fecha1,this.fecha2)
       }
     }
   }
