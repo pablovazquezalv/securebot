@@ -19,6 +19,7 @@ export class UserService {
   private getRoleUrl = environment.API_URL + '/user/role';
   private isAdminUrl = environment.API_URL + '/user/admin';
   private isOwnerUrl = environment.API_URL + '/user/owner';
+  private isInChargeUrl = environment.API_URL + '/user/charge';
   private updateNamesUrl = environment.API_URL + '/user/names';
   private updatePasswordUrl = environment.API_URL + '/user/password';
   private updatePhoneUrl = environment.API_URL + '/user/phone';
@@ -146,6 +147,14 @@ export class UserService {
         retry(3),
         catchError(this.handleError)
       );
+  }
+
+  isInCharge() {
+    return this.http.get<User>(this.isInChargeUrl)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   getToken() {

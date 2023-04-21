@@ -13,6 +13,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class AutosusuariodatosComponent implements OnInit {
   iOwner: boolean = false;
   iAdmin: boolean = false;
+  iInCharge: boolean = false;
   carros:Car[] = [];
 
   constructor(private router: Router, private userService: UserService, private carService:DatosServiceTsService) { }
@@ -53,7 +54,19 @@ export class AutosusuariodatosComponent implements OnInit {
       })
     ).subscribe();
   }
-  
+
+  isInCharge() {
+    this.userService.isInCharge().pipe(
+      map(isInCharge => {
+        if(isInCharge) {
+          this.iInCharge = true;
+        } else {
+          this.iInCharge = false;
+        }
+      })
+    ).subscribe();
+  }
+
   solicitudesDeEmpleados() {
     this.router.navigate(['/solicitudes-empleados']);
   }
