@@ -69,6 +69,10 @@ export class VerusuariosComponent implements OnInit {
       this.getUsers();
     })
 
+    this.webSocketService.socket.on('update:phone', ()=> {
+      this.getUsers();
+    })
+
     this.webSocketService.socket.on('incorrect:data', ()=> {
       this.getUsers();
     })
