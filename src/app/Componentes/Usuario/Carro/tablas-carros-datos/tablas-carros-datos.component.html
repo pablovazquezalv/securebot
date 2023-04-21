@@ -16,7 +16,8 @@
             
       
       <div class="row row-cols-sm-auto col-lg-2 col-12 d-flex flex-row align-items-center">
-      
+        Hora de inicio: <input type="time" [(ngModel)]="start" (change)="filter($event)">
+        Hora de fin: <input type="time" *ngIf="cal2 == false" [(ngModel)]="end" (change)="filter2($event)">
       </div>
       <div class="row row-cols-sm-auto col-lg-2 col-12 d-flex flex-row align-items-center">
       

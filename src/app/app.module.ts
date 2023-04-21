@@ -59,6 +59,7 @@ import { FilterEmployeesPipe } from './pipes/filter-employees.pipe';
 import { TablasCarrosDatosComponent } from './Componentes/Usuario/Carro/tablas-carros-datos/tablas-carros-datos.component';
 import { FilterSensoresPipe } from './pipes/filter-sensores.pipe';
 import { SpinnerComponent } from './Componentes/spinner/spinner.component';
+import { FilterSensoresHoraPipe } from './pipes/filter-sensores-hora.pipe';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { SpinnerComponent } from './Componentes/spinner/spinner.component';
     FilterEmployeesPipe,
     TablasCarrosDatosComponent,
     FilterSensoresPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    FilterSensoresHoraPipe
   ],
   imports: [
     BrowserModule,
