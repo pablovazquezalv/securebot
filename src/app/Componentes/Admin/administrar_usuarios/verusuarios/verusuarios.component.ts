@@ -8,7 +8,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
-import { pipe } from 'rxjs';
+import { WebSocketService } from 'src/app/Services/web-socket.service';
 
 export const fadeInOut = trigger('fadeInOut', [
   transition(':enter', [
@@ -42,13 +42,22 @@ export class VerusuariosComponent implements OnInit {
 
   mipipe = new FilterPipe()
 
-  constructor(private userService: UserService, public dialog: MatDialog, private fb: FormBuilder) { 
+  constructor(private userService: UserService, public dialog: MatDialog, private fb: FormBuilder, private webSocketService: WebSocketService) { 
     this.userForm = this.fb.group({
       user: ['', Validators.compose([Validators.required])],
     })
   }
 
   ngOnInit() {
+    this.webSocketService.socket.on('new:user', ()=> {
+      this.getUsers();
+    })
+
+    this.webSocketService.socket.on('change:role', ()=> {
+      console.log('cambio de rol')
+      this.getUsers();
+    })
+
     this.getUsers();
   }
 
