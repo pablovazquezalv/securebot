@@ -27,14 +27,7 @@ export class AppComponent implements OnInit {
           this.showSpinner = false;
           
         }
-        if( val.url=="/datos-carrito" || val.url=="/historial-datos")
-        {
-          this.showSpinner=false;
-        }
-        else
-        {
-          this.showSpinner=true;
-        }
+       
       }
     })
    }
