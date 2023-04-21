@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
   providedIn: 'root'
 })
 export class WebSocketService {
-  public socket = io('wss://securebot.ninja/socket.io');
+  public socket = io('wss://securebot.ninja');
 
   constructor() { }
 
