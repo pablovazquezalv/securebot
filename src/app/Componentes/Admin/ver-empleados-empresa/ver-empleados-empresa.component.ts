@@ -61,6 +61,32 @@ export class VerEmpleadosEmpresaComponent implements OnInit {
       this.location.back();
       });
     })
+
+    this.webSocketService.socket.on('disable:user', ()=> {
+      this.id = Number(this.route.snapshot.paramMap.get('id'));
+      this.userService.getEmployeesWithParams(this.id).subscribe((employees: any) => {
+        this.employees = employees.users;
+        this.company = employees.company.name;
+        
+      }, (error) => {
+        this.errorMessage = error.message;
+        localStorage.setItem('errorMessage', error.message);
+      this.location.back();
+      });
+    })
+
+    this.webSocketService.socket.on('change:puesto', ()=> {
+      this.id = Number(this.route.snapshot.paramMap.get('id'));
+      this.userService.getEmployeesWithParams(this.id).subscribe((employees: any) => {
+        this.employees = employees.users;
+        this.company = employees.company.name;
+        
+      }, (error) => {
+        this.errorMessage = error.message;
+        localStorage.setItem('errorMessage', error.message);
+      this.location.back();
+      });
+    })
   }
 
   regresarVerEmpresas() 
