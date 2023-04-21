@@ -7,6 +7,7 @@ import { ModalEliminarEmpleadoComponent } from '../modal-eliminar-empleado/modal
 import { PageEvent } from '@angular/material/paginator';
 import { FilterEmployeesPipe } from 'src/app/pipes/filter-employees.pipe';
 import { map } from 'rxjs/operators';
+import { WebSocketService } from 'src/app/Services/web-socket.service';
 
 @Component({
   selector: 'app-empresa-ver-empleados',
@@ -28,13 +29,17 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
   iOwner: boolean = false;
   iAdmin: boolean = false;
 
-  constructor(private router: Router, private userService: UserService, public dialog: MatDialog) { }
+  constructor(private router: Router, private userService: UserService, public dialog: MatDialog, private webSocketService: WebSocketService) { }
 
   ngOnInit() {
     this.getEmployeees();
     this.getRequests();
     this.isOwner();
     this.isAdmin();
+
+    this.webSocketService.socket.on('accept:user', ()=> {
+      this.getEmployeees();
+    })
   }
 
   getEmployeees() {

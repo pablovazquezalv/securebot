@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { PageEvent } from '@angular/material/paginator';
 import { FilterEmployeesPipe } from 'src/app/pipes/filter-employees.pipe';
+import { WebSocketService } from 'src/app/Services/web-socket.service';
 
 @Component({
   selector: 'app-ver-empleados-empresa',
@@ -24,7 +25,7 @@ export class VerEmpleadosEmpresaComponent implements OnInit {
   pageSize = 5;
   
 
-  constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, private location: Location, private webSocketService: WebSocketService) { }
 
   ngOnInit() 
   {
@@ -32,7 +33,7 @@ export class VerEmpleadosEmpresaComponent implements OnInit {
     
     if (errorMessage)
      {
-      this.errorMessage = "Esa empresa no existe!";
+      this.errorMessage = "No existe empresa con ese ID";
       this.show = true;
       localStorage.removeItem('errorMessage');
     }
@@ -46,9 +47,20 @@ export class VerEmpleadosEmpresaComponent implements OnInit {
       this.errorMessage = error.message;
       localStorage.setItem('errorMessage', error.message);
      this.location.back();
-
-      
     });
+
+    this.webSocketService.socket.on('accept:user', ()=> {
+      this.id = Number(this.route.snapshot.paramMap.get('id'));
+      this.userService.getEmployeesWithParams(this.id).subscribe((employees: any) => {
+        this.employees = employees.users;
+        this.company = employees.company.name;
+        
+      }, (error) => {
+        this.errorMessage = error.message;
+        localStorage.setItem('errorMessage', error.message);
+      this.location.back();
+      });
+    })
   }
 
   regresarVerEmpresas() 

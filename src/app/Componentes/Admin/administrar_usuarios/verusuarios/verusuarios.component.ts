@@ -54,7 +54,22 @@ export class VerusuariosComponent implements OnInit {
     })
 
     this.webSocketService.socket.on('change:role', ()=> {
-      console.log('cambio de rol')
+      this.getUsers();
+    })
+
+    this.webSocketService.socket.on('change:status', ()=> {
+      this.getUsers();
+    })
+
+    this.webSocketService.socket.on('update:user', ()=> {
+      this.getUsers();
+    })
+
+    this.webSocketService.socket.on('update:email', ()=> {
+      this.getUsers();
+    })
+
+    this.webSocketService.socket.on('incorrect:data', ()=> {
       this.getUsers();
     })
 
