@@ -21,6 +21,7 @@ export class AutosusuariodatosComponent implements OnInit {
   ngOnInit() {
     this.isOwner();
     this.isAdmin();
+    this.isInCharge();
     this.getCars();
   }
 
