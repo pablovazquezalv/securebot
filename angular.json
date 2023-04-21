@@ -68,7 +68,8 @@
               "browserTarget": "Secure-Bot:build:production"
             },
             "development": {
-              "browserTarget": "Secure-Bot:build:development"
+              "browserTarget": "Secure-Bot:build:development",
+              "ssl": false
             }
           },
           "defaultConfiguration": "development"
