@@ -18,9 +18,8 @@ export class AppComponent implements OnInit {
       {
         if(val.url=="/login" || val.url=="/registrarse" || val.url=="/instrucciones" || val.url=="/code-verify" ||  val.url=="/correo-equivocado" || val.url=="/telefono-equivocado"  )
         {
-          //oculta nav y muestra spinner
+          //oculta nav 
           this.showHeader=false;
-          this.showSpinner = true;
         }
         else if (val.url == "/datos-carrito"  || val.url == "historial-datos")
         {
