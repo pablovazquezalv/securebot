@@ -1,8 +1,8 @@
 <ng-container>
     <app-nav-bar *ngIf="showHeader"></app-nav-bar>
-    
+    <app-spinner *ngIf="showSpinner"></app-spinner>
 </ng-container>
 <!--<ng-container *ngIf="showSpinner">
-    <app-spinner ></app-spinner>
+    
 </ng-container>-->
 <router-outlet></router-outlet>
