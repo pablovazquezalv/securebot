@@ -18,13 +18,11 @@ export class AppComponent implements OnInit {
       {
         if(val.url=="/login" || val.url=="/registrarse" || val.url=="/instrucciones" || val.url=="/code-verify" ||  val.url=="/correo-equivocado" || val.url=="/telefono-equivocado"  )
         {
-          this.showHeader=false;
-          this.showSpinner = true;
-          
+          this.showHeader=false;        
         }
         else{
           this.showHeader=true;
-          this.showSpinner = false;
+          
           
         }
        
