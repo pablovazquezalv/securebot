@@ -1,6 +1,10 @@
-<app-spinner></app-spinner>
-<ng-container *ngIf="showHeader">
+<ng-container *ngIf="showSpinner">
+    <app-spinner></app-spinner>
+  </ng-container>
+  
+  <ng-container *ngIf="showHeader">
     <app-nav-bar></app-nav-bar>
-    
-</ng-container>
-<router-outlet></router-outlet>
+  </ng-container>
+  
+  <router-outlet></router-outlet>
+  
