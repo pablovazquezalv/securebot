@@ -22,9 +22,15 @@ export class AppComponent implements OnInit {
           this.showSpinner = true;
           
         }
-        else{
+        else if (val.url=="/datos-carrito" || val.url == "/historial-datos")
+        {
           this.showHeader=true;
           this.showSpinner = false;
+        }
+        else
+        {
+          this.showHeader=true;
+          this.showSpinner = true;
           
         }
        
