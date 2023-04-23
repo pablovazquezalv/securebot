@@ -21,8 +21,8 @@ export class DatosServiceTsService {
       )  
   }
 
-  getLastData(): Observable<Sensor[]> {
-    return this.http.get<Sensor[]>(environment.API_URL + "/ultimoDato")
+  getLastData(): Observable<any> {
+    return this.http.get<any>(environment.API_URL + "/ultimoDato")
       .pipe(
         retry(3),
         catchError(this.handleError)
