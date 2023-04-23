@@ -83,6 +83,7 @@ export class VerusuariosComponent implements OnInit {
   getUsers() {
     this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
       this.users = users.data;
+      this.users.sort((a, b) => a.id - b.id);
     });
   }
 
