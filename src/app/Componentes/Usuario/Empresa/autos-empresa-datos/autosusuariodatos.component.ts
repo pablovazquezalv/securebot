@@ -89,8 +89,8 @@ export class AutosusuariodatosComponent implements OnInit {
     this.router.navigate(['/autos-empresa']);
   }
 
-  verSensores() {
-    this.router.navigate(['/datos-carrito']);
+  verSensores(carro:number) {
+    this.router.navigate(['/datos-carrito/' + carro]);
   }
 
   crearCarro() {

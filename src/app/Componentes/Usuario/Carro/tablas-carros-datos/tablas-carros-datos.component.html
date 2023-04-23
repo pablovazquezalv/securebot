@@ -8,13 +8,13 @@
       <div class="row">
         <div class="form-group col-sm">
           <p class="text-fechas">De:</p>
-          <input type="date" (change)="SendDataonChange($event)">
+          <input type="date" [(ngModel)]="fecha1" (change)="SendDataonChange($event)">
         </div>
       </div>
       <div class="row">
         <div class="form-group col-sm">
           <p class="text-fechas" *ngIf="cal == false">Hasta:</p>
-          <input type="date" *ngIf="cal == false" (change)="SendDataonChange2($event)">
+          <input type="date" *ngIf="cal == false" [(ngModel)]="fecha2" (change)="SendDataonChange2($event)">
         </div>
       </div>
     </div>
@@ -38,19 +38,10 @@
     <div class="col-sm-auto">
       <div class="form-check form-switch custom-switch-lg shadow-none">
         <select class="form-select shadow-none" [(ngModel)]="seleccion" (change)="getDatos()">
-          <option [ngValue]="'Ult0'" selected>Ultrasonico 1</option>
-          <option [ngValue]="'Ult1'">Ultrasonico 2</option>
-          <option [ngValue]="'Son0'">Sonido</option>
-          <option [ngValue]="'Tem0'">Temperatura</option>
-          <option [ngValue]="'Hum0'">Humedad</option>
-          <option [ngValue]="'Bat0'">Bateria 1</option>
-          <option [ngValue]="'Bat1'">Bateria 2</option>
-          <option [ngValue]="'Pir0'">Movimiento 1</option>
-          <option [ngValue]="'Pir1'">Movimiento 2</option>
-          <option [ngValue]="'Ifr0'">Infrarojo 1</option>
-          <option [ngValue]="'Ifr1'">Infrarojo 2</option>
-          <option [ngValue]="'Gas0'">Gas 1</option>
+          <option *ngFor="let s of sens" [ngValue]="s.clave" selected>{{s.nombre}}</option>
         </select>
+        <br>
+        <button class="btn btn-dark" type="button" *ngIf="cal == false || cal2 == false" (click)="clearFilters()">Limpiar Buscador</button>
       </div>
     </div>
    

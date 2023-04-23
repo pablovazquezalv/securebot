@@ -60,8 +60,8 @@ const routes: Routes = [
   { path: 'crear-empresa', component: CrearempresaComponent, title: 'Crear empresa', canActivate: [AuthGuard, HasEnterpriseGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }}, 
   { path: 'afiliar-empresa', component: AfilarEmpresaComponent, title: 'Afiliarme a empresa', canActivate: [AuthGuard, HasEnterpriseGuard, RoleGuard], data: { roles: [1, 2, 3, 4] } },
   { path:'autos-empresa', component:AutosusuariodatosComponent, title: 'Carritos de empresa', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] } },
-  { path: 'datos-carrito', component:VercarroespecificoComponent, title: 'Ver datos de carrito', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }},
-  { path:'historial-datos', component:TablasCarrosDatosComponent, title: 'Historial de datos', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }},
+  { path: 'datos-carrito/:carro', component:VercarroespecificoComponent, title: 'Ver datos de carrito', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }},
+  { path:'historial-datos/:carro', component:TablasCarrosDatosComponent, title: 'Historial de datos', canActivate: [AuthGuard, RoleGuard], data: { roles: [1, 2, 3, 4] }},
 
   { path:'**', component: WildcardComponent, title: 'Página no encontrada' },
 ];

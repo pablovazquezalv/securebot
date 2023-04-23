@@ -9,8 +9,9 @@ import { Sensor } from 'src/app/Interfaces/datos.interface';
 import { PageEvent } from '@angular/material/paginator';
 import { FilterSensoresPipe } from 'src/app/pipes/filter-sensores.pipe';
 import { FilterSensoresHoraPipe } from 'src/app/pipes/filter-sensores-hora.pipe';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WebSocketService } from 'src/app/Services/web-socket.service';
+import { sensorInd } from '../../../../Interfaces/sensor.interface';
 
 
 @Component({
@@ -40,16 +41,24 @@ export class TablasCarrosDatosComponent implements OnInit{
   cal2 = true;
   start = ""
   end = ""
+  sens:sensorInd[] = []
+  carrito: string = ""
 
-  constructor(private sensorService: DatosServiceTsService, public dialog: MatDialog, private fb: FormBuilder,private router:Router, private webSocketService: WebSocketService){}
+  constructor(private sensorService: DatosServiceTsService, public dialog: MatDialog, private fb: FormBuilder,private router:Router, private webSocketService: WebSocketService,private route: ActivatedRoute){}
 
   ngOnInit() {
     console.log(this.seleccion)
     this.getDatos()
 
     this.webSocketService.socket.on('new:datos', ()=> {
-      this.getDatos();
+      this.getDatos2();
     })
+    this.route.paramMap.subscribe(params => {
+      this.carrito = params.get('carro')!;
+      console.log('El id del usuario es:', this.carrito);
+    });
+
+    this.getsensores()
   }
 
   combinePipes(users: any[], start: string, end: string, fecha1: string, fecha2: string): any[] {
@@ -58,57 +67,58 @@ export class TablasCarrosDatosComponent implements OnInit{
     return filterByFecha;
   }
 
+  getsensores()
+  {
+    this.sensorService.getSensores(this.carrito).subscribe((data)=>{
+      this.sens = data
+    })
+  }
+
   filter(event: any) {
     this.start = event.target.value;
     console.log(event.target.value);
     this.cal2 = false;
-    if(event.target.value != "")
-    {
-      if(this.fecha1 != "")
-      {
-        this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
-      }
-      else{
-        this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
-      }
-    }
+    this.filterData();
   }
-
+  
   filter2(event: any) {
-    if(this.start != "")
-    {
+    if (this.start) {
       this.end = event.target.value;
-      if(this.end >= this.start)
-      {
-        if(event.target.value != "")
-        {
-          this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
-        }
-        else{
-          this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
-        }
+      if (this.end >= this.start) {
+        this.filterData();
       }
     }
   }
 
   regresar()
   {
-    this.router.navigate(['/datos-carrito']);
+    this.router.navigate(['/datos-carrito/' + this.carrito]);
   }
     
 
-  getDatos()
-  {
-    this.fecha1 = ""
-    this.fecha2 = ""
-    this.start = ""
-    this.end = ""
-    this.cal = true
-    this.cal2 = true
+  getDatos() {
     this.sensorService.getActiveEnterprises(this.seleccion).subscribe(datos => {
-      this.sensor = datos;
       this.sensors = datos;
+      this.filterData();
     });
+  }
+  
+  getDatos2() {
+    this.sensorService.getActiveEnterprises(this.seleccion).subscribe(datos => {
+      this.sensors = datos;
+      this.filterData();
+    });
+  }
+
+  filterData() {
+    let filteredData = this.sensors;
+    if (this.start) {
+      filteredData = this.mipipe2.transform(filteredData, this.start, this.end);
+    }
+    if (this.fecha1) {
+      filteredData = this.mipipe.transform(filteredData, this.fecha1, this.fecha2);
+    }
+    this.sensor = filteredData;
   }
 
   cambiarPagina(e:PageEvent) {
@@ -118,32 +128,32 @@ export class TablasCarrosDatosComponent implements OnInit{
 
   SendDataonChange(event: any) {
     this.fecha1 = event.target.value;
-    console.log(event.target.value);
-    this.cal = false;
-    if(event.target.value != "")
+    if(event.target.value == "")
     {
-      this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
-    }
-    else{
-      this.getDatos()
-      this.fecha2 = ""
+      this.fecha1 = event.target.value
       this.cal = true
     }
-  }
-
-  SendDataonChange2(event: any) {
-    if(this.fecha1 != "")
-    {
-      this.fecha2 = event.target.value;
-      if(event.target.value != "")
-      {
-        this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
-      }
-      else{
-        this.sensor = this.combinePipes(this.sensors, this.start, this.end, this.fecha1, this.fecha2);
-      }
+    else{
+      this.cal = false;
+      this.filterData();
     }
   }
   
-	
+  SendDataonChange2(event: any) {
+    if (this.fecha1) {
+      this.fecha2 = event.target.value;
+      this.filterData();
+    }
+  }
+
+  clearFilters() {
+    this.fecha1 = "";
+    this.fecha2 = "";
+    this.start = "";
+    this.end = "";
+    this.sensor = this.sensors;
+    this.cal = true
+    this.cal2 = true
+    this.getDatos(); // actualiza la tabla
+  }
 }

@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Sensor } from '../Interfaces/datos.interface';
 import { Car } from '../Interfaces/car.interface';
+import { sensorInd } from '../Interfaces/sensor.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,14 @@ export class DatosServiceTsService {
 
   getCars(): Observable<Car[]> {
     return this.http.get<Car[]>(environment.API_URL + "/verCarros")
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      )  
+  }
+
+  getSensores(carro:string): Observable<sensorInd[]> {
+    return this.http.get<sensorInd[]>(environment.API_URL + "/verSensores" + "/" + carro)
       .pipe(
         retry(3),
         catchError(this.handleError)
