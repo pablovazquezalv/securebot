@@ -45,13 +45,13 @@ export class DatosServiceTsService {
       )  
   }
 
-  getSensores(carro:string): Observable<sensorInd[]> {
-    return this.http.get<sensorInd[]>(environment.API_URL + "/verSensores" + "/" + carro)
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      )  
-  }
+  // getSensores(carro:string): Observable<sensorInd[]> {
+  //   return this.http.get<sensorInd[]>(environment.API_URL + "/verSensores" + "/" + carro)
+  //     .pipe(
+  //       retry(3),
+  //       catchError(this.handleError)
+  //     )  
+  // }
 
 
   getActiveEnterprisesArray(sensor: string[]): Observable<Sensor[]> {

@@ -38,7 +38,18 @@
     <div class="col-sm-auto">
       <div class="form-check form-switch custom-switch-lg shadow-none">
         <select class="form-select shadow-none" [(ngModel)]="seleccion" (change)="getDatos()">
-          <option *ngFor="let s of sens" [ngValue]="s.clave" selected>{{s.nombre}}</option>
+          <option [ngValue]="'Ult0'" selected>Ultrasonico 1</option>
+          <option [ngValue]="'Ult1'">Ultrasonico 2</option>
+          <option [ngValue]="'Son0'">Sonido</option>
+          <option [ngValue]="'Tem0'">Temperatura</option>
+          <option [ngValue]="'Hum0'">Humedad</option>
+          <option [ngValue]="'Bat0'">Bateria 1</option>
+          <option [ngValue]="'Bat1'">Bateria 2</option>
+          <option [ngValue]="'Pir0'">Movimiento 1</option>
+          <option [ngValue]="'Pir1'">Movimiento 2</option>
+          <option [ngValue]="'Ifr0'">Infrarojo 1</option>
+          <option [ngValue]="'Ifr1'">Infrarojo 2</option>
+          <option [ngValue]="'Gas0'">Gas 1</option>
         </select>
         <br>
         <button class="btn btn-dark" type="button" *ngIf="cal == false || cal2 == false" (click)="clearFilters()">Limpiar Buscador</button>
