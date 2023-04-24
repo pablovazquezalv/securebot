@@ -51,6 +51,11 @@ export class VerEmpresasComponent implements OnInit {
 
     this.webSocketService.socket.on('accept:company', ()=> {
       this.getEnterprises();
+      this.getRequests();
+    })
+
+    this.webSocketService.socket.on('reject:company', ()=> {
+      this.getRequests();
     })
 
     this.webSocketService.socket.on('disable:company', ()=> {
