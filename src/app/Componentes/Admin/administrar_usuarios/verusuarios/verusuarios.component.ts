@@ -77,6 +77,10 @@ export class VerusuariosComponent implements OnInit {
       this.getUsers();
     })
 
+    this.webSocketService.socket.on('change:puesto', ()=> {
+      this.getUsers();
+    })
+
     this.getUsers();
   }
 

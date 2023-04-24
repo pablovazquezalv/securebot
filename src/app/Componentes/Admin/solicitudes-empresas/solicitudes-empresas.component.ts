@@ -31,6 +31,10 @@ export class SolicitudesEmpresasComponent implements OnInit {
     this.webSocketService.socket.on('new:company', ()=> {
       this.getEnterprises();
     })
+
+    this.webSocketService.socket.on('accept:company', ()=> {
+      this.getEnterprises();
+    })
   }
 
   getEnterprises() {

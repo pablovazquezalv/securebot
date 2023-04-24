@@ -37,6 +37,10 @@ export class VerEmpresasComponent implements OnInit {
     this.getEnterprises();
     this.getRequests();
 
+    this.webSocketService.socket.on('new:company', ()=> {
+      this.getRequests();
+    })
+    
     this.webSocketService.socket.on('update:company', ()=> {
       this.getEnterprises();
     })

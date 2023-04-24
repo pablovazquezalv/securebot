@@ -20,7 +20,7 @@ export class VercarroespecificoComponent implements OnInit{
     {
       this.getDatos()
 
-      this.webSocketService.socket.on('ultimo:dato', ()=> {
+      this.webSocketService.socket.on('new:datos', ()=> {
         this.getActualizacion();
         console.log(this.sensor)
       })

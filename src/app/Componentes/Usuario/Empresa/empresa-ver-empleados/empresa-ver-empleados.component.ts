@@ -37,7 +37,27 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
     this.isOwner();
     this.isAdmin();
 
+    this.webSocketService.socket.on('user:company', ()=> {
+      this.getRequests();
+    })
+
     this.webSocketService.socket.on('accept:user', ()=> {
+      this.getEmployeees();
+    })
+
+    this.webSocketService.socket.on('change:role', ()=> {
+      this.getEmployeees();
+    })
+
+    this.webSocketService.socket.on('update:user', ()=> {
+      this.getEmployeees();
+    })
+
+    this.webSocketService.socket.on('update:email', ()=> {
+      this.getEmployeees();
+    })
+
+    this.webSocketService.socket.on('update:phone', ()=> {
       this.getEmployeees();
     })
   }
