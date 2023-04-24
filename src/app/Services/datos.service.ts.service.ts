@@ -61,7 +61,6 @@ export class DatosServiceTsService {
       )  
   }
 
-
   getActiveEnterprisesArray(sensor: string[]): Observable<Sensor[]> {
     return this.http.get<Sensor[]>(environment.API_URL + "/read/" + sensor)
       .pipe(
@@ -69,6 +68,21 @@ export class DatosServiceTsService {
         catchError(this.handleError)
       )  
   }
+
+  updateCar(car: Car, id: number): Observable<Car> {
+    return this.http.put<Car>(environment.API_URL + "/upCarro/" + id, car)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  deleteCar(id: number): Observable<Car> {
+    return this.http.delete<Car>(environment.API_URL + "/delCarro/" + id)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  
   private handleError(error: HttpErrorResponse) {
     if(error.status === 0) {
       console.error('Un error inesperado ha ocurrido:', error.error);

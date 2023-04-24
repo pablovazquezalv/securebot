@@ -5,6 +5,9 @@ import { Car } from 'src/app/Interfaces/car.interface';
 import { DatosServiceTsService } from 'src/app/Services/datos.service.ts.service';
 import { UserService } from 'src/app/Services/user.service';
 import { WebSocketService } from 'src/app/Services/web-socket.service';
+import { ModalEliminarCarroComponent } from '../modal-eliminar-carro/modal-eliminar-carro.component';
+import { ModalEditarCarroComponent } from '../modal-editar-carro/modal-editar-carro.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-autosusuariodatos',
@@ -17,7 +20,7 @@ export class AutosusuariodatosComponent implements OnInit {
   iInCharge: boolean = false;
   carros:Car[] = [];
 
-  constructor(private router: Router, private userService: UserService, private carService:DatosServiceTsService, private webSocketService: WebSocketService) { }
+  constructor(private router: Router, private userService: UserService, private carService:DatosServiceTsService, private webSocketService: WebSocketService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.isOwner();
@@ -26,6 +29,14 @@ export class AutosusuariodatosComponent implements OnInit {
     this.getCars();
 
     this.webSocketService.socket.on('new:carro', ()=> {
+      this.getCars();
+    })
+
+    this.webSocketService.socket.on('update:carro', ()=> {
+      this.getCars();
+    })
+
+    this.webSocketService.socket.on('delete:carro', ()=> {
       this.getCars();
     })
   }
@@ -71,6 +82,22 @@ export class AutosusuariodatosComponent implements OnInit {
         }
       })
     ).subscribe();
+  }
+
+  openDeleteModal(id: number){
+    const dialogRef = this.dialog.open(ModalEliminarCarroComponent, {
+      width: '448px',
+      height: 'auto',
+      data: { id: id}
+    });
+  }
+
+  openEditModal(name: String, descripcion: String, id: number){
+    const dialogRef = this.dialog.open(ModalEditarCarroComponent, {
+      width: '448px',
+      height: 'auto',
+      data: { name: name, descripcion: descripcion, id: id }
+    });
   }
 
   solicitudesDeEmpleados() {
