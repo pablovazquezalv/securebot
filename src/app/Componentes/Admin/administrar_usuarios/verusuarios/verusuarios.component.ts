@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
 import { User } from 'src/app/Interfaces/user.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfirmacionStatusComponent } from '../../modal-confirmacion-status/modal-confirmacion-status.component';
 import { RolesModificarComponent } from '../../roles-modificar/roles-modificar.component';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
@@ -27,6 +27,9 @@ export const fadeInOut = trigger('fadeInOut', [
   animations: [fadeInOut],
 })
 export class VerusuariosComponent implements OnInit {
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   rol:Number = 0
   st = 1;
   l = false
@@ -135,7 +138,11 @@ export class VerusuariosComponent implements OnInit {
 
   onSearch( filterPost: string )
   {
+    this.paginator.firstPage();
+    this.pageSize = 5;
+    this.page = 0;
     this.desde = 0;
+    this.hasta = 5;
     this.filterPost = filterPost;
     if(this.filterPost != "")
     {
@@ -149,11 +156,20 @@ export class VerusuariosComponent implements OnInit {
 
   status()
   {
+    this.paginator.firstPage();
+    this.pageSize = 5;
+    this.page = 0;
+    this.desde = 0;
+    this.hasta = 5;
     if (this.st == 1)
     {
       this.st = 0
       this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
         this.users = users.data;
+        if(this.filterPost != "")
+        {
+          this.users = this.mipipe.transform(this.users,this.filterPost)
+        }
       });
     }
     else
@@ -161,17 +177,30 @@ export class VerusuariosComponent implements OnInit {
       this.st = 1
       this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
         this.users = users.data;
+        if(this.filterPost != "")
+        {
+          this.users = this.mipipe.transform(this.users,this.filterPost)
+        }
       });
     }
   }
 
   rolCheck(rol: Number)
   {
+    this.paginator.firstPage();
+    this.pageSize = 5;
+    this.page = 0;
+    this.desde = 0;
+    this.hasta = 5;
     if(rol == this.rol)
     {
       this.rol = 0
       this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
         this.users = users.data;
+        if(this.filterPost != "")
+        {
+          this.users = this.mipipe.transform(this.users,this.filterPost)
+        }
       });
       this.selectedRole = 0;
     }
@@ -180,6 +209,10 @@ export class VerusuariosComponent implements OnInit {
       this.rol = rol
       this.userService.getUsersAI(this.st, this.rol).subscribe(users => {
         this.users = users.data;
+        if(this.filterPost != "")
+        {
+          this.users = this.mipipe.transform(this.users,this.filterPost)
+        }
       });
       this.selectedRole = rol;
     }

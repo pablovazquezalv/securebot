@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
 import { User } from 'src/app/Interfaces/user.interface';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEliminarEmpleadoComponent } from '../modal-eliminar-empleado/modal-eliminar-empleado.component';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FilterEmployeesPipe } from 'src/app/pipes/filter-employees.pipe';
 import { map } from 'rxjs/operators';
 import { WebSocketService } from 'src/app/Services/web-socket.service';
@@ -15,6 +15,7 @@ import { WebSocketService } from 'src/app/Services/web-socket.service';
   styleUrls: ['./empresa-ver-empleados.component.css']
 })
 export class EmpresaVerEmpleadosComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   page = 0
   filterPost = "";
   employees: User[] = [];
@@ -142,7 +143,11 @@ export class EmpresaVerEmpleadosComponent implements OnInit {
 
   onSearch( filterPost: string )
   {
+    this.paginator.firstPage();
+    this.pageSize = 5;
     this.page = 0;
+    this.desde = 0;
+    this.hasta = 5;
     this.filterPost = filterPost;
     if(this.filterPost != "")
     {

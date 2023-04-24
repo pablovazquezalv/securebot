@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EnterpriseService } from 'src/app/Services/enterprise.service';
 import { Enterprise } from 'src/app/Interfaces/enterprise.interface';
 import { Router } from '@angular/router';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalDesactivarEmpresaComponent } from '../modal-desactivar-empresa/modal-desactivar-empresa.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,6 +15,9 @@ import { WebSocketService } from 'src/app/Services/web-socket.service';
   styleUrls: ['./ver-empresas.component.css']
 })
 export class VerEmpresasComponent implements OnInit {
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   page = 0
   filterPost = "";
   enterprises: Enterprise[] = [];
@@ -115,7 +118,11 @@ export class VerEmpresasComponent implements OnInit {
 
   onSearch( filterPost: string )
   {
+    this.paginator.firstPage();
+    this.pageSize = 5;
     this.page = 0;
+    this.desde = 0;
+    this.hasta = 5;
     this.filterPost = filterPost;
     if(this.filterPost != "")
     {

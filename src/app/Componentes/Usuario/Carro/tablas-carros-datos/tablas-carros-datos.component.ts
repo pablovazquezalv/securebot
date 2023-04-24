@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { NgbDateStruct, NgbCalendar, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf, SlicePipe } from '@angular/common';
@@ -6,7 +6,7 @@ import { DatosServiceTsService } from 'src/app/Services/datos.service.ts.service
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Sensor } from 'src/app/Interfaces/datos.interface';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FilterSensoresPipe } from 'src/app/pipes/filter-sensores.pipe';
 import { FilterSensoresHoraPipe } from 'src/app/pipes/filter-sensores-hora.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,6 +20,8 @@ import { sensorInd } from '../../../../Interfaces/sensor.interface';
   styleUrls: ['./tablas-carros-datos.component.css']
 })
 export class TablasCarrosDatosComponent implements OnInit{
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   model!: NgbDateStruct;
   l = false
@@ -111,6 +113,11 @@ export class TablasCarrosDatosComponent implements OnInit{
   }
 
   filterData() {
+    this.paginator.firstPage();
+    this.pageSize = 100;
+    this.page = 0;
+    this.desde = 0;
+    this.hasta = 100;
     let filteredData = this.sensors;
     if (this.start) {
       filteredData = this.mipipe2.transform(filteredData, this.start, this.end);
