@@ -17,11 +17,11 @@ export class HasEnterpriseGuard implements CanActivate {
       return this.userService.hasEnterprise().pipe(
         (map((res: any) => {
           if(res.hasEnterprise){
-            return true;
-          } else {
             alert('Ya perteneces a una empresa.')
             this.location.back();
             return false;
+          } else {
+            return true;
           }
         }
       )));
