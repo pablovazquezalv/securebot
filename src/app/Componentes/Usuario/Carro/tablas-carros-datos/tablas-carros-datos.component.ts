@@ -44,7 +44,7 @@ export class TablasCarrosDatosComponent implements OnInit{
   sens:sensorInd[] = []
   carrito: string = ""
 
-  constructor(private sensorService: DatosServiceTsService, public dialog: MatDialog, private fb: FormBuilder,private router:Router, private webSocketService: WebSocketService){}
+  constructor(private sensorService: DatosServiceTsService, public dialog: MatDialog, private fb: FormBuilder,private router:Router, private webSocketService: WebSocketService,private route: ActivatedRoute){}
 
   ngOnInit() {
     console.log(this.seleccion)
@@ -53,12 +53,12 @@ export class TablasCarrosDatosComponent implements OnInit{
     this.webSocketService.socket.on('new:datos', ()=> {
       this.getDatos2();
     })
-    // this.route.paramMap.subscribe(params => {
-    //   this.carrito = params.get('carro')!;
-    //   console.log('El id del usuario es:', this.carrito);
-    // });
+    this.route.paramMap.subscribe(params => {
+      this.carrito = params.get('carro')!;
+      console.log('El id del usuario es:', this.carrito);
+    });
 
-    // this.getsensores()
+    this.getsensores()
   }
 
   combinePipes(users: any[], start: string, end: string, fecha1: string, fecha2: string): any[] {
@@ -67,12 +67,12 @@ export class TablasCarrosDatosComponent implements OnInit{
     return filterByFecha;
   }
 
-  // getsensores()
-  // {
-  //   this.sensorService.getSensores(this.carrito).subscribe((data)=>{
-  //     this.sens = data
-  //   })
-  // }
+  getsensores()
+  {
+    this.sensorService.getSensores(this.carrito).subscribe((data)=>{
+      this.sens = data
+    })
+  }
 
   filter(event: any) {
     this.start = event.target.value;
@@ -92,7 +92,7 @@ export class TablasCarrosDatosComponent implements OnInit{
 
   regresar()
   {
-    this.router.navigate(['/datos-carrito']);
+    this.router.navigate(['/datos-carrito/' + this.carrito]);
   }
     
 

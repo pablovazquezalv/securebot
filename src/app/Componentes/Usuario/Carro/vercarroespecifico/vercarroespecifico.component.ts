@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Sensor } from 'src/app/Interfaces/datos.interface';
 import { DatosServiceTsService } from 'src/app/Services/datos.service.ts.service';
 import { WebSocketService } from 'src/app/Services/web-socket.service';
@@ -12,7 +12,9 @@ import { WebSocketService } from 'src/app/Services/web-socket.service';
 export class VercarroespecificoComponent implements OnInit{
 
   sensor: Sensor[] = [];
-  constructor(private router:Router,private sensorService: DatosServiceTsService, private webSocketService: WebSocketService) { }
+  carrito: string = ""
+  
+  constructor(private router:Router,private sensorService: DatosServiceTsService, private webSocketService: WebSocketService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     {
@@ -21,6 +23,11 @@ export class VercarroespecificoComponent implements OnInit{
       this.webSocketService.socket.on('ultimo:dato', ()=> {
         this.getDatos();
       })
+
+      this.route.paramMap.subscribe(params => {
+        this.carrito = params.get('carro')!;
+        console.log('El id del usuario es:', this.carrito);
+      });
     }
     }
 
@@ -28,7 +35,7 @@ export class VercarroespecificoComponent implements OnInit{
   {
     this.sensorService.getLastData().subscribe(datos => {
         this.sensor = datos
-      });
+    });
   }
   perfilUsuario()
   {
@@ -52,6 +59,6 @@ export class VercarroespecificoComponent implements OnInit{
 
   verTablas()
   {
-    this.router.navigate(['/historial-datos']);
+    this.router.navigate(['/historial-datos/' + this.carrito]);
   }
 }
