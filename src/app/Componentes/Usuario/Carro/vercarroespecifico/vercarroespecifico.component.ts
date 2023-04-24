@@ -46,6 +46,7 @@ export class VercarroespecificoComponent implements OnInit{
         if(dato.valores != data.valores)
         {
           dato.valores = data.valores
+          dato.hora = data.hora
         }
       }
     })
