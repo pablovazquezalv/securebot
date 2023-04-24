@@ -1,0 +1,55 @@
+<div class="card " style="width: 28rem;" align="center">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h4>Editar carro</h4>
+      <button type="button" class="btn-close shadow-none" ></button>
+    </div>
+    <div class="card-body">
+
+       <!-- 
+      <form [formGroup]="nameForm" (ngSubmit)="onSubmit(nameForm.value)">
+        -->
+        <div class="mb-3 text-start">
+          <label for="name" class="mobile-text">Nombre</label>
+
+          <input type="text" formControlName="name" class="form-control" placeholder="Ingresa el nuevo nombre" maxlength="40" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$">
+          <!--
+          <div *ngIf="nameForm.get('name')?.invalid && (nameForm.get('name')?.touched || nameForm.get('name')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+            <span class="error-message" *ngIf="nameForm.get('name')?.errors?.['required']">El campo nombre es obligatorio.</span>
+            <span class="error-message" *ngIf="nameForm.get('name')?.errors?.['minlength']">El campo nombre debe tener un mínimo de 2 caracteres.<br></span>
+            <span class="error-message" *ngIf="nameForm.get('name')?.errors?.['pattern']">El campo nombre no acepta números ni caracteres especiales.</span>
+          </div>
+          -->
+        </div>
+        <div class="mb-3 text-start">
+
+          <label for="ap_paterno" class="mobile-text">Descripcion</label>
+                      <!--
+          <input type="text" formControlName="ap_paterno" class="form-control" placeholder="Ingresa la nueva descripcion" maxlength="40">
+          <div *ngIf="nameForm.get('ap_paterno')?.invalid && (nameForm.get('ap_paterno')?.touched || nameForm.get('ap_paterno')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+            <span class="error-message" *ngIf="nameForm.get('ap_paterno')?.errors?.['required']">El campo apellido paterno es obligatorio.</span>
+            <span class="error-message" *ngIf="nameForm.get('ap_paterno')?.errors?.['minlength']">El campo apellido paterno debe tener un mínimo de 2 caracteres.<br></span>
+            <span class="error-message" *ngIf="nameForm.get('ap_paterno')?.errors?.['pattern']">El campo apellido paterno no acepta números ni caracteres especiales.</span>
+          </div>
+          -->
+        </div>
+       
+    <!--  
+    </form>
+    -->
+    </div>
+    <div class="card-footer text-end text-body-secondary">
+      <button type="button" class="btn btn-danger"
+        
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+        --bs-btn-font-size: .75rem;margin-right: 10px;">
+        Guardar
+      </button>
+      <button type="button" class="btn btn-dark"  
+        
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; 
+        --bs-btn-font-size: .75rem;margin-right: 10px;">
+        Cancelar
+      </button>
+    </div>
+  </div>
+  

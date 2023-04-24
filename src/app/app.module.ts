@@ -60,6 +60,8 @@ import { TablasCarrosDatosComponent } from './Componentes/Usuario/Carro/tablas-c
 import { FilterSensoresPipe } from './pipes/filter-sensores.pipe';
 import { SpinnerComponent } from './Componentes/spinner/spinner.component';
 import { FilterSensoresHoraPipe } from './pipes/filter-sensores-hora.pipe';
+import { ModalEditarCarroComponent } from './Componentes/Usuario/Empresa/modal-editar-carro/modal-editar-carro.component';
+import { ModalEliminarCarroComponent } from './Componentes/Usuario/Empresa/modal-eliminar-carro/modal-eliminar-carro.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +110,9 @@ import { FilterSensoresHoraPipe } from './pipes/filter-sensores-hora.pipe';
     TablasCarrosDatosComponent,
     FilterSensoresPipe,
     SpinnerComponent,
-    FilterSensoresHoraPipe
+    FilterSensoresHoraPipe,
+    ModalEditarCarroComponent,
+    ModalEliminarCarroComponent
   ],
   imports: [
     BrowserModule,
