@@ -23,9 +23,10 @@
         <div class="mb-3 text-start">
 
           <label for="ap_paterno" class="mobile-text">Descripcion</label>
-                      <!--
+                      
           <input type="text" formControlName="ap_paterno" class="form-control" placeholder="Ingresa la nueva descripcion" maxlength="40">
-          <div *ngIf="nameForm.get('ap_paterno')?.invalid && (nameForm.get('ap_paterno')?.touched || nameForm.get('ap_paterno')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
+        <!--
+        (click)="verSensores(c._id)" type="button " class="btn text-white"  <div *ngIf="nameForm.get('ap_paterno')?.invalid && (nameForm.get('ap_paterno')?.touched || nameForm.get('ap_paterno')?.dirty)" class="alert border text-danger border-bottom border-danger mt-1" role="alert">
             <span class="error-message" *ngIf="nameForm.get('ap_paterno')?.errors?.['required']">El campo apellido paterno es obligatorio.</span>
             <span class="error-message" *ngIf="nameForm.get('ap_paterno')?.errors?.['minlength']">El campo apellido paterno debe tener un mínimo de 2 caracteres.<br></span>
             <span class="error-message" *ngIf="nameForm.get('ap_paterno')?.errors?.['pattern']">El campo apellido paterno no acepta números ni caracteres especiales.</span>
