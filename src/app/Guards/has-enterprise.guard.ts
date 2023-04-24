@@ -16,7 +16,7 @@ export class HasEnterpriseGuard implements CanActivate {
 
       return this.userService.hasEnterprise().pipe(
         (map((res: any) => {
-          if(res.hasEnterprise){
+          if(res == true){
             alert('Ya perteneces a una empresa.')
             this.location.back();
             return false;
