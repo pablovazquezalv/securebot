@@ -21,7 +21,8 @@ export class VercarroespecificoComponent implements OnInit{
       this.getDatos()
 
       this.webSocketService.socket.on('ultimo:dato', ()=> {
-        this.getDatos();
+        this.getActualizacion();
+        console.log(this.sensor)
       })
 
       this.route.paramMap.subscribe(params => {
@@ -36,6 +37,17 @@ export class VercarroespecificoComponent implements OnInit{
     this.sensorService.getLastData().subscribe(datos => {
         this.sensor = datos
     });
+  }
+
+  getActualizacion()
+  {
+    for (let s = 0; s < this.sensor.length; s++)
+    {
+      let clave = this.sensor[s].clave
+      this.sensorService.getLast(String(clave)).subscribe(datos => {
+        this.sensor = datos
+    });
+    } 
   }
   perfilUsuario()
   {

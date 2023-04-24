@@ -30,6 +30,14 @@ export class DatosServiceTsService {
       )  
   }
 
+  getLast(clave:string): Observable<Sensor[]> {
+    return this.http.get<Sensor[]>(environment.API_URL + "/ultimoDatoSensor/" + clave)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      )  
+  }
+
   createCar(car: Car): Observable<Car> {
     return this.http.post<Car>(environment.API_URL + "/crearCarro", car)
       .pipe(
