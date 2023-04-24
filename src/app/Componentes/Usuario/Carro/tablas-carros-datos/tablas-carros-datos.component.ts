@@ -50,8 +50,9 @@ export class TablasCarrosDatosComponent implements OnInit{
     console.log(this.seleccion)
     this.getDatos()
 
-    this.webSocketService.socket.on('new:datos', ()=> {
-      this.getDatos2();
+    this.webSocketService.socket.on('new:datos', (data)=> {
+      console.log(data)
+      this.getActualizacion(data)
     })
     this.route.paramMap.subscribe(params => {
       this.carrito = params.get('carro')!;
@@ -59,6 +60,15 @@ export class TablasCarrosDatosComponent implements OnInit{
     });
 
     this.getsensores()
+  }
+
+  getActualizacion(data:Sensor)
+  {
+    this.sensor.forEach(dato => {
+      if(dato.clave == data.clave){
+        this.getDatos()
+      }
+    })
   }
 
   combinePipes(users: any[], start: string, end: string, fecha1: string, fecha2: string): any[] {

@@ -20,14 +20,13 @@ export class VercarroespecificoComponent implements OnInit{
     {
       this.getDatos()
 
-      this.webSocketService.socket.on('new:datos', ()=> {
-        this.getActualizacion();
-        console.log(this.sensor)
+      this.webSocketService.socket.on('new:datos', (data)=> {
+        console.log(data)
+        this.getActualizacion(data);
       })
 
       this.route.paramMap.subscribe(params => {
         this.carrito = params.get('carro')!;
-        console.log('El id del usuario es:', this.carrito);
       });
     }
     }
@@ -39,15 +38,17 @@ export class VercarroespecificoComponent implements OnInit{
     });
   }
 
-  getActualizacion()
+  getActualizacion(data:Sensor)
   {
-    for (let s = 0; s < this.sensor.length; s++)
-    {
-      let clave = this.sensor[s].clave
-      this.sensorService.getLast(String(clave)).subscribe(datos => {
-        this.sensor = datos
-    });
-    } 
+    this.sensor.forEach(dato => {
+      if(dato.clave == data.clave){
+        // this.getDatos()
+        if(dato.valores != data.valores)
+        {
+          dato.valores = data.valores
+        }
+      }
+    })
   }
   perfilUsuario()
   {
